@@ -5,6 +5,12 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
+# cron
+# socat
+# ssh
+# openresolv 
+# python3-flask
+
 packages="
 network-manager
 bluetooth
