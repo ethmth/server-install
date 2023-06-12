@@ -27,4 +27,4 @@ sudo chmod +x /usr/bin/pia-fwd
 sudo cp /home/$CUR_USER/scripts/pia-ip/pia-reconnect.sh /usr/bin/pia-reconnect
 sudo chmod +x /usr/bin/pia-reconnect
 
-echo "Remember to run ./05-pia-login.sh if you're using the command line, not GUI"
+echo "Remember to run ./03-pia-login.sh if you're using the command line, not GUI"
