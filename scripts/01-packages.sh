@@ -33,13 +33,13 @@ python3-tk
 python3-nose
 python3-nose2
 python3-coverage
-python3-nose2-cov
 python3-pandas
 python3-pexpect
 python3-flask
 python3-flask-socketio
 gpsd
-python-gps
+gpsd-clients
+gpsd-tools
 net-tools
 speedtest-cli
 netcat-openbsd
