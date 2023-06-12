@@ -5,12 +5,6 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-# cron
-# socat
-# ssh
-# openresolv 
-# python3-flask
-
 packages="
 network-manager
 bluetooth
@@ -26,6 +20,9 @@ yt-dlp
 gallery-dl
 docker.io
 docker-compose
+socat
+openssh-server
+openresolv
 nmap
 neofetch
 python3
@@ -39,6 +36,8 @@ python3-coverage
 python3-nose2-cov
 python3-pandas
 python3-pexpect
+python3-flask
+python3-flask-socketio
 gpsd
 python-gps
 net-tools
@@ -79,3 +78,4 @@ apt update && apt upgrade -y
 apt install $packages -y
 
 git config --global credential.helper store
+systemctl disable gdm
