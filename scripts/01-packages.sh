@@ -77,3 +77,5 @@ packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:sp
 
 apt update && apt upgrade -y
 apt install $packages -y
+
+git config --global credential.helper store
