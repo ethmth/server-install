@@ -34,7 +34,7 @@ mkdir -p /home/$CUR_USER/scripts
 git clone https://github.com/ethmth/pia-ip /home/$CUR_USER/scripts/pia-ip
 cp /home/$CUR_USER/scripts/pia-ip/.env.example /home/$CUR_USER/scripts/pia-ip/.env
 
-bash /home/$CUR_USER/arch-install/util/kernel/config-update.sh /home/$CUR_USER/scripts/pia-ip/pia-fwd.sh "ABSOLUTE_PATH=\'/home/$CUR_USER/scripts/pia-ip\'"
+sed -i "s|^ABSOLUTE_PATH=.*|ABSOLUTE_PATH=\'/home/$CUR_USER/scripts/pia-ip\'|" /home/$CUR_USER/scripts/pia-ip/pia-fwd.sh
 
 echo "Edit the /home/$CUR_USER/scripts/pia-ip/.env file with the correct values."
 echo "When done, run ./pia-install-finish.sh"
