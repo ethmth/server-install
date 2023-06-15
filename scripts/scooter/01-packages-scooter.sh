@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+libusb-1.0-0-dev
 bluetooth
 bluez
 blueman
