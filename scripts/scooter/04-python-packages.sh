@@ -18,6 +18,7 @@ packages="
 paho-mqtt
 pandas
 pytest
+obd
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

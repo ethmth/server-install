@@ -26,6 +26,7 @@ openresolv
 nmap
 neofetch
 python3
+python3-dev
 python3-venv
 python3-pip
 python3-pint
@@ -63,6 +64,8 @@ unzip
 xvfb
 libxi6
 libgconf-2-4
+libglib2.0-dev
+doxygen
 p7zip-full
 aria2
 libgmp-dev
