@@ -20,6 +20,7 @@ pandas
 pytest
 obd
 pygatt
+gpiozero
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

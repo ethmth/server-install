@@ -5,7 +5,7 @@ if ! [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-BLUEZ_VERSION="5.50"
+BLUEZ_VERSION="5.66"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
