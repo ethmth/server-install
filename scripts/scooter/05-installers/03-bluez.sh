@@ -5,7 +5,7 @@ if ! [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-BLUEZ_VERSION="5.66"
+BLUEZ_VERSION="5.50"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -17,6 +17,7 @@ fi
 source $SCRIPT_DIR/../conf.env
 
 DIR="$INSTALLATION_DIR/build/bluez"
+rm -rf $DIR
 mkdir -p $DIR
 
 wget -O $DIR/bluez.tar.xz http://www.kernel.org/pub/linux/bluetooth/bluez-$BLUEZ_VERSION.tar.xz

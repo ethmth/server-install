@@ -25,6 +25,8 @@ packages="
 paho-mqtt
 pandas
 pytest
+dbus-python
+PyGObject
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

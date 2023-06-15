@@ -6,6 +6,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+libcairo2-dev
+libgirepository1.0-dev
 python2
 python2-dev
 python2-pip-whl
