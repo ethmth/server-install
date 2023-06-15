@@ -9,6 +9,13 @@ packages="
 build-essential
 cmake
 doxygen
+bc
+autoconf
+libusb-dev
+libdbus-1-dev
+libreadline-dev
+libical-dev
+libudev-dev
 libusb-1.0-0-dev
 libglib2.0-dev
 bluetooth
@@ -26,6 +33,7 @@ python3-pandas
 python3-pexpect
 python3-gps
 python3-pytest
+python3-docutils
 gpsd
 gpsd-clients
 gpsd-tools
