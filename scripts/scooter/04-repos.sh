@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GATT_REPO="https://github.com/ethmth/bluez-gatt-server.git"
+#GATT_REPO="https://github.com/ethmth/bluez-gatt-server.git"
 SCOOTER_REPO="https://github.com/ethmth/e-scooter.git"
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -20,13 +20,13 @@ source $DIR/conf.env
 mkdir -p $INSTALLATION_DIR
 
 cd $INSTALLATION_DIR
-git clone $GATT_REPO bluez-gatt-server
+#git clone $GATT_REPO bluez-gatt-server
 git clone $SCOOTER_REPO e-scooter
 
 cd $INSTALLATION_DIR/e-scooter
 ./gen-types.sh
 
-cd $INSTALLATION_DIR/bluez-gatt-server
-git checkout ethmth
+#cd $INSTALLATION_DIR/bluez-gatt-server
+#git checkout ethmth
 
 
