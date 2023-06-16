@@ -5,6 +5,8 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-echo "ReverseServiceDiscovery = false" >> /etc/bluetooth/main.conf
+#echo "ReverseServiceDiscovery = false" >> /etc/bluetooth/main.conf
+
+grep -q '#ReverseServiceDiscovery' /etc/bluetooth/main.conf && sed -i '/#ReverseServiceDiscovery/a ReverseServiceDiscovery = false' /etc/bluetooth/main.conf
 
 systemctl restart bluetooth
