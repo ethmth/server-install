@@ -25,6 +25,7 @@ bluez
 blueman
 python3
 python3-dev
+python3-venv
 python3-pip
 python3-pint
 python3-tk
@@ -41,6 +42,8 @@ gpsd-clients
 gpsd-tools
 mosquitto
 mosquitto-clients
+docker.io
+docker-compose
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
