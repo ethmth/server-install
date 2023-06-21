@@ -14,7 +14,7 @@ cp /home/$CUR_USER/scripts/pi-ip/.env.example /home/$CUR_USER/scripts/pi-ip/.env
 chmod +x /home/$CUR_USER/scripts/pi-ip/ipcheck.sh
 
 echo "*/1 * * * * /home/$CUR_USER/scripts/pi-ip/ipcheck.sh" > /home/$CUR_USER/scripts/pi-ip/crontab.txt
-echo "@reboot /home/$CUR_USER/scripts/pi-ip/ipcheck.sh" >> /home/$CUR_USER/scripts/pi-ip/crontab.txt
+echo "@reboot /home/$CUR_USER/scripts/pi-ip/ipcheck.sh startup" >> /home/$CUR_USER/scripts/pi-ip/crontab.txt
 
 crontab /home/$CUR_USER/scripts/pi-ip/crontab.txt
 
