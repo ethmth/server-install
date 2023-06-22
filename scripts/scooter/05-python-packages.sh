@@ -15,6 +15,7 @@ fi
 source $DIR/conf.env
 
 packages="
+wheel
 paho-mqtt
 pandas
 pytest
