@@ -22,6 +22,8 @@ obd
 pygatt
 gpiozero
 poetry
+flit
+setuptools
 flask
 flask-socketio
 requests
