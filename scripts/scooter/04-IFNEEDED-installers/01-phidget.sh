@@ -57,9 +57,9 @@ sudo make install
 sudo bash -c 'echo "SUBSYSTEMS==\"usb\", ACTION==\"add\", ATTRS{idVendor}==\"06c2\", ATTRS{idProduct}==\"00[3-a][0-f]\", MODE=\"666\"" > /etc/udev/rules.d/99-libphidget22.rules'
 
 #$PYTHON_COMMAND -m pip install Phidget22
-wget -O $DIR/Phidget22Python.zip https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22Python.zip
-cd $DIR
-unzip Phidget22Python.zip
-DIR_NAME=$(ls $DIR -1 | grep "Python" | grep -v "zip")
-cd $DIR/$DIR_NAME
-sudo $PYTHON_COMMAND setup.py install
+#wget -O $DIR/Phidget22Python.zip https://www.phidgets.com/downloads/phidget22/libraries/any/Phidget22Python.zip
+#cd $DIR
+#unzip Phidget22Python.zip
+#DIR_NAME=$(ls $DIR -1 | grep "Python" | grep -v "zip")
+#cd $DIR/$DIR_NAME
+#sudo $PYTHON_COMMAND setup.py install

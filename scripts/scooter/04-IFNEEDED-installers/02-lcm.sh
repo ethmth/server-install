@@ -29,5 +29,5 @@ cmake ..
 make
 sudo make install
 
-cd $DIR/$DIR_NAME/lcm-python
-sudo $PYTHON_COMMAND setup.py install
+#cd $DIR/$DIR_NAME/lcm-python
+#sudo $PYTHON_COMMAND setup.py install
