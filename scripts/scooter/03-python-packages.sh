@@ -24,6 +24,9 @@ gpiozero
 poetry
 flit
 setuptools
+pip-tools
+pre-commit
+keyring
 flask
 flask-socketio
 requests
