@@ -44,6 +44,9 @@ mosquitto
 mosquitto-clients
 docker.io
 docker-compose
+dnsmasq
+hostapd
+network-manager
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

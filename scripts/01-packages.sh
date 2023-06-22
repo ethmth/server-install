@@ -7,6 +7,7 @@ fi
 
 packages="
 network-manager
+network-manager-gnome
 bluetooth
 bluez
 blueman
@@ -76,6 +77,8 @@ ca-certificates
 feh
 caca-utils
 hexyl
+dnsmasq
+hostapd
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
