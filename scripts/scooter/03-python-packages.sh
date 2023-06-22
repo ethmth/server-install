@@ -21,6 +21,11 @@ pytest
 obd
 pygatt
 gpiozero
+poetry
+flask
+flask-socketio
+requests
+websocket-client
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
