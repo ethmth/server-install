@@ -1,2 +1,3 @@
 scripts/scooter/conf.env
 scripts/scooter/python2/get-pip.py
+scripts/scooter/get-pip.py

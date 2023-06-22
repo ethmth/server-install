@@ -5,6 +5,9 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
+#python3-gps
+#gpsd-tools
+#libreadline-gplv2-dev
 packages="
 build-essential
 cmake
@@ -14,6 +17,13 @@ autoconf
 libusb-dev
 libdbus-1-dev
 libreadline-dev
+libncursesw5-dev
+libssl-dev
+libsqlite3-dev
+tk-dev
+libgdbm-dev
+libc6-dev
+libbz2-dev
 libical-dev
 libudev-dev
 libusb-1.0-0-dev
@@ -34,12 +44,10 @@ python3-nose2
 python3-coverage
 python3-pandas
 python3-pexpect
-python3-gps
 python3-pytest
 python3-docutils
 gpsd
 gpsd-clients
-gpsd-tools
 mosquitto
 mosquitto-clients
 docker.io
