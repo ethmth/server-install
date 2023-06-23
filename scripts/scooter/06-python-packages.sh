@@ -32,6 +32,7 @@ requests
 flask
 flask-socketio
 websocket-client
+simple-websocket
 python-socketio
 Phidget22
 git+https://github.com/lcm-proj/lcm.git#subdirectory=lcm-python
