@@ -23,6 +23,7 @@ source $DIR/conf.env
 # poetry
 # setuptools
 packages="
+pexpect
 netifaces
 wheel
 pygatt
