@@ -14,20 +14,17 @@ fi
 
 source $DIR/conf.env
 
+# pandas
+# numpy
+# obd
+# paho-mqtt
+# pytest
+# gpiozero
+# poetry
+# setuptools
 packages="
 wheel
-paho-mqtt
-pandas
-pytest
-obd
 pygatt
-gpiozero
-poetry
-flit
-setuptools
-pip-tools
-pre-commit
-keyring
 requests
 flask
 flask-socketio
