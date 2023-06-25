@@ -35,6 +35,7 @@ simple-websocket
 python-socketio
 Phidget22
 git+https://github.com/lcm-proj/lcm.git#subdirectory=lcm-python
+systemd-python
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

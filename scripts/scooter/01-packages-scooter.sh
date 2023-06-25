@@ -30,6 +30,7 @@ libusb-1.0-0-dev
 libglib2.0-dev
 libcairo2-dev
 libgirepository1.0-dev
+libsystemd-dev
 bluetooth
 bluez
 blueman
