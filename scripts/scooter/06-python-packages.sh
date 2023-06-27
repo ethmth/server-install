@@ -37,6 +37,7 @@ systemd-python
 numpy==1.19.5
 tflite-runtime==2.5.0
 pandas==1.1.5
+python-dotenv==0.20.0
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
