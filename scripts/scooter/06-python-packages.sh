@@ -15,7 +15,6 @@ fi
 source $DIR/conf.env
 
 # pandas
-# numpy
 # obd
 # paho-mqtt
 # pytest
@@ -36,6 +35,8 @@ python-socketio
 Phidget22
 git+https://github.com/lcm-proj/lcm.git#subdirectory=lcm-python
 systemd-python
+numpy==1.19.5
+tflite-runtime==2.5.0
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
