@@ -83,7 +83,7 @@ v4l-utils
 
 read -p "Do you want to install Network Manager (y/N)? " userInput
 
-if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+if ([ "$userInput" == "Y" ] || [ "$userInput" == "y" ]); then
 packages+="
 network-manager
 network-manager-gnome
