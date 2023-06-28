@@ -22,7 +22,8 @@ socat
 openssh-server
 openresolv
 nmap
-neofetch python3
+neofetch 
+python3
 python3-dev
 python3-venv
 python3-pip
@@ -36,6 +37,7 @@ python3-pexpect
 python3-flask
 python3-flask-socketio
 python3-opencv
+python3-autopep8
 gpsd
 gpsd-clients
 gpsd-tools
