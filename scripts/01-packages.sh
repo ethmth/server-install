@@ -6,8 +6,6 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
-network-manager
-network-manager-gnome
 bluetooth
 bluez
 blueman
@@ -24,8 +22,7 @@ socat
 openssh-server
 openresolv
 nmap
-neofetch
-python3
+neofetch python3
 python3-dev
 python3-venv
 python3-pip
@@ -59,7 +56,6 @@ libavcodec-extra
 gstreamer1.0-libav
 whois
 openvpn
-network-manager-openvpn
 unzip
 xvfb
 libxi6
@@ -80,6 +76,18 @@ dnsmasq
 hostapd
 rustc
 "
+
+read -p "Do you want to install Network Manager (y/N)? " userInput
+
+if ([ "$userInput" == "N" ] || [ "$userInput" == "n" ]); then
+packages+="
+network-manager
+network-manager-gnome
+network-manager-openvpn
+"
+fi
+
+
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
