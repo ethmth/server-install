@@ -17,7 +17,6 @@ curl
 wget
 proxychains
 tsocks
-yt-dlp
 gallery-dl
 docker.io
 docker-compose
@@ -88,3 +87,4 @@ apt update && apt upgrade -y
 apt install $packages -y
 
 systemctl disable gdm
+systemctl disable lightdm
