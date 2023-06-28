@@ -5,9 +5,6 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-#python3-gps
-#gpsd-tools
-#libreadline-gplv2-dev
 packages="
 build-essential
 cmake
@@ -56,6 +53,7 @@ docker-compose
 dnsmasq
 hostapd
 network-manager
+rustc
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')

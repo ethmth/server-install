@@ -31,13 +31,11 @@ flask-socketio
 websocket-client
 simple-websocket
 python-socketio
-Phidget22
-git+https://github.com/lcm-proj/lcm.git#subdirectory=lcm-python
 systemd-python
-numpy==1.19.5
-tflite-runtime==2.5.0
-pandas==1.1.5
-python-dotenv==0.20.0
+numpy
+tflite-runtime
+pandas
+python-dotenv
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
