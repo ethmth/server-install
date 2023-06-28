@@ -35,6 +35,7 @@ python3-pandas
 python3-pexpect
 python3-flask
 python3-flask-socketio
+python3-opencv
 gpsd
 gpsd-clients
 gpsd-tools
@@ -75,6 +76,9 @@ hexyl
 dnsmasq
 hostapd
 rustc
+ffmpeg
+fswebcam
+v4l-utils
 "
 
 read -p "Do you want to install Network Manager (y/N)? " userInput
