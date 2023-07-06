@@ -49,6 +49,7 @@ python3-pandas
 python3-pexpect
 python3-pytest
 python3-docutils
+python3-systemd
 gpsd
 gpsd-clients
 mosquitto
