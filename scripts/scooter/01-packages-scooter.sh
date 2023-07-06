@@ -6,6 +6,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+mpv
+udisks2
+udiskie
 autofs
 build-essential
 cmake
