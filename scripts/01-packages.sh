@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+fzf
 bluetooth
 bluez
 blueman
@@ -17,6 +18,7 @@ proxychains
 tsocks
 gallery-dl
 docker.io
+containerd.io
 docker-compose
 socat
 openssh-server
@@ -38,9 +40,6 @@ python3-flask
 python3-flask-socketio
 python3-opencv
 python3-autopep8
-gpsd
-gpsd-clients
-gpsd-tools
 net-tools
 speedtest-cli
 netcat-openbsd
@@ -61,15 +60,9 @@ whois
 openvpn
 unzip
 xvfb
-libxi6
-libgconf-2-4
-libglib2.0-dev
 doxygen
 p7zip-full
 aria2
-libgmp-dev
-libpcap-dev
-libbz2-dev
 jq
 ca-certificates
 feh
@@ -83,6 +76,16 @@ fswebcam
 v4l-utils
 "
 
+packages+="
+libgmp-dev
+libpcap-dev
+libbz2-dev
+libxi6
+libgconf-2-4
+libglib2.0-dev
+libseccomp2
+"
+
 read -p "Do you want to install Network Manager (y/N)? " userInput
 
 if ([ "$userInput" == "Y" ] || [ "$userInput" == "y" ]); then
@@ -93,12 +96,8 @@ network-manager-openvpn
 "
 fi
 
-
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
 apt update && apt upgrade -y
 apt install $packages -y
-
-systemctl disable gdm
-systemctl disable lightdm
