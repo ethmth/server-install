@@ -18,7 +18,7 @@ proxychains
 tsocks
 gallery-dl
 docker.io
-containerd.io
+containerd
 docker-compose
 socat
 openssh-server
@@ -40,6 +40,7 @@ python3-flask
 python3-flask-socketio
 python3-opencv
 python3-autopep8
+python3-bs4
 net-tools
 speedtest-cli
 netcat-openbsd
