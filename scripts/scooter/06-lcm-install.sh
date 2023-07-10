@@ -28,5 +28,4 @@ cmake ..
 make
 sudo make install
 
-#cd $DIR/$DIR_NAME/lcm-python
-#sudo $PYTHON_COMMAND setup.py install
+$PYTHON_COMMAND -m pip install git+https://github.com/lcm-proj/lcm.git#subdirectory=lcm-python
