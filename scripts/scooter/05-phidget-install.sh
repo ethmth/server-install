@@ -14,7 +14,7 @@ fi
 
 source $DIR/conf.env
 
-curl -fsSL https://www.phidgets.com/downloads/setup_linux | bash - &&\
-apt-get install -y libphidget22
+curl -fsSL https://www.phidgets.com/downloads/setup_linux | sudo bash - &&\
+sudo apt-get install -y libphidget22 phidget22networkserver phidget22admin
 
 $PYTHON_COMMAND -m pip install Phidget22
