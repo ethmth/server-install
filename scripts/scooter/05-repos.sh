@@ -10,7 +10,7 @@ fi
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
 if ! [ -e "$DIR/conf.env" ]; then
-	echo "Be sure to generate the configuration file $DIR/conf.env using ./03-config.sh"
+	echo "Be sure to generate the configuration file $DIR/conf.env using ./config.sh"
 	exit 1
 fi
 

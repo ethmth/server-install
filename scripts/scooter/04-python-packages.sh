@@ -7,27 +7,16 @@ fi
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-#if ! [ -e "$DIR/conf.env" ]; then
-#	echo "Be sure to generate the configuration file $DIR/conf.env using ./03-config.sh"
-#	exit 1
-#fi
-#
-#source $DIR/conf.env
+if ! [ -e "$DIR/conf.env" ]; then
+	echo "Be sure to generate the configuration file $DIR/conf.env using ./03-config.sh"
+	exit 1
+fi
 
-PYTHON_COMMAND="python2"
-
-cd $DIR
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-$PYTHON_COMMAND get-pip.py
-$PYTHON_COMMAND -m pip --version
+source $DIR/conf.env
 
 packages="
-paho-mqtt
-pandas
-pytest
-dbus-python
-PyGObject
-gpiozero
+pygatt
+tflite-runtime
 "
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
