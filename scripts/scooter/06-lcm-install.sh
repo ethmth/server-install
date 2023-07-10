@@ -28,4 +28,4 @@ cmake ..
 make
 sudo make install
 
-$PYTHON_COMMAND -m pip install git+https://github.com/lcm-proj/lcm.git#subdirectory=lcm-python
+$PYTHON_COMMAND -m pip install "git+https://github.com/lcm-proj/lcm.git#subdirectory=lcm-python&egg=lcm"
