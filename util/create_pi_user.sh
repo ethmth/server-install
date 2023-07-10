@@ -7,6 +7,8 @@ fi
 
 useradd -m pi
 
-usermod -aG docker,wheel pi
+usermod -aG docker,wheel,adm,cdrom,dip,plugdev,lpadmin,lxd,sambashare pi
+
+chsh -s /bin/bash pi
 
 passwd pi
