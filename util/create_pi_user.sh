@@ -8,3 +8,5 @@ fi
 useradd -m pi
 
 usermod -aG docker,wheel pi
+
+passwd pi
