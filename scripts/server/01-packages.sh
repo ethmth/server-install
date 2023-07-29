@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+certbot
 fzf
 bluetooth
 bluez
@@ -41,6 +42,7 @@ python3-flask-socketio
 python3-opencv
 python3-autopep8
 python3-bs4
+python3-certbot-apache
 net-tools
 speedtest-cli
 netcat-openbsd

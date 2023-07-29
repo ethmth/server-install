@@ -7,3 +7,4 @@ fi
 
 systemctl disable gdm
 systemctl disable lightdm
+systemctl disable apache2
