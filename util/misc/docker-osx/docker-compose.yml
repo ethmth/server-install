@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  macos-vm:
+    build:
+      context: .
+    ports:
+      - 5900:5900
+      - 1359:1359
+      - 1234:1234
+    privileged: true
+    container_name: macos-vm
+    volumes:
+      - .opt:/opt
+    restart: unless-stopped
+
+volumes:
+  opt:
