@@ -57,7 +57,7 @@ if ! [ -e "$ABSOLUTE_PATH/config.plist" ]; then
     exit 1
 fi
 
-cp /home/$CUR_USER/arch-install/files/templates/config-before.plist config.plist
+cp $ABSOLUTE_PATH/config.plist config.plist
 
 sed -i "s/$MODEL_TO_REPLACE/$MODEL/g" config.plist
 sed -i "s/$SERIAL_TO_REPLACE/$SERIAL/g" config.plist

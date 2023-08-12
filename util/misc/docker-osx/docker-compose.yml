@@ -17,11 +17,7 @@ services:
       - AUDIO_DRIVER=none
       - IMAGE_PATH=/image
       - BOOTDISK=/bootdisk
-      - EXTRA=-display none -vnc 0.0.0.0:99,password-secret=secvnc0 -object secret,id=secvnc0,data=vncpass
+      - NOPICKER=true
+      - EXTRA=-display none -vnc 0.0.0.0:99,password-secret=secvnc0 -object secret,id=secvnc0,data=PASSWORD
       - ADDITIONAL_PORTS=hostfwd=tcp::1234-:1234,hostfwd=tcp::1359-:1359,
-      - WIDTH=1280
-      - HEIGHT=720
-      - NOPICKER=false
-    stdin_open: true
-    tty: true
-    restart: "no"
+    restart: "unless-stopped"

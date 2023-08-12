@@ -32,7 +32,21 @@ LOC="$LOC/programs/docker-osx"
 mkdir -p $LOC
 cd $LOC
 
-if [ -e "$ABSOLUTE_PATH/docker-start.sh" ]; then
-    cp $ABSOLUTE_PATH/docker-start.sh $LOC/docker-start.sh
-    chmod +rx $LOC/docker-start.sh
+if ! [ -e "$ABSOLUTE_PATH/docker-compose.yml" ]; then
+    echo "docker-compose.yml doesn't exist in $ABSOLUTE_PATH"
 fi
+
+password=""
+read -p "Enter the password you want to use for VNC (will be echoed): " password
+if [ "$password" == "" ]; then
+    echo "No password specified."
+    exit 1
+fi
+
+cp $ABSOLUTE_PATH/docker-compose.yml $LOC/docker-compose.yml
+
+sed -i "s/PASSWORD/$password/g" $LOC/docker-compose.yml
+
+echo "docker-compose.yml installed to $LOC"
+echo "Run 'docker-compose up --build -d'"
+echo "cd $LOC"
