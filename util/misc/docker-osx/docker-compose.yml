@@ -20,4 +20,5 @@ services:
       - NOPICKER=true
       - EXTRA=-display none -vnc 0.0.0.0:99,password-secret=secvnc0 -object secret,id=secvnc0,data=PASSWORD
       - ADDITIONAL_PORTS=hostfwd=tcp::1234-:1234,hostfwd=tcp::1359-:1359,
+      - DISPLAY=${DISPLAY:-:0.0}"
     restart: "unless-stopped"
