@@ -3,3 +3,5 @@ scripts/scooter/python2/get-pip.py
 scripts/scooter/get-pip.py
 util/misc/docker-osx/values.conf
 util/misc/docker-osx/osx-serial-generator
+util/misc/docker-osx/mac_hdd_ng.img
+util/misc/docker-osx/mac_hdd_ng_auto.img
