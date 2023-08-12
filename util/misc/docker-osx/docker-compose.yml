@@ -1,0 +1,27 @@
+version: '3'
+services:
+  bluebubbles:
+    image: sickcodes/docker-osx:naked
+    container_name: bluebubbles
+    devices:
+      - /dev/kvm
+    ports:
+      - "5999:5999"
+      - "1234:1234"
+      - "1359:1359"
+      - "50922:10022"
+    volumes:
+      - ./mac_hdd_ng.img:/image
+      - ./OpenCore.qcow2:/bootdisk
+    environment:
+      - AUDIO_DRIVER=none
+      - IMAGE_PATH=/image
+      - BOOTDISK=/bootdisk
+      - EXTRA=-display none -vnc 0.0.0.0:99,password-secret=secvnc0 -object secret,id=secvnc0,data=vncpass
+      - ADDITIONAL_PORTS=hostfwd=tcp::1234-:1234,hostfwd=tcp::1359-:1359,
+      - WIDTH=1280
+      - HEIGHT=720
+      - NOPICKER=false
+    stdin_open: true
+    tty: true
+    restart: "no"

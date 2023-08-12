@@ -34,4 +34,5 @@ cd $LOC
 
 if [ -e "$ABSOLUTE_PATH/docker-start.sh" ]; then
     cp $ABSOLUTE_PATH/docker-start.sh $LOC/docker-start.sh
+    chmod +rx $LOC/docker-start.sh
 fi
