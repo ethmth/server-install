@@ -9,11 +9,25 @@ fi
 
 CUR_USER=$(whoami)
 
-SCRIPT_RELATIVE_DIR=$(dirname "${BASH_SOURCE[0]}") 
-cd $SCRIPT_RELATIVE_DIR 
-ABSOLUTE_PATH=$(pwd)
+LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired installation location")
 
-LOC="$ABSOLUTE_PATH"
+if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
+    echo "Nothing was selected"
+    echo "Run this script again with target drive mounted."
+    exit 1
+fi
+
+if [ "$LOC" == "/" ]; then
+    LOC="/home/$CUR_USER"
+fi
+
+if ! [ -d "$LOC" ]; then
+    echo "Your location is not available. Is the disk mounted? Do you have access?"
+	exit 1
+fi
+
+LOC="$LOC/programs/docker-osx"
+mkdir -p $LOC
 cd $LOC
 
 git clone --depth 1 https://github.com/sickcodes/osx-serial-generator.git ./osx-serial-generator
