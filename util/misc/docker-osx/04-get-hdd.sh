@@ -32,8 +32,6 @@ LOC="$LOC/programs/docker-osx"
 mkdir -p $LOC
 cd $LOC
 
-docker pull sickcodes/docker-osx:auto
-
-id=$(docker create sickcodes/docker-osx:auto)
-docker cp $id:/home/arch/OSX-KVM/mac_hdd_ng.img - > mac_hdd_ng.img
-docker rm -v $id
+docker stop dockerosx_imageextractor
+docker cp dockerosx_imageextractor:/home/arch/OSX-KVM/mac_hdd_ng.img - > mac_hdd_ng.img
+# docker rm -v dockerosx_imageextractor
