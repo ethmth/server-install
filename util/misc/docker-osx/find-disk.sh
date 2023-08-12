@@ -17,18 +17,10 @@ for image in $images; do
     file_length_bytes=$(echo "$file_length_line" | awk -F'[()]' '{print $2}')
     file_length_bytes="${file_length_bytes// bytes}"
 
-    # echo "$output"
-    # echo "File Length in Bytes: $file_length_bytes"
-
     if [ "$file_length_bytes" -gt "$threshold_bytes" ]; then
-        # echo "File Length is greater than 15 GB"
         target_image=$image
         break
-    # else
-    #     echo "File Length is NOT greater than 15 GB"
     fi
-
-    # echo "====================================================="
 done
 
 if [ "$target_image" == "" ]; then

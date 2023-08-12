@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# username is user
-# passsword is alpine
-
-
 if ! [[ $EUID -ne 0 ]]; then
         echo "This script should not be run with root/sudo privileges."
         exit 1
 fi
+
+SCRIPT_RELATIVE_DIR=$(dirname "${BASH_SOURCE[0]}")
+cd $SCRIPT_RELATIVE_DIR
+ABSOLUTE_PATH=$(pwd)
 
 CUR_USER=$(whoami)
 
@@ -32,6 +32,6 @@ LOC="$LOC/programs/docker-osx"
 mkdir -p $LOC
 cd $LOC
 
-docker stop dockerosx_imageextractor
-docker cp dockerosx_imageextractor:/home/arch/OSX-KVM/mac_hdd_ng.img - > mac_hdd_ng.img
-# docker rm -v dockerosx_imageextractor
+if [ -e "$ABSOLUTE_PATH/docker-start.sh" ]; then
+    cp $ABSOLUTE_PATH/docker-start.sh $LOC/docker-start.sh
+fi

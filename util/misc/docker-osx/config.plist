@@ -1037,7 +1037,7 @@
 			<key>TakeoffDelay</key>
 			<integer>0</integer>
 			<key>Timeout</key>
-			<integer>45</integer>
+			<integer>10</integer>
 		</dict>
 		<key>Debug</key>
 		<dict>
@@ -1191,7 +1191,7 @@
 				<key>boot-args</key>
 				<string>-v keepsyms=1 tlbto_us=0 vti=9</string>
 				<key>csr-active-config</key>
-				<data>ZwAAAA==</data>
+				<data>bwIAAA==</data>
 				<key>prev-lang:kbd</key>
 				<data>ZW4tVVM6MA==</data>
 				<key>run-efi-updater</key>
