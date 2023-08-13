@@ -17,24 +17,7 @@ ABSOLUTE_PATH=$(pwd)
 
 CUR_USER=$(whoami)
 
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired installation location")
-
-if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
-    echo "Nothing was selected"
-    echo "Run this script again with target drive mounted."
-    exit 1
-fi
-
-if [ "$LOC" == "/" ]; then
-    LOC="/home/$CUR_USER"
-fi
-
-if ! [ -d "$LOC" ]; then
-    echo "Your location is not available. Is the disk mounted? Do you have access?"
-	exit 1
-fi
-
-LOC="$LOC/programs/docker-osx"
+LOC="/home/$CUR_USER/programs/docker-osx"
 mkdir -p $LOC
 cd $LOC
 
@@ -77,6 +60,3 @@ git restore OVMF_VARS.fd
 echo "OpenCore.qcow2 created at $LOC/OpenCore.qcow2"
 echo "To edit/check config.plist inside the OpenCore image, run:"
 echo "EDITOR=vim virt-edit -m /dev/sda1 $LOC/OpenCore.qcow2 /EFI/OC/config.plist"
-
-# To edit config.plist inside OpenCore Image
-# EDITOR=vim virt-edit -m /dev/sda1 OpenCore.qcow2 /EFI/OC/config.plist
