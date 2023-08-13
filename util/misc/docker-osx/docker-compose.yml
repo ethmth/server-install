@@ -1,8 +1,8 @@
 version: '3'
 services:
-  bluebubbles:
+  macos:
     image: sickcodes/docker-osx:naked
-    container_name: bluebubbles
+    container_name: docker-osx
     devices:
       - /dev/kvm
     ports:

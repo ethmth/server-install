@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist
+sudo rm /Library/Preferences/SystemConfiguration/preferences.plist
+
 sudo rm -rf ~/Library/Caches/com.apple.iCloudHelper*
 sudo rm -rf ~/Library/Caches/com.apple.Messages*
 sudo rm -rf ~/Library/Caches/com.apple.imfoundation.IMRemoteURLConnectionAgent*
