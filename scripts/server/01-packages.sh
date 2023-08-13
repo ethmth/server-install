@@ -6,6 +6,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+expect
+sshpass
 certbot
 fzf
 bluetooth

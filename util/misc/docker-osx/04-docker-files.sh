@@ -58,3 +58,7 @@ sed -i "s/PASSWORD/$password/g" $LOC/docker-compose.yml
 echo "docker-compose.yml installed to $LOC"
 echo "Run 'docker-compose up --build -d'"
 echo "cd $LOC"
+echo "======================================"
+echo "After you're finished, connect to the Mac desktop using VNC (port 5999)"
+echo "You can also connect to ssh (port 50922) using user:alpine as credentials."
+echo "Run the next script once ssh is available to get Bluebubbles installation scripts on MacOS"
