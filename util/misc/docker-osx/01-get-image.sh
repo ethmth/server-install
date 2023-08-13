@@ -25,11 +25,21 @@ target_image=""
 for image in $images; do
     output=$(sudo qemu-img info $image)
    
-    file_length_line=$(echo "$output" | grep 'file length:')
-    file_length_bytes=$(echo "$file_length_line" | awk -F'[()]' '{print $2}')
-    file_length_bytes="${file_length_bytes// bytes}"
+    disk_size=$(echo "$output" | grep "disk size:" | awk '{print $3}' | head -n 1)
+    disk_unit=$(echo "$output" | grep "disk size:" | awk '{print $4}' | head -n 1)
 
-    if [ "$file_length_bytes" -gt "$threshold_bytes" ]; then
+    disk_size=$(echo "$disk_size" | awk -F'.' '{print $1}')
+
+    disk_size_bytes="0"
+    if [ "$disk_unit" = "KiB" ]; then
+        disk_size_bytes=$((disk_size * 1024))
+    elif [ "$disk_unit" = "MiB" ]; then
+        disk_size_bytes=$((disk_size * 1024 * 1024))
+    elif [ "$disk_unit" = "GiB" ]; then
+        disk_size_bytes=$((disk_size * 1024 * 1024 * 1024))
+    fi
+
+    if [ "$disk_size_bytes" -gt "$threshold_bytes" ]; then
         target_image=$image
         break
     fi
