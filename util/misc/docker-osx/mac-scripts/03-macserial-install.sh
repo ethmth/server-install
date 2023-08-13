@@ -5,5 +5,7 @@ cd ./OpenCorePkg/Utilities/macserial/
 make
 chmod +x ./macserial
 
-sudo cp ./macserial /usr/bin/macserial
-sudo chmod +rx /usr/bin/macserial
+cp ./macserial ${HOME}/bin/macserial
+chmod +rx ${HOME}/bin/macserial
+
+echo "Run 'macserial' to verify values specified in values.conf"

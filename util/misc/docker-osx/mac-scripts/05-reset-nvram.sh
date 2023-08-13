@@ -18,3 +18,5 @@ sudo rm -rf ~/Library/Preferences/com.apple.identityserviced*
 sudo rm -rf ~/Library/Preferences/com.apple.ids.service*
 sudo rm -rf ~/Library/Preferences/com.apple.security*
 sudo rm -rf ~/Library/Messages
+
+echo "Reboot, then log into iMessage"

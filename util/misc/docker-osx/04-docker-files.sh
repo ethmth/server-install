@@ -44,6 +44,12 @@ if ! [ -e "$LOC/mac_hdd_ng.img" ]; then
     echo "mac_hdd_ng.img doesn't exist in $LOC"
 fi
 
+if ! [ -e "$LOC/values.conf" ]; then
+    echo "values.conf doesn't exist in $LOC"
+fi
+
+cp $LOC/values.conf $LOC/.env
+
 password=""
 read -p "Enter the password you want to use for VNC (will be echoed): " password
 if [ "$password" == "" ]; then
