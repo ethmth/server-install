@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "The password is alpine"
+
 sudo rm /Library/Preferences/SystemConfiguration/NetworkInterfaces.plist
 sudo rm /Library/Preferences/SystemConfiguration/preferences.plist
 
@@ -19,4 +21,5 @@ sudo rm -rf ~/Library/Preferences/com.apple.ids.service*
 sudo rm -rf ~/Library/Preferences/com.apple.security*
 sudo rm -rf ~/Library/Messages
 
+# echo "Turn off automatic updates"
 echo "Reboot, then log into iMessage"
