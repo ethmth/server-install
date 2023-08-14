@@ -1,13 +1,8 @@
 #!/bin/bash
 
-mkdir -p ~/Downloads/MacForge
+VERSION="1.7.3"
 
-curl -L0 -o ~/Downloads/MacForge/MacForge.zip https://github.com/w0lfschild/app_updates/raw/master/MacForge1/MacForge.zip
-
-cd ~/Downloads/MacForge
-unzip MacForge.zip
-
-# mv AirMessage.app ~/Desktop/AirMessage.app
+curl -L0 -o ~/Desktop/BlueBubbles-$VERSION.dmg https://github.com/BlueBubblesApp/bluebubbles-server/releases/download/v$VERSION/BlueBubbles-$VERSION.dmg
 
 echo "=============== INSTALLATION ================="
 echo "Install and configure BlueBubbles from the Desktop"
