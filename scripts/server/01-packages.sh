@@ -80,6 +80,7 @@ rustc
 ffmpeg
 fswebcam
 v4l-utils
+easy-rsa
 "
 
 packages+="
