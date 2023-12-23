@@ -3,7 +3,7 @@
 CONTAINER_NAME="nginx"
 
 VOLUMES="
-http
+html
 "
 
 FILES="
@@ -11,6 +11,7 @@ docker-compose.yml
 Dockerfile
 nginx.conf
 conf.d/
+html
 "
 
 if [[ $EUID -ne 0 ]]; then
@@ -24,7 +25,7 @@ LOC="/opt"
 mkdir -p $LOC/$CONTAINER_NAME
 
 for file in $FILES; do
-    if [ -d "$file "]; then
+    if [ -d "$file" ]; then
         cp -r $file $LOC/$CONTAINER_NAME/$file
     elif [ -f "$file" ]; then
         cp $file $LOC/$CONTAINER_NAME/$file
@@ -32,7 +33,7 @@ for file in $FILES; do
 done
 
 for vol in $VOLUMES; do
-    mkdir $LOC/$CONTAINER_NAME/$vol
+    mkdir -p $LOC/$CONTAINER_NAME/$vol
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
 

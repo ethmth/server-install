@@ -14,6 +14,8 @@ passwd e
 # Then, re-login to user account
 
 # Setup ssh key authentication
+mkdir ~/.ssh
+touch ~/.ssh/authorized_keys
 
 # Harden SSH
 sudo sh -c "echo 'PermitRootLogin no' > /etc/ssh/sshd_config.d/10-disable-root.conf"
@@ -27,3 +29,6 @@ sudo systemctl restart sshd
 # sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 # sudo iptables -A INPUT -j DROP
 # ^ JUST SET FIREWALL RULES IN VPS CONSOLE INSTEAD
+
+# Install git
+sudo apt install git

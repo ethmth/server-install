@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+systemd-resolved
 sshpass
 fzf
 vim
@@ -16,7 +17,6 @@ proxychains
 docker.io
 docker-compose
 socat
-openresolv
 nmap
 neofetch 
 python3
