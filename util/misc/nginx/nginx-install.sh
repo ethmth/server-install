@@ -32,9 +32,16 @@ for file in $FILES; do
     fi
 done
 
+read -p "Please enter your domain (or subdomain): " new_domain
 for vol in $VOLUMES; do
     mkdir -p $LOC/$CONTAINER_NAME/$vol
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
+
+    for file in "$LOC/$CONTAINER_NAME/$vol"/*; do
+        if [ -f "$file" ]; then
+            sed -i 's/YOURDOMAIN\.COM/$new_domain/g' "$file"
+        fi
+    done
 done
 
 echo "Installed $CONTAINER_NAME to $LOC"
