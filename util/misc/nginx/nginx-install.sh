@@ -56,5 +56,5 @@ for vol in $VOLUMES; do
 done
 
 echo "Installed $CONTAINER_NAME to $LOC"
-echo "Run './init-letsencrypt.sh' to start, then 'docker-compose up --build' to run"
+echo "Run './init-letsencrypt.sh' to start, then 'sudo docker-compose up --build -d' to run"
 echo "cd $LOC/$CONTAINER_NAME"

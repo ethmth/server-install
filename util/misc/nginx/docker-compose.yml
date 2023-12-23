@@ -2,6 +2,7 @@ version: "3"
 services:
   nginx:
     build: .
+    user: root
     ports:
       - "80:80"
       - "443:443"
