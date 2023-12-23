@@ -21,7 +21,9 @@ sudo systemctl restart sshd
 
 
 # Setup IPtables rules to block non-SSH, non-HTTP traffic
-sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-sudo iptables -A INPUT -j DROP
+# sudo iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+# sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+# sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+# sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+# sudo iptables -A INPUT -j DROP
+# ^ JUST SET FIREWALL RULES IN VPS CONSOLE INSTEAD

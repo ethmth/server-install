@@ -1,4 +1,4 @@
 FROM nginx
-#COPY html /usr/share/nginx/html
+
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY /certs /etc/nginx/ssl
+COPY conf.d/custom.conf /etc/nginx/conf.d/custom.conf

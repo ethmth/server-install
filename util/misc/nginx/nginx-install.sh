@@ -4,18 +4,18 @@ CONTAINER_NAME="nginx"
 
 VOLUMES="
 http
-certs
 "
 
 FILES="
 docker-compose.yml
 Dockerfile
 nginx.conf
+conf.d/
 "
 
 if [[ $EUID -ne 0 ]]; then
-        echo "This script should be run with root/sudo privileges."
-        exit 1
+    echo "This script should be run with root/sudo privileges."
+    exit 1
 fi
 
 CUR_USER=$(whoami)
@@ -24,7 +24,11 @@ LOC="/opt"
 mkdir -p $LOC/$CONTAINER_NAME
 
 for file in $FILES; do
-    cp $file $LOC/$CONTAINER_NAME/$file
+    if [ -d "$file "]; then
+        cp -r $file $LOC/$CONTAINER_NAME/$file
+    elif [ -f "$file" ]; then
+        cp $file $LOC/$CONTAINER_NAME/$file
+    fi
 done
 
 for vol in $VOLUMES; do

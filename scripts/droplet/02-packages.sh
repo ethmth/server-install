@@ -40,6 +40,7 @@ ca-certificates
 caca-utils
 hexyl
 dnsmasq
+chromium
 "
 
 packages=${packages//$'\n'/ }
