@@ -31,6 +31,8 @@ if [ "$new_domain" == "" ]; then
     exit 1
 fi
 
+read -p "Please enter your email: " email
+
 mkdir -p $LOC/$CONTAINER_NAME
 
 for file in $FILES; do
@@ -40,11 +42,13 @@ for file in $FILES; do
         for myfile in "$LOC/$CONTAINER_NAME/$file"/*; do
             if [ -f "$myfile" ]; then
                 sed -i "s/YOURDOMAIN\.COM/$new_domain/g" "$myfile"
+                sed -i "s/YOUREMAIL/$email/g" "$myfile"
             fi
         done
     elif [ -f "$file" ]; then
         cp $file $LOC/$CONTAINER_NAME/$file
         sed -i "s/YOURDOMAIN\.COM/$new_domain/g" "$LOC/$CONTAINER_NAME/$file"
+        sed -i "s/YOUREMAIL/$email/g" "$LOC/$CONTAINER_NAME/$file"
     fi
 done
 
