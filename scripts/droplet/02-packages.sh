@@ -6,6 +6,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+cryptsetup
+ncdu
+postgresql-client-15
 systemd-resolved
 sshpass
 fzf

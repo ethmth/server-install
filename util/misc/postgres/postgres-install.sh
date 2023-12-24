@@ -2,8 +2,8 @@
 
 NAME="postgres"
 
-if [[ $EUID -ne 0 ]]; then
-    echo "This script should be run with root/sudo privileges."
+if ! [[ $EUID -ne 0 ]]; then
+    echo "This script should not be run with root/sudo privileges."
     exit 1
 fi
 
@@ -14,7 +14,7 @@ if ! [ -e "../$NAME/docker-compose.yml" ]; then
 	exit 1
 fi
 
-LOC="~/programs"
+LOC="$HOME/programs"
 mkdir -p $LOC
 
 if ! [ -e "$LOC/$NAME" ]; then
@@ -27,5 +27,5 @@ cp docker-compose.yml $LOC/$NAME/docker-compose.yml
 
 cd $LOC/$NAME/
 
-echo "Run 'docker compose up --build -d' to run it and 'docker compose stop' to stop it from that directory"
+echo "Run 'docker-compose up --build -d' to run it and 'docker-compose stop' to stop it from that directory"
 echo "cd $LOC/$NAME"

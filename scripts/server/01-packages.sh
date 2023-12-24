@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+postgresql-client-15
 qemu-utils
 expect
 sshpass
