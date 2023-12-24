@@ -62,7 +62,7 @@ for domain in "${domains[@]}"; do
   #Join $domains to -d args
   # domain_args=""
   # for domain in "${domains[@]}"; do
-  domain_args="$domain_args -d $domain"
+  domain_args=" -d $domain"
   # done
 
   # Select appropriate email arg
