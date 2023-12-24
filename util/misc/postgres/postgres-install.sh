@@ -14,7 +14,23 @@ if ! [ -e "../$NAME/docker-compose.yml" ]; then
 	exit 1
 fi
 
-LOC="$HOME/programs"
+LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $NAME installation location")
+
+if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
+    echo "Nothing was selected. Run this script again with target drive mounted."
+    exit 1
+fi
+
+if [ "$LOC" == "/" ]; then
+    LOC="$HOME"
+fi
+
+if ! [ -d "$LOC" ]; then
+    echo "Your location is not available. Is the disk mounted? Do you have access?"
+	exit 1
+fi
+
+LOC="$LOC/programs"
 mkdir -p $LOC
 
 if ! [ -e "$LOC/$NAME" ]; then

@@ -19,6 +19,8 @@ mkdir -p /mnt/cryptdata
 
 mount /dev/mapper/cryptdata /mnt/cryptdata
 
+chmod -R 777 /mnt/cryptdata
+
 echo '#!/bin/bash
 if [[ $EUID -ne 0 ]]; then
 	echo "This script should be run with root/sudo privileges."
