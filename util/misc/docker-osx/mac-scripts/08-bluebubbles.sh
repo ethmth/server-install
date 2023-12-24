@@ -1,12 +1,12 @@
 #!/bin/bash
 
-VERSION="1.7.3"
+VERSION="1.9.2"
 
 curl -L0 -o ~/Desktop/BlueBubbles-$VERSION.dmg https://github.com/BlueBubblesApp/bluebubbles-server/releases/download/v$VERSION/BlueBubbles-$VERSION.dmg
 
 echo "=============== INSTALLATION ================="
 echo "Install and configure BlueBubbles from the Desktop"
-echo "Use Dynamic DNS"
+echo "Use Dynamic DNS/Reverse Proxy (https://docs.bluebubbles.app/server/advanced/byo-proxy-service-guides/nginx-manual-setup)"
 
 echo "=============== PERMISSIONS ================="
 echo "1. Ensure BlueBubbles has Accessibility permission in System Preferences > Security & Privacy > Privacy > Accessibility"
