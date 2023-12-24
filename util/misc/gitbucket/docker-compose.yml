@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  gitbucket:
+    image: gitbucket/gitbucket
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./gitbucket-data:/gitbucket
+      - ./home:/home/gitbucket
+    environment:
+      - GITBUCKET_HOME=/home/gitbucket
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
