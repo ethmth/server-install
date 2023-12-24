@@ -87,3 +87,5 @@ done
 
 echo "### Reloading nginx ..."
 docker-compose exec nginx nginx -s reload
+
+echo "Remember to always run docker-compose as root"
