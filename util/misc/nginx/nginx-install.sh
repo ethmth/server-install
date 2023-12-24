@@ -45,10 +45,11 @@ replace_content() {
     file="$1"
     domain="$2"
     domain_no_sub="$3"
+    email="$4"
 
-    sed -i "s/\.YOURDOMAIN\.COM/\.$domain_no_sub/g" "$myfile"
-    sed -i "s/YOURDOMAIN\.COM/$domain/g" "$myfile"
-    sed -i "s/YOUREMAIL/$email/g" "$myfile"
+    sed -i "s/\.YOURDOMAIN\.COM/\.$domain_no_sub/g" "$file"
+    sed -i "s/YOURDOMAIN\.COM/$domain/g" "$file"
+    sed -i "s/YOUREMAIL/$email/g" "$file"
 }
 
 for file in $FILES; do
@@ -57,12 +58,12 @@ for file in $FILES; do
 
         for myfile in "$LOC/$CONTAINER_NAME/$file"/*; do
             if [ -f "$myfile" ]; then
-                replace_content "$myfile" $domain $domain_no_sub
+                replace_content "$myfile" "$domain" "$domain_no_sub" "$email"
             fi
         done
     elif [ -f "$file" ]; then
         cp $file $LOC/$CONTAINER_NAME/$file
-        replace_content "$LOC/$CONTAINER_NAME/$file" $domain $domain_no_sub
+        replace_content "$LOC/$CONTAINER_NAME/$file" "$domain" "$domain_no_sub" "$email"
     fi
 done
 
