@@ -12,3 +12,4 @@ services:
       - GITBUCKET_HOME=/home/gitbucket
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    restart: unless-stopped
