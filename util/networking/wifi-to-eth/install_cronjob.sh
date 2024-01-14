@@ -6,4 +6,4 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 CUR_USER=$(whoami)
 
-crontab -l | { cat; echo "@reboot bash /home/$CUR_USER/server-install/util/networking/wifi-to-eth/wifi-to-eth-route.sh"; } | crontab -
+sudo crontab -l | { cat; echo "@reboot bash /home/$CUR_USER/server-install/util/networking/wifi-to-eth/wifi-to-eth-route.sh"; } | sudo crontab -
