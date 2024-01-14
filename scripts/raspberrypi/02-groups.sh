@@ -14,3 +14,5 @@ groups $CUR_USER
 git config --global credential.helper store
 
 echo "Verify that you were added to the correct groups"
+
+echo "Setup wifi and pi-ip"
