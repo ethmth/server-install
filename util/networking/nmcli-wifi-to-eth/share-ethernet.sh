@@ -5,4 +5,4 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-nmcli con modify "Wired Connection 1" ipv4.method shared
+nmcli con modify "Wired connection 1" ipv4.method shared
