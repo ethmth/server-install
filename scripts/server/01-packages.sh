@@ -6,6 +6,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+eog
+sxiv
+libsixel-bin
 postgresql-client-15
 qemu-utils
 expect
