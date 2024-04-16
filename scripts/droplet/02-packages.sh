@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+zip
 cryptsetup
 ncdu
 postgresql-client-15
