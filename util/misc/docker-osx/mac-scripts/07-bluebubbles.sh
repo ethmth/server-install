@@ -16,3 +16,4 @@ echo "4. System Preferences > Desktop & Screen Saver > Screen Saver > Start afte
 
 echo "=============== STARTUP ================="
 echo "1. System Preferences > Users & Groups > user > Login Items. Include iMessage, BlueBubbles, and AirMessage."
+echo "2. System Preferences > Startup Disk. Set startup disk to Docker-OSX"
