@@ -13,6 +13,7 @@ LOC="/home/$CUR_USER/programs/docker-osx"
 mkdir -p $LOC
 cd $LOC
 
+#908b3d687a200ca6691750fac967670d76f2a17b
 git clone --depth 1 https://github.com/sickcodes/osx-serial-generator.git ./osx-serial-generator
 cd osx-serial-generator
 

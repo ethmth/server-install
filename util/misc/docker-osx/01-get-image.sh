@@ -15,7 +15,14 @@ LOC="/home/$CUR_USER/programs/docker-osx"
 mkdir -p $LOC
 cd $LOC
 
-docker pull sickcodes/docker-osx:auto
+read -p "Do you want to pull a new image (Y/n)? " userInput
+if ([ "$userInput" == "n" ] || [ "$userInput" == "N" ]); then
+    echo "Using existing image."
+else
+    # docker pull sickcodes/docker-osx:auto@sha256:412022bd79ebc98e5a6ec87601db9dc625fbea76443b54d0acaabf6f228e5652
+    docker pull sickcodes/docker-osx:auto
+    yes | docker system prune
+fi
 
 images=$(sudo find /var/lib/docker | grep "mac_hdd_ng.img")
 

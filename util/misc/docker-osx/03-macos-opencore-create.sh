@@ -32,6 +32,7 @@ if [ -e "$LOC/osx-serial-generator" ]; then
     cd osx-serial-generator
 fi
 
+#326053dd61f49375d5dfb28ee715d38b04b5cd8e
 git clone --depth 1 --recurse-submodules https://github.com/kholia/OSX-KVM.git OSX-KVM
 cd OSX-KVM/OpenCore
 

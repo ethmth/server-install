@@ -1,6 +1,6 @@
 services:
   macos:
-    image: sickcodes/docker-osx:naked
+    image: sickcodes/docker-osx:naked@sha256:c6e360b9ada6abc64c3ca14f4ee9ba92af7b73a49d8856a76cdf37d9cd305cc0
     container_name: docker-osx
     devices:
       - /dev/kvm
@@ -18,6 +18,6 @@ services:
       - NOPICKER=true
       - EXTRA=-display none -vnc 0.0.0.0:99,password-secret=secvnc0 -object secret,id=secvnc0,data=PASSWORD
       - ADDITIONAL_PORTS=hostfwd=tcp::1359-:1359,
-      - DISPLAY=${DISPLAY:-:0.0}"
+      - DISPLAY="${DISPLAY:-:0.0}"
       - MAC_ADDRESS=${MAC_ADDRESS}
     restart: "unless-stopped"
