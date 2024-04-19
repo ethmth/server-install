@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+tigervnc-viewer
 eog
 sxiv
 libsixel-bin
