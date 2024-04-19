@@ -6,7 +6,7 @@ services:
       - /dev/kvm
     ports:
       - "5900:5999"
-      - "1359:1359"
+      - "1234:1234"
       - "50922:10022"
     volumes:
       - ./mac_hdd_ng.img:/image
@@ -17,7 +17,7 @@ services:
       - BOOTDISK=/bootdisk
       - NOPICKER=true
       - EXTRA=-display none -vnc 0.0.0.0:99,password-secret=secvnc0 -object secret,id=secvnc0,data=PASSWORD
-      - ADDITIONAL_PORTS=hostfwd=tcp::1359-:1359,
+      - ADDITIONAL_PORTS=hostfwd=tcp::1234-:1234,
       - DISPLAY="${DISPLAY:-:0.0}"
       - MAC_ADDRESS=${MAC_ADDRESS}
     restart: "unless-stopped"
