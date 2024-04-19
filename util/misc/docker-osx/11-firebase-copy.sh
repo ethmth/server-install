@@ -16,7 +16,7 @@ ABSOLUTE_PATH=$(pwd)
 
 CUR_USER=$(whoami)
 
-sshpass -p "$password" scp -r -o StrictHostKeyChecking=no -P 50922 $ABSOLUTE_PATH/mac-scripts $username@$HOST:/Users/$username/Downloads
+sshpass -p "$password" scp -r -o StrictHostKeyChecking=no -P 50922 $ABSOLUTE_PATH/configs $username@$HOST:/Users/$username/Desktop
 
-echo "If the scp command was successful, you should find mac-scripts/ in your Downloads/ directory on Mac."
+echo "If the scp command was successful, you should find configs/ in your Desktop/ directory on Mac."
 echo "Start running the scripts"
