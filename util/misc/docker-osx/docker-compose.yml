@@ -1,4 +1,3 @@
-version: '3'
 services:
   macos:
     image: sickcodes/docker-osx:naked
