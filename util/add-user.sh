@@ -14,3 +14,5 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 useradd -m $USER
+
+passwd $USER
