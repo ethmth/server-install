@@ -64,7 +64,6 @@ tmux
 plocate
 golang
 rdate
-leap-archive-keyring
 libavcodec-extra
 gstreamer1.0-libav
 whois
