@@ -13,9 +13,9 @@ services:
         
       # Server Settings
       MAX_PLAYERS: 16
-      ANNOUNCE_PLAYER_ACHIEVEMENTS: true
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: "TRUE"
       DIFFICULTY: normal
-      ALLOW_FLIGHT: false
+      ALLOW_FLIGHT: "FALSE"
 
     restart: unless-stopped
     volumes:
