@@ -1,16 +1,18 @@
 services:
   pixelmon:
     image: itzg/minecraft-server
-    tty: true
-    stdin_open: true
     ports:
       - "25567:25565"
       - "25577:25575"
     environment:
-      EULA: "TRUE"
-      MOD_PLATFORM: MODRINTH
-      MODRINTH_MODPACK: https://www.modrinth.com/modpack/the-pixelmon-modpack
-      MODRINTH_VERSION: 9.2.8
+      EULA: "true"
+      MOD_PLATFORM: AUTO_CURSEFORGE
+      # allocate from https://console.curseforge.com/ and set in .env file
+      CF_API_KEY: ${CF_API_KEY}
+      CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/the-pixelmon-modpack
+      # Optional: select a specific version/file
+      CF_FILENAME_MATCHER: "9.2.8"
+      MEMORY: 4G
     volumes:
-      - ./data:/data
-    restart: unless-stopped
+      - ./mc-data:/data
+      - ./downloads:/downloads

@@ -3,11 +3,14 @@
 CONTAINER_NAME="pixelmon"
 
 VOLUMES="
-data
+mc-data
+downloads
 "
 
 FILES="
 docker-compose.yml
+.env.example
+.env
 "
 
 if ! [[ $EUID -ne 0 ]]; then
@@ -46,6 +49,8 @@ for vol in $VOLUMES; do
     mkdir -p $LOC/$CONTAINER_NAME/$vol
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
+
+echo "Set Curseforge API key in .env"
 
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker-compose up --build -d' to run"
