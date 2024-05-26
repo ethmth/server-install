@@ -48,8 +48,6 @@ for vol in $VOLUMES; do
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
 
-echo "Set Curseforge API key in .env"
-
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker-compose up --build -d' to run"
 echo "cd $LOC/$CONTAINER_NAME"

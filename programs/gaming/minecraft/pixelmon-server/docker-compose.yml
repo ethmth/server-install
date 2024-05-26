@@ -24,8 +24,7 @@ services:
 
       # MODRINTH
       MOD_PLATFORM: MODRINTH
-      MODRINTH_MODPACK: https://modrinth.com/modpack/the-pixelmon-modpack
-      MODRINTH_VERSION: 9.2.8
+      MODRINTH_MODPACK: https://modrinth.com/modpack/the-pixelmon-modpack/version/9.2.8
 
       # Server Settings
       DUMP_SERVER_PROPERTIES: "true"
