@@ -16,3 +16,4 @@ services:
     volumes:
       - ./mc-data:/data
       - ./downloads:/downloads
+    restart: unless-stopped
