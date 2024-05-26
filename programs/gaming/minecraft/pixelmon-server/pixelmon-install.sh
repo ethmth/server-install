@@ -3,7 +3,7 @@
 CONTAINER_NAME="pixelmon"
 
 VOLUMES="
-mc-data
+data
 downloads
 "
 

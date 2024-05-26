@@ -7,15 +7,19 @@ services:
       - "25567:25565"
       - "25577:25575"
     environment:
+      # Performance Settings
       EULA: "true"
+      MEMORY: "4G"
+      MAX_MEMORY: "16G"
+      RCON_PASSWORD: "password"
+
+      # Modpack Settings
       MOD_PLATFORM: AUTO_CURSEFORGE
       # allocate from https://console.curseforge.com/ and set in .env file
       CF_API_KEY: ${CF_API_KEY}
       CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/the-pixelmon-modpack
       # Optional: select a specific version/file
       CF_FILENAME_MATCHER: "9.2.8"
-      MEMORY: "4G"
-      MAX_MEMORY: "16G"
 
       # Server Settings
       MAX_PLAYERS: 16
@@ -24,6 +28,6 @@ services:
       ALLOW_FLIGHT: "FALSE"
 
     volumes:
-      - ./mc-data:/data
+      - ./data:/data
       - ./downloads:/downloads
     restart: unless-stopped

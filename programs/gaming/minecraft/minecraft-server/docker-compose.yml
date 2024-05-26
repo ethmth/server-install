@@ -7,10 +7,14 @@ services:
       - "25566:25565"
       - "25576:25575"
     environment:
-      VERSION: "LATEST"
+      # Performance Settings
       EULA: "TRUE"
-      SKIP_NSSWITCH_CONF: "TRUE"
-        
+      MEMORY: "4G"
+      MAX_MEMORY: "16G"
+      RCON_PASSWORD: "password"
+  
+      VERSION: "LATEST"
+
       # Server Settings
       MAX_PLAYERS: 16
       ANNOUNCE_PLAYER_ACHIEVEMENTS: "TRUE"
