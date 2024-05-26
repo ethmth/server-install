@@ -1,6 +1,7 @@
 services:
   mc:
     image: itzg/minecraft-server:java21
+    container_name: minecraft
     tty: true
     stdin_open: true
     ports:
@@ -13,13 +14,11 @@ services:
       MAX_MEMORY: "16G"
       RCON_PASSWORD: "password"
   
-      VERSION: "LATEST"
+      VERSION: "1.20.6"
 
       # Server Settings
-      MAX_PLAYERS: 16
-      ANNOUNCE_PLAYER_ACHIEVEMENTS: "TRUE"
-      DIFFICULTY: normal
-      ALLOW_FLIGHT: "FALSE"
+      DUMP_SERVER_PROPERTIES: "true"
+      OVERRIDE_SERVER_PROPERTIES: "false"
 
     restart: unless-stopped
     volumes:

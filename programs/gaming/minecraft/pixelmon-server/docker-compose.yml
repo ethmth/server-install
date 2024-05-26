@@ -1,6 +1,7 @@
 services:
   pixelmon:
-    image: itzg/minecraft-server:java21
+    image: itzg/minecraft-server:java17
+    container_name: pixelmon
     tty: true
     stdin_open: true
     ports:
@@ -13,19 +14,22 @@ services:
       MAX_MEMORY: "16G"
       RCON_PASSWORD: "password"
 
-      # Modpack Settings
-      MOD_PLATFORM: AUTO_CURSEFORGE
-      # allocate from https://console.curseforge.com/ and set in .env file
-      CF_API_KEY: ${CF_API_KEY}
-      CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/the-pixelmon-modpack
-      # Optional: select a specific version/file
-      CF_FILENAME_MATCHER: "9.2.8"
+      # CURSEFORGE
+      # MOD_PLATFORM: AUTO_CURSEFORGE
+      # # allocate from https://console.curseforge.com/ and set in .env file
+      # CF_API_KEY: ${CF_API_KEY}
+      # CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/the-pixelmon-modpack
+      # # Optional: select a specific version/file
+      # CF_FILENAME_MATCHER: "9.2.8"
+
+      # MODRINTH
+      MOD_PLATFORM: MODRINTH
+      MODRINTH_MODPACK: https://modrinth.com/modpack/the-pixelmon-modpack
+      MODRINTH_VERSION: 9.2.8
 
       # Server Settings
-      MAX_PLAYERS: 16
-      ANNOUNCE_PLAYER_ACHIEVEMENTS: "TRUE"
-      DIFFICULTY: normal
-      ALLOW_FLIGHT: "FALSE"
+      DUMP_SERVER_PROPERTIES: "true"
+      OVERRIDE_SERVER_PROPERTIES: "false"
 
     volumes:
       - ./data:/data
