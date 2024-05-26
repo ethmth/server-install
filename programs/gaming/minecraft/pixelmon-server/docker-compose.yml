@@ -1,6 +1,8 @@
 services:
   pixelmon:
-    image: itzg/minecraft-server
+    image: itzg/minecraft-server:java21
+    tty: true
+    stdin_open: true
     ports:
       - "25567:25565"
       - "25577:25575"
@@ -12,7 +14,15 @@ services:
       CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/the-pixelmon-modpack
       # Optional: select a specific version/file
       CF_FILENAME_MATCHER: "9.2.8"
-      MEMORY: 4G
+      MEMORY: "4G"
+      MAX_MEMORY: "16G"
+
+      # Server Settings
+      MAX_PLAYERS: 16
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: true
+      DIFFICULTY: normal
+      ALLOW_FLIGHT: false
+
     volumes:
       - ./mc-data:/data
       - ./downloads:/downloads

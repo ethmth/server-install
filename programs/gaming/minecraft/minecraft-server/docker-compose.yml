@@ -1,0 +1,22 @@
+services:
+  mc:
+    image: itzg/minecraft-server:java21
+    tty: true
+    stdin_open: true
+    ports:
+      - "25566:25565"
+      - "25576:25575"
+    environment:
+      VERSION: "LATEST"
+      EULA: "TRUE"
+      SKIP_NSSWITCH_CONF: "TRUE"
+        
+      # Server Settings
+      MAX_PLAYERS: 16
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: true
+      DIFFICULTY: normal
+      ALLOW_FLIGHT: false
+
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
