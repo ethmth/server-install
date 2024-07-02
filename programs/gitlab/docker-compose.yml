@@ -1,18 +1,32 @@
 version: '3'
 services:
-  checker:
-    image: alpine:latest
-    container_name: gitlab-checker
-    volumes:
-      - /mnt:/mnt:ro
+  # checker:
+  #   image: postgres:15-alpine
+  #   container_name: gitlab-checker
+  #   volumes:
+  #     - /mnt:/mnt:ro
+  #   entrypoint: ["/bin/sh", "-c", "while :; do sleep 1; done"]
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "[ -d /mnt/cryptdata ]"]
+  #     interval: 1s
+  #     timeout: 1s
+  #     start_period: 0s
+  #     retries: 2147483647
+  #   stop_grace_period: 1s
+  #   restart: unless-stopped
+
+  db-checker:
+    image: postgres:15-alpine
+    container_name: gitlab-db-checker
     entrypoint: ["/bin/sh", "-c", "while :; do sleep 1; done"]
     healthcheck:
-      test: ["CMD-SHELL", "[ -d /mnt/cryptdata ]"]
-      interval: 1s
-      timeout: 1s
+      test: ["CMD-SHELL", "pg_isready -h host.docker.internal -p 5432"]
+      interval: 5s
+      timeout: 3s
       start_period: 0s
       retries: 2147483647
-    stop_grace_period: 1s
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
 
   gitlab:
@@ -32,16 +46,16 @@ services:
       - '$GITLAB_HOME/data:/var/opt/gitlab'
     shm_size: '256m'
   
-  db:
-    image: postgres:15
-    container_name: gitlab-db
-    depends_on:
-      mount-checker:
-        condition: service_healthy
-    volumes:
-      - ./db:/var/lib/postgresql/data:z
-    environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=nextcloud
-      - POSTGRES_USER=nextcloud
-    restart: on-failure
+  # db:
+  #   image: postgres:15
+  #   container_name: gitlab-db
+  #   depends_on:
+  #     mount-checker:
+  #       condition: service_healthy
+  #   volumes:
+  #     - ./db:/var/lib/postgresql/data:z
+  #   environment:
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=nextcloud
+  #     - POSTGRES_USER=nextcloud
+  #   restart: on-failure
