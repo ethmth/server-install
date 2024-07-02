@@ -40,8 +40,8 @@ if ! [ -e "$LOC/$NAME" ]; then
 fi
 
 if [ -d "/mnt/cryptdata/encrypted" ]; then
-    mkdir -p /mnt/cryptdata/encrypted/postgres/data
-    chmod -R +777 /mnt/cryptdata/encrypted/postgres/data
+    sudo mkdir -p /mnt/cryptdata/encrypted/postgres/data
+    sudo chmod -R +777 /mnt/cryptdata/encrypted/postgres/data
 fi
 
 cp docker-compose.yml $LOC/$NAME/docker-compose.yml
