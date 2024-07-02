@@ -3,12 +3,12 @@ version: "3"
 services:
   checker:
     image: postgres:15-alpine
-    container_name: gitlab-checker
+    container_name: postgres-checker
     volumes:
       - /mnt:/mnt:ro
     entrypoint: ["/bin/sh", "-c", "while :; do sleep 1; done"]
     healthcheck:
-      test: ["CMD-SHELL", "[ -d /mnt/cryptdata ]"]
+      test: ["CMD-SHELL", "[ -d /mnt/cryptdata/encrypted ]"]
       interval: 1s
       timeout: 1s
       start_period: 0s
@@ -17,11 +17,15 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:15
+    image: postgres:15-alpine
+    container_name: postgres
+    depends_on:
+      checker:
+        condition: service_healthy
     ports:
       - 5432:5432
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - /mnt/cryptdata/encrypted/postgres/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres

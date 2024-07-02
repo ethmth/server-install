@@ -14,16 +14,18 @@ if ! [ -e "../$NAME/docker-compose.yml" ]; then
 	exit 1
 fi
 
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $NAME installation location")
-
-if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
-    echo "Nothing was selected. Run this script again with target drive mounted."
+# SPECIFIC CHECKS
+if mountpoint -q /mnt/cryptdata; then
+    if ! [ -d "/mnt/cryptdata/encrypted" ]; then
+	    echo "/mnt/cryptdata/encrypted does not exist."
+        exit 1
+    fi
+else
+    echo "/mnt/cryptdata is not mounted."
     exit 1
 fi
 
-if [ "$LOC" == "/" ]; then
-    LOC="$HOME"
-fi
+LOC="$HOME"
 
 if ! [ -d "$LOC" ]; then
     echo "Your location is not available. Is the disk mounted? Do you have access?"
@@ -34,9 +36,12 @@ LOC="$LOC/programs"
 mkdir -p $LOC
 
 if ! [ -e "$LOC/$NAME" ]; then
-mkdir -p $LOC/$NAME
-mkdir -p $LOC/$NAME/data
-chmod -R 777 $LOC/$NAME/data
+    mkdir -p $LOC/$NAME
+fi
+
+if [ -d "/mnt/cryptdata/encrypted" ]; then
+    mkdir -p /mnt/cryptdata/encrypted/postgres/data
+    chmod -R +777 /mnt/cryptdata/encrypted/postgres/data
 fi
 
 cp docker-compose.yml $LOC/$NAME/docker-compose.yml

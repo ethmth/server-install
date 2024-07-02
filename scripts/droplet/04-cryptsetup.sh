@@ -27,6 +27,10 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 cryptsetup luksOpen /opt/encrypted_container cryptdata
-mount /dev/mapper/cryptdata /mnt/cryptdata' > /usr/bin/cryptmount
-chmod +rx /usr/bin/cryptmount
+mkdir -p /mnt/cryptdata
+mount /dev/mapper/cryptdata /mnt/cryptdata
+if mountpoint -q /mnt/cryptdata; then
+	mkdir -p /mnt/cryptdata/encrypted
+fi' > /usr/local/bin/cryptmount
+chmod +rx /usr/local/bin/cryptmount
 
