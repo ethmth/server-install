@@ -2,7 +2,7 @@ version: "3"
 
 services:
   checker:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     container_name: postgres-checker
     volumes:
       - /mnt:/mnt:ro
@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     container_name: postgres
     depends_on:
       checker:
