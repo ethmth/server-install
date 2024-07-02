@@ -3,26 +3,38 @@
 CONTAINER_NAME="gitlab"
 
 VOLUMES="
+/mnt/cryptdata/encrypted/gitlab/config
+/mnt/cryptdata/encrypted/gitlab/logs
+/mnt/cryptdata/encrypted/gitlab/data
 "
 
 FILES="
+docker-compose.yml
 "
+
+# Added check
+if ! [ -e "docker-compose.yml" ]; then
+	echo "Make sure you run this script in the same directory as docker-compose.yml"
+	exit 1
+fi
 
 if ! [[ $EUID -ne 0 ]]; then
     echo "This script should not be run with root/sudo privileges."
     exit 1
 fi
 
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $NAME installation location")
-
-if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
-    echo "Nothing was selected. Run this script again with target drive mounted."
+# SPECIFIC CHECKS
+if mountpoint -q /mnt/cryptdata; then
+    if ! [ -d "/mnt/cryptdata/encrypted" ]; then
+	    echo "/mnt/cryptdata/encrypted does not exist."
+        exit 1
+    fi
+else
+    echo "/mnt/cryptdata is not mounted."
     exit 1
 fi
 
-if [ "$LOC" == "/" ]; then
-    LOC="$HOME"
-fi
+LOC="$HOME"
 
 if ! [ -d "$LOC" ]; then
     echo "Your location is not available. Is the disk mounted? Do you have access?"
@@ -32,7 +44,6 @@ fi
 LOC="$LOC/programs"
 mkdir -p $LOC/$CONTAINER_NAME
 
-
 for file in $FILES; do
     if [ -d "$file" ]; then
         cp -r $file $LOC/$CONTAINER_NAME/$file
@@ -41,9 +52,10 @@ for file in $FILES; do
     fi
 done
 
+# Modified to use absolute vol
 for vol in $VOLUMES; do
-    mkdir -p $LOC/$CONTAINER_NAME/$vol
-    chmod -R 777 $LOC/$CONTAINER_NAME/$vol
+    mkdir -p $vol
+    chmod -R 777 $vol
 done
 
 echo "Installed $CONTAINER_NAME to $LOC"
