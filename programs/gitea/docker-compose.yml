@@ -29,6 +29,7 @@ services:
       - GITEA__database__NAME=giteadb
       - GITEA__database__USER=gitea
       - GITEA__database__PASSWD=gitea
+      - GITEA__service__DISABLE_REGISTRATION=true
     volumes:
       - /mnt/cryptdata/encrypted/gitea/data:/data
       - /etc/timezone:/etc/timezone:ro
