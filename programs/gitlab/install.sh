@@ -57,8 +57,8 @@ done
 
 # Modified to use absolute vol
 for vol in $ABS_VOLUMES; do
-    mkdir -p $vol
-    chmod -R 777 $vol
+    sudo mkdir -p $vol
+    sudo chmod -R 777 $vol
 done
 
 for vol in $VOLUMES; do
