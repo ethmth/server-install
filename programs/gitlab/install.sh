@@ -3,12 +3,15 @@
 CONTAINER_NAME="gitlab"
 
 VOLUMES="
-/mnt/cryptdata/encrypted/gitlab/config
+"
+
+ABS_VOLUMES="
 /mnt/cryptdata/encrypted/gitlab/logs
 /mnt/cryptdata/encrypted/gitlab/data
 "
 
 FILES="
+config
 docker-compose.yml
 "
 
@@ -53,9 +56,14 @@ for file in $FILES; do
 done
 
 # Modified to use absolute vol
-for vol in $VOLUMES; do
+for vol in $ABS_VOLUMES; do
     mkdir -p $vol
     chmod -R 777 $vol
+done
+
+for vol in $VOLUMES; do
+    mkdir -p $LOC/$CONTAINER_NAME/$vol
+    chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
 
 echo "Installed $CONTAINER_NAME to $LOC"

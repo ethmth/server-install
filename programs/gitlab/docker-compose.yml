@@ -17,6 +17,9 @@ services:
   gitlab:
     image: gitlab/gitlab-ee:17.0.3-ce.0
     container_name: gitlab
+    depends_on:
+      checker:
+        condition: service_healthy
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
@@ -26,8 +29,10 @@ services:
       # - '443:443'
       # - '22:22'
     volumes:
-      - /mnt/cryptdata/encrypted/gitlab/config:/etc/gitlab
+      - ./config:/etc/gitlab
       - /mnt/cryptdata/encrypted/gitlab/logs:/var/log/gitlab
       - /mnt/cryptdata/encrypted/gitlab/data:/var/opt/gitlab
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     shm_size: '256m'
     restart: no
