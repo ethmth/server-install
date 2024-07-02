@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
 
   gitlab:
-    image: gitlab/gitlab-ee:17.0.3-ce.0
+    image: gitlab/gitlab-ce:17.0.3-ce.0
     container_name: gitlab
     depends_on:
       checker:
@@ -23,16 +23,28 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
-        external_url 'https://gitlab.example.com'
+        external_url 'https://git.YOURDOMAIN.COM'
+        nginx['listen_addresses'] = ['127.0.0.1', 'host.docker.internal']
+        nginx['listen_port'] = 8081
+        nginx['listen_https'] = false
+
+        # Disable the built-in Postgres
+        postgresql['enable'] = false
+
+        # Fill in the connection details for database.yml
+        gitlab_rails['db_adapter'] = 'postgresql'
+        gitlab_rails['db_encoding'] = 'utf8'
+        gitlab_rails['db_host'] = 'host.docker.internal'
+        gitlab_rails['db_port'] = 5432
+        gitlab_rails['db_username'] = 'postgres'
+        gitlab_rails['db_password'] = 'password'
     ports:
-      - '8081:80'
-      # - '443:443'
-      # - '22:22'
+      - '8081:8081'
     volumes:
-      - ./config:/etc/gitlab
+      - /mnt/cryptdata/encrypted/gitlab/config:/var/log/gitlab
       - /mnt/cryptdata/encrypted/gitlab/logs:/var/log/gitlab
       - /mnt/cryptdata/encrypted/gitlab/data:/var/opt/gitlab
     extra_hosts:
       - "host.docker.internal:host-gateway"
     shm_size: '256m'
-    restart: no
+    restart: "no"

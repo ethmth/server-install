@@ -6,12 +6,12 @@ VOLUMES="
 "
 
 ABS_VOLUMES="
+/mnt/cryptdata/encrypted/gitlab/config
 /mnt/cryptdata/encrypted/gitlab/logs
 /mnt/cryptdata/encrypted/gitlab/data
 "
 
 FILES="
-config
 docker-compose.yml
 "
 
@@ -65,6 +65,8 @@ for vol in $VOLUMES; do
     mkdir -p $LOC/$CONTAINER_NAME/$vol
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
+
+echo "Edit YOURDOMAIN.COM in docker-compose.yml file"
 
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker-compose up --build -d' to run"
