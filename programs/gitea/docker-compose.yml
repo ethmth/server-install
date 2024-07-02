@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  checker:
+    image: postgres:16-alpine
+    container_name: gitea-checker
+    entrypoint: ["/bin/sh", "-c", "while :; do sleep 1; done"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h host.docker.internal -p 5432"]
+      interval: 5s
+      timeout: 3s
+      start_period: 0s
+      retries: 2147483647
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: "no"
+
+  server:
+    image: gitea/gitea:1
+    container_name: gitea
+    depends_on:
+      checker:
+        condition: service_healthy
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=host.docker.internal:5432
+      - GITEA__database__NAME=gitea
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=gitea
+    volumes:
+      - /mnt/cryptdata/encrypted/gitea/data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+      - "222:22"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: "no"

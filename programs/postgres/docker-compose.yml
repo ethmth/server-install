@@ -2,7 +2,7 @@ version: "3"
 
 services:
   checker:
-    image: postgres:17-alpine
+    image: postgres:16-alpine
     container_name: postgres-checker
     volumes:
       - /mnt:/mnt:ro
@@ -14,10 +14,10 @@ services:
       start_period: 0s
       retries: 2147483647
     stop_grace_period: 1s
-    restart: unless-stopped
+    restart: "no"
 
   postgres:
-    image: postgres:17-alpine
+    image: postgres:16-alpine
     container_name: postgres
     depends_on:
       checker:
