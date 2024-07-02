@@ -30,6 +30,7 @@ services:
 
         # Disable the built-in Postgres
         postgresql['enable'] = false
+        postgresql['version'] = 15
 
         # Fill in the connection details for database.yml
         gitlab_rails['db_adapter'] = 'postgresql'
@@ -41,7 +42,7 @@ services:
     ports:
       - '8081:8081'
     volumes:
-      - /mnt/cryptdata/encrypted/gitlab/config:/var/log/gitlab
+      - /mnt/cryptdata/encrypted/gitlab/config:/etc/gitlab
       - /mnt/cryptdata/encrypted/gitlab/logs:/var/log/gitlab
       - /mnt/cryptdata/encrypted/gitlab/data:/var/opt/gitlab
     extra_hosts:
