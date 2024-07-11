@@ -25,5 +25,5 @@ services:
       # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
       - HTTPPROXY=on
       - UPDATER_PERIOD=24h
-      - SERVER_REGIONS=US East
+      # - SERVER_REGIONS=US East
     restart: unless-stopped
