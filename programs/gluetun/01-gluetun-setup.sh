@@ -31,7 +31,7 @@ echo
 cp docker-compose.yml /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
 
 sed -i "s/SERVICE_PROVIDER_HERE/$PROVIDER/g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
-sed -i "s|PATH_HERE|/home/$CUR_USER/programs/$CONTAINER_NAME|g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
+# sed -i "s|PATH_HERE|/home/$CUR_USER/programs/$CONTAINER_NAME|g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
 sed -i "s/OVPN_USER_HERE/$username/g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
 sed -i "s/OVPN_PASSWORD_HERE/$password/g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
 

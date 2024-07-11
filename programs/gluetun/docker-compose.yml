@@ -2,19 +2,13 @@ version: "3"
 services:
   gluetun:
     image: qmcgaw/gluetun
-    # container_name: gluetun
-    # line above must be uncommented to allow external containers to connect.
-    # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md#external-container-to-gluetun
+    container_name: gluetun
     cap_add:
       - NET_ADMIN
-    devices:
-      - /dev/net/tun:/dev/net/tun
     ports:
-      - 8888:8888/tcp # HTTP proxy
+      - 8880:8888/tcp # HTTP proxy
       - 8388:8388/tcp # Shadowsocks
       - 8388:8388/udp # Shadowsocks
-    volumes:
-      - PATH_HERE/data:/gluetun
     environment:
       # See https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
       - VPN_SERVICE_PROVIDER=SERVICE_PROVIDER_HERE
@@ -29,6 +23,7 @@ services:
       - TZ=America/New_York
       # Server list updater
       # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
+      - HTTPPROXY=on
       - UPDATER_PERIOD=24h
       - SERVER_REGIONS=US East
     restart: unless-stopped
