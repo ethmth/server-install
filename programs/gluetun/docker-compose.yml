@@ -14,26 +14,19 @@ services:
       - 8191:8191/udp # Flaresolverr
       - 8191:8191/tcp # Flaresolverr
     environment:
-      # See https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
       - VPN_SERVICE_PROVIDER=SERVICE_PROVIDER_HERE
-      - VPN_TYPE=openvpn
-      # OpenVPN:
-      - OPENVPN_USER=OVPN_USER_HERE
-      - OPENVPN_PASSWORD=OVPN_PASSWORD_HERE
-      # Wireguard:
-      # - WIREGUARD_PRIVATE_KEY=wOEI9rqqbDwnN8/Bpp22sVz48T71vJ4fYmFWujulwUU=
-      # - WIREGUARD_ADDRESSES=10.64.222.21/32
-      # Timezone for accurate log times
       - TZ=America/New_York
-      # Server list updater
-      # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
       - HTTPPROXY=on
       - SHADOWSOCKS=on
       - UPDATER_PERIOD=24h
-      # - SERVER_REGIONS=US East
+      - VPN_TYPE=openvpn
+      - OPENVPN_USER=OVPN_USER_HERE
+      - OPENVPN_PASSWORD=OVPN_PASSWORD_HERE
       - SERVER_CITIES=New York City
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    # volumes:
+    #   - ./wg0.conf:/gluetun/wireguard/wg0.conf
     restart: unless-stopped
 
   gluetun-socks5:

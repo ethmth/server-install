@@ -28,12 +28,18 @@ echo "For protonvpn, find your username/password here:"
 echo "https://account.proton.me/u/0/vpn/OpenVpnIKEv2"
 fi
 
+if [ "$PROVIDER" != "custom" ]; then
 read -p "Please enter your username (will be echoed): " username
 echo -n "Please enter your password (will be stored): "
 read -s password
 echo
+fi
 
 cp docker-compose.yml /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
+
+if [ -f "wg0.conf" ]; then
+cp wg0.conf /home/$CUR_USER/programs/$CONTAINER_NAME/wg0.conf
+fi
 
 sed -i "s/SERVICE_PROVIDER_HERE/$PROVIDER/g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
 # sed -i "s|PATH_HERE|/home/$CUR_USER/programs/$CONTAINER_NAME|g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
