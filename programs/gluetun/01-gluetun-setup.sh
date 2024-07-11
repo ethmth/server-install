@@ -23,8 +23,10 @@ if [ "$PROVIDER" == "" ]; then
 	exit 1
 fi
 
+if [ "$PROVIDER" == "protonvpn" ]; then
 echo "For protonvpn, find your username/password here:"
 echo "https://account.proton.me/u/0/vpn/OpenVpnIKEv2"
+fi
 
 read -p "Please enter your username (will be echoed): " username
 echo -n "Please enter your password (will be stored): "
