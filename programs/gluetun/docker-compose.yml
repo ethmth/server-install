@@ -29,6 +29,8 @@ services:
       - SHADOWSOCKS=on
       - UPDATER_PERIOD=24h
       # - SERVER_REGIONS=US East
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
 
   gluetun-socks5:
