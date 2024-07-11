@@ -31,7 +31,7 @@ services:
       # - SERVER_REGIONS=US East
     restart: unless-stopped
 
-gluetun-socks5:
+  gluetun-socks5:
     image: serjs/go-socks5-proxy
     container_name: gluetun-socks5
     depends_on:
