@@ -9,8 +9,7 @@ services:
       - LOG_HTML=${LOG_HTML:-false}
       - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
       - TZ=America/New_York
-    ports:
-      - "8191:8191"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    # ports:
+    #   - "8191:8191"
+    network_mode: "container:gluetun"
     restart: unless-stopped

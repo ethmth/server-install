@@ -11,6 +11,8 @@ services:
       - 8388:8388/udp # Shadowsocks
       - 1080:1080/udp # Socks5
       - 1080:1080/tcp # Socks5
+      - 8191:8191/udp # Flaresolverr
+      - 8191:8191/tcp # Flaresolverr
     environment:
       # See https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
       - VPN_SERVICE_PROVIDER=SERVICE_PROVIDER_HERE
