@@ -1,9 +1,10 @@
 #!/bin/bash
 
-CONTAINER_NAME="pihole-unbound"
+CONTAINER_NAME="pihole"
 
 VOLUMES="
-pihole
+etc-pihole
+etc-dnsmasq.d
 "
 
 FILES="

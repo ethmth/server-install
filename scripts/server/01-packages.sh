@@ -80,7 +80,6 @@ ca-certificates
 feh
 caca-utils
 hexyl
-dnsmasq
 hostapd
 rustc
 ffmpeg
