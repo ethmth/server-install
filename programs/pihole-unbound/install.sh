@@ -1,8 +1,9 @@
 #!/bin/bash
 
-CONTAINER_NAME="pihole"
+CONTAINER_NAME="pihole-unbound"
 
 VOLUMES="
+pihole
 "
 
 FILES="
