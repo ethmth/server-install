@@ -14,7 +14,7 @@ services:
       MAX_MEMORY: "16G"
       RCON_PASSWORD: "password"
   
-      VERSION: "1.20.6"
+      VERSION: "1.21.1"
 
       # Server Settings
       DUMP_SERVER_PROPERTIES: "true"

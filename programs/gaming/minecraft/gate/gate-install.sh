@@ -15,7 +15,7 @@ if ! [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $CONTAINER_NAME installation location")
+LOC=$(lsblk --noheadings -o MOUNTPOINT | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $CONTAINER_NAME installation location")
 
 if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
     echo "Nothing was selected. Run this script again with target drive mounted."
