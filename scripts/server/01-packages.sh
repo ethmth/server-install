@@ -6,6 +6,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+ecryptfs-utils
+cryptsetup
 yt-dlp
 rcon
 tigervnc-viewer
