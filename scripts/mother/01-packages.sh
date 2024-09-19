@@ -6,8 +6,12 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+cups
+printer-driver-dymo
 sane
+xsane
 simple-scan
+hplip
 fzf
 vim
 nano
