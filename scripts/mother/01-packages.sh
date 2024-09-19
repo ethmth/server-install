@@ -11,7 +11,7 @@ printer-driver-dymo
 sane
 xsane
 simple-scan
-hplip
+hplip-gui
 fzf
 vim
 nano
