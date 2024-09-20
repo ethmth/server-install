@@ -44,6 +44,8 @@ cp $ABSOLUTE_PATH/docker-compose.yml $LOC/docker-compose.yml
 
 sed -i "s/PASSWORD/$password/g" $LOC/docker-compose.yml
 
+echo "user:$password" > $LOC/vnc-credentials.txt
+
 echo "docker-compose.yml installed to $LOC"
 echo "Run 'docker-compose up --build -d'"
 echo "cd $LOC"
