@@ -17,7 +17,8 @@ Gestures: disabled
 
 ## Window Tiling
 
-- Enable Window Tiling and Snapping: OFF
+- Enable Window Tiling and Snapping: ON
+- Preferences -> Maximize, instead of tile, when dragging a window t othe top edge: ON
 
 ## Mouse and Touchpad
 
@@ -30,3 +31,11 @@ Gestures: disabled
 - Format -> Use 24h clock: OFF
 - Format -> Display the date: ON
 - Format -> Display seconds: ON
+
+## Software Manager
+
+- Preferences -> Flatpaks -> Show unverified Flatpaks: ON
+
+## Preferred applications
+
+- Preferred applications -> Internet -> Web: Google Chrome
