@@ -19,7 +19,7 @@ Gestures: disabled
 
 - Enable Window Tiling and Snapping: OFF
 
-## Touchpad
+## Mouse and Touchpad
 
 - Touchpad -> General -> Tap to click: OFF
 
