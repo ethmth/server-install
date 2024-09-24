@@ -24,7 +24,7 @@ else
     exit 1
 fi
 
-modprobe ecryptfs
+# modprobe ecryptfs
 
 ecryptfs-migrate-home -u "$USER"
 
