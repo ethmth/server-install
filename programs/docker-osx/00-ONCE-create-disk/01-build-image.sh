@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 
-IMAGE_NAME="sickcodes/docker-osx:naked"
+IMAGE_NAME="sickcodes/docker-osx:sonoma"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 cd "$SCRIPT_DIR"
 
-if ! [ -f "Dockerfile" ]; then
+if ! [ -f "../01-build-docker-image/Dockerfile" ]; then
     echo "Dockerfile doesn't exist. Exiting"
-    exit 1
-fi
-
-if ! [ -f "Dockerfile.naked" ]; then
-    echo "Dockerfile.naked doesn't exist. Exiting"
     exit 1
 fi
 
@@ -27,6 +22,5 @@ if docker image inspect $IMAGE_NAME >/dev/null 2>&1; then
     fi
 fi
 
-docker build -t "sickcodes/docker-osx:latest" .
-
-docker build -t "sickcodes/docker-osx:naked" -f Dockerfile.naked .
+echo "If you're having build issues downloading something, try turning VPN off."
+docker build -t sickcodes/docker-osx:sonoma -f ../01-build-docker-image/Dockerfile --build-arg SHORTNAME=sonoma .
