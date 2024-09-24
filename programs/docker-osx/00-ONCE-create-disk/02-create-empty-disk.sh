@@ -12,4 +12,4 @@ fi
 mkdir working_disk
 # dd if=/dev/zero of=working_disk/mac_hdd_ng.img iflag=fullblock bs=1M count=20000 && sync
 
-qemu-img create -f qcow2 working_disk/mac_hdd_ng.img 25G
+qemu-img create -f qcow2 working_disk/mac_hdd_ng.img 32G
