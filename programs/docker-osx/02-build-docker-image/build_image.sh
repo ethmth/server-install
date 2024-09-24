@@ -24,4 +24,8 @@ fi
 git clone https://github.com/sickcodes/Docker-OSX.git
 cd Docker-OSX
 rm -rf .git
-docker build -t "$IMAGE_NAME" --build-arg SHORTNAME=naked .
+docker build -t "sickcodes/docker-osx:latest" .
+
+cp Dockerfile.naked Dockerfile
+
+docker build -t "sickcodes/docker-osx:naked" .
