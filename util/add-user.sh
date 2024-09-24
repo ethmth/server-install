@@ -16,3 +16,5 @@ fi
 useradd -m $USER
 
 passwd $USER
+
+usermod -s /bin/bash $USER

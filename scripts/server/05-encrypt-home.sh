@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+# Check if exactly one argument is passed
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <username>"
+    exit 1
+fi
+
+# Check if the argument is a valid user
+if ! id "$1" &>/dev/null; then
+    echo "User '$1' does not exist."
+    exit 1
+fi
+USER="$1"
+
 if [ "$UID" -eq 0 ]; then
     if [ -n "$SUDO_USER" ]; then
         echo "Running with sudo as user: $SUDO_USER"
@@ -12,3 +25,7 @@ else
 fi
 
 echo "GOOD TO GO"
+
+modprobe ecryptfs
+
+ecryptfs-migrate-home -u "$USER"
