@@ -24,3 +24,5 @@ fi
 
 echo "If you're having build issues downloading something, try turning VPN off."
 docker build -t sickcodes/docker-osx:sonoma -f ../01-build-docker-image/Dockerfile --build-arg SHORTNAME=sonoma .
+
+echo "Leave VPN off for running the container."

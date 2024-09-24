@@ -1,0 +1,22 @@
+services:
+  macos-image:
+    image: sickcodes/docker-osx:sonoma
+    container_name: docker-osx-image
+    devices:
+      - /dev/kvm
+    ports:
+      - "5900:5999"
+      - "1234:1234"
+      - "50922:10022"
+    environment:
+      - EXTRA=-display none -vnc 0.0.0.0:99,password-secret=secvnc0 -object secret,id=secvnc0,data=password
+      - DISPLAY="${DISPLAY:-:0.0}"
+      - GENERATE_UNIQUE=true
+      - CPU=Haswell-noTSX
+      - IMAGE_PATH=/image
+      - CPUID_FLAGS=kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on
+      - MASTER_PLIST_URL=https://raw.githubusercontent.com/sickcodes/osx-serial-generator/master/config-custom-sonoma.plist
+    volumes:
+      - ./working_disk/mac_hdd_ng.img:/image
+    stop_grace_period: 3s
+    restart: "unless-stopped"
