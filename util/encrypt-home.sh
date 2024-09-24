@@ -24,10 +24,8 @@ else
     exit 1
 fi
 
-echo "GOOD TO GO"
-
 modprobe ecryptfs
 
 ecryptfs-migrate-home -u "$USER"
 
-echo "Login as the user, then run 03-encrypt-home-continued.sh as that user."
+echo "IMPORTANT: Login as $USER. Then, reboot."
