@@ -4,6 +4,18 @@ IMAGE_NAME="sickcodes/docker-osx:naked"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+cd "$SCRIPT_DIR"
+
+if ! [ -f "Dockerfile" ]; then
+    echo "Dockerfile doesn't exist. Exiting"
+    exit 1
+fi
+
+if ! [ -f "Dockerfile.naked" ]; then
+    echo "Dockerfile.naked doesn't exist. Exiting"
+    exit 1
+fi
+
 if docker image inspect $IMAGE_NAME >/dev/null 2>&1; then
     read -p "$IMAGE_NAME exists locally. Do you want to replace it (y/N)? " userInput
 
@@ -15,17 +27,6 @@ if docker image inspect $IMAGE_NAME >/dev/null 2>&1; then
     fi
 fi
 
-cd "$SCRIPT_DIR"
-
-if [ -d "Docker-OSX" ]; then
-    rm -rf "Docker-OSX"
-fi
-
-git clone https://github.com/sickcodes/Docker-OSX.git
-cd Docker-OSX
-rm -rf .git
 docker build -t "sickcodes/docker-osx:latest" .
 
-cp Dockerfile.naked Dockerfile
-
-docker build -t "sickcodes/docker-osx:naked" .
+docker build -t "sickcodes/docker-osx:naked" -f Dockerfile.naked .
