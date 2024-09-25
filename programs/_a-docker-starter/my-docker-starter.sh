@@ -51,5 +51,5 @@ while IFS= read -r line; do
 done < "$HOME/.myDockerPrograms"
 
 CURRENT_TIME_UNIX=$(date +%s)
-CURRENT_TIME_UNIX=$((CURRENT_TIME_UNIX - 300))
+CURRENT_TIME_UNIX=$((CURRENT_TIME_UNIX - 60))
 echo "$CURRENT_TIME_UNIX" > "$HOME/.myDockerFlag"
