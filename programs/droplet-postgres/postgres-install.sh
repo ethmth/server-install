@@ -46,6 +46,10 @@ fi
 
 cp docker-compose.yml $LOC/$NAME/docker-compose.yml
 
+if ! ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC/$NAME" ) ); then
+    echo "$LOC/$NAME" >> /home/$CUR_USER/.myDockerPrograms
+fi
+
 cd $LOC/$NAME/
 
 echo "Run 'docker-compose up --build -d' to run it and 'docker-compose stop' to stop it from that directory"

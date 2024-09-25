@@ -64,6 +64,10 @@ for vol in $VOLUMES; do
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
 
+if ! ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC/$CONTAINER_NAME" ) ); then
+    echo "$LOC/$CONTAINER_NAME" >> /home/$CUR_USER/.myDockerPrograms
+fi
+
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker-compose up --build -d' to run"
 echo "cd $LOC/$CONTAINER_NAME"

@@ -6,6 +6,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 packages="
+ecryptfs-utils
+rsync
+lsof
 zip
 cryptsetup
 ncdu

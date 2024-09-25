@@ -7,6 +7,8 @@ fi
 
 packages="
 ecryptfs-utils
+rsync
+lsof
 cryptsetup
 yt-dlp
 rcon
