@@ -18,19 +18,19 @@ fi
 
 # sudo cp my-docker-flag.service /etc/systemd/user/my-docker-flag.service
 
-systemctl --user disable my-docker-flag.service
+# systemctl --user disable my-docker-flag.service
 
-sudo sh -c "echo '[Unit]
-Description=Clear marker file in home directory on user startup after boot
+# sudo sh -c "echo '[Unit]
+# Description=Clear marker file in home directory on user startup after boot
 
-[Service]
-Type=oneshot
-ExecStart=/bin/rm -f /home/$CUR_USER/.myDockerFlag
+# [Service]
+# Type=oneshot
+# ExecStart=/bin/rm -f /home/$CUR_USER/.myDockerFlag
 
-[Install]
-WantedBy=default.target' > /etc/systemd/user/my-docker-flag.service"
+# [Install]
+# WantedBy=default.target' > /etc/systemd/user/my-docker-flag.service"
 
-systemctl --user enable my-docker-flag.service
+# systemctl --user enable my-docker-flag.service
 
 
 sudo cp my-docker-starter.sh /usr/local/bin/my-docker-starter

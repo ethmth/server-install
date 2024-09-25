@@ -5,11 +5,30 @@ if ! [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+TIME_RESET=86400 # One Day
+
 CUR_USER=$(whoami)
 USER_ID=$(id -u)
 
+
 if [ -f "$HOME/.myDockerFlag" ]; then
-    exit 0
+
+    file_content=$(cat "$HOME/.myDockerFlag" | xargs)
+
+    if [[ $file_content =~ ^-?[0-9]+$ ]]; then
+        BOOT_TIME=$(who -b | tr -s ' ' | cut -d' ' -f4,5)
+        BOOT_TIME_UNIX=$(date -d "$BOOT_TIME" +%s)
+
+        LAST_TIME_PLUS_OFFSET=$((file_content + TIME_RESET))
+
+        CURRENT_TIME_UNIX=$(date +%s)
+
+        if ([[ "$file_content" -gt "$BOOT_TIME_UNIX" ]] && [[ "$LAST_TIME_PLUS_OFFSET" -gt "$CURRENT_TIME_UNIX" ]]); then
+            exit 0
+        fi
+
+    fi
+
 fi
 
 if ! [ -f "$HOME/.myDockerPrograms" ]; then
@@ -31,4 +50,5 @@ while IFS= read -r line; do
 
 done < "$HOME/.myDockerPrograms"
 
-touch "$HOME/.myDockerFlag"
+CURRENT_TIME_UNIX=$(date +%s)
+echo "$CURRENT_TIME_UNIX" > "$HOME/.myDockerFlag"
