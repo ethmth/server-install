@@ -19,7 +19,5 @@ services:
       - ADDITIONAL_PORTS=hostfwd=tcp::1234-:1234,
       - DISPLAY="${DISPLAY:-:0.0}"
       - MAC_ADDRESS=${MAC_ADDRESS}
-      - CPU=Haswell-noTSX
-      - CPUID_FLAGS=kvm=on,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on
     stop_grace_period: 3s
     restart: "no"

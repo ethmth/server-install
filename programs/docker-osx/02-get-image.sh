@@ -70,3 +70,5 @@ LOC="/home/$CUR_USER/programs/docker-osx"
 mkdir -p $LOC
 
 cp 00-ONCE-create-disk/disk_here/mac_hdd_ng.img /home/$CUR_USER/programs/docker-osx/mac_hdd_ng.img
+
+qemu-img resize /home/$CUR_USER/programs/docker-osx/mac_hdd_ng.img +20G

@@ -20,3 +20,5 @@ sshpass -p "$password" scp -r -o StrictHostKeyChecking=no -P 50922 $ABSOLUTE_PAT
 
 echo "If the scp command was successful, you should find mac-scripts/ in your Downloads/ directory on Mac."
 echo "Start running the scripts"
+
+echo "ALSO, Expand the disk partition in MacOS using Disk Utility."
