@@ -33,4 +33,4 @@ services:
     volumes:
       - ./data:/data
       - ./downloads:/downloads
-    restart: unless-stopped
+    restart: "no"

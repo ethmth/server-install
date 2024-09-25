@@ -6,6 +6,6 @@ services:
       - "25565:25565"
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    restart: unless-stopped
+    restart: "no"
     volumes:
     - ./config.yml:/config.yml

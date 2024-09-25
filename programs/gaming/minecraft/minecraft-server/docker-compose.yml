@@ -20,6 +20,6 @@ services:
       DUMP_SERVER_PROPERTIES: "true"
       OVERRIDE_SERVER_PROPERTIES: "false"
 
-    restart: unless-stopped
+    restart: "no"
     volumes:
       - ./data:/data
