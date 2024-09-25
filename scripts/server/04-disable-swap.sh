@@ -25,3 +25,6 @@ free -h
 
 # Remove it from fstab
 sed -i '/swap/s/^/#/' /etc/fstab
+
+device=$(echo "$partition" | cut -d'/' -f3)
+systemctl mask dev-$device.swap
