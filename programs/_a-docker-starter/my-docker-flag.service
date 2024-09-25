@@ -1,0 +1,9 @@
+[Unit]
+Description=Clear marker file in home directory on user startup after boot
+
+[Service]
+Type=oneshot
+ExecStart=/bin/rm -f ~/.myDockerFlag
+
+[Install]
+WantedBy=default.target

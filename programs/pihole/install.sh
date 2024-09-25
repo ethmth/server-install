@@ -24,7 +24,7 @@ if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
 fi
 
 if [ "$LOC" == "/" ]; then
-    LOC="$HOME"
+    LOC="/opt"
 fi
 
 if ! [ -d "$LOC" ]; then

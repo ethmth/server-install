@@ -21,4 +21,4 @@ services:
       - DISPLAY="${DISPLAY:-:0.0}"
       - MAC_ADDRESS=${MAC_ADDRESS}
     stop_grace_period: 3s
-    restart: "unless-stopped"
+    restart: "no"

@@ -33,14 +33,18 @@ fi
 
 cp $LOC/values.conf $LOC/.env
 
-password=""
-read -p "Enter the password you want to use for VNC (will be echoed): " password
-if [ "$password" == "" ]; then
-    echo "No password specified."
-    exit 1
-fi
+password="password"
+# read -p "Enter the password you want to use for VNC (will be echoed): " password
+# if [ "$password" == "" ]; then
+#     echo "No password specified."
+#     exit 1
+# fi
 
 cp $ABSOLUTE_PATH/docker-compose.yml $LOC/docker-compose.yml
+
+if ! ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC" ) ); then
+    echo "$LOC" >> /home/$CUR_USER/.myDockerPrograms
+fi
 
 sed -i "s/PASSWORD/$password/g" $LOC/docker-compose.yml
 
