@@ -14,7 +14,7 @@ SCRIPT_RELATIVE_DIR=$(dirname "${BASH_SOURCE[0]}")
 cd $SCRIPT_RELATIVE_DIR
 ABSOLUTE_PATH=$(pwd)
 
-sshpass -p "$password" scp -r -o StrictHostKeyChecking=no -P 50922 $ABSOLUTE_PATH/config $username@$HOST:/Users/$username/Desktop
+sshpass -p "$password" scp -r -o StrictHostKeyChecking=no -P 50922 $ABSOLUTE_PATH/../configs $username@$HOST:/Users/$username/Desktop
 
 echo "If the scp command was successful, you should find config/ in your Desktop/ directory on Mac."
 echo "Start running the scripts"
