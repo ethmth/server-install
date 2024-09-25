@@ -42,7 +42,8 @@ while ! (( VALUES_ACCEPTED )); do
         declare "$variable_name=$variable_value"
     done
 
-    MAC_ADDRESS="00:25:4B$MAC_ADDRESS"
+    MAC_ADDRESS_END=$(echo "$MAC_ADDRESS" | rev | cut -d':' -f1-3 | rev)
+    MAC_ADDRESS="00:25:4B:$MAC_ADDRESS_END"
 
 
     printf "Here are the generated values:\n"
