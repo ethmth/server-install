@@ -1,45 +1,36 @@
 #!/bin/bash
 
-CONTAINER_NAME="gitea"
+CONTAINER_NAME="postgres"
 
 VOLUMES="
-"
-
-ABS_VOLUMES="
-/mnt/cryptdata/encrypted/gitea/data
+data
 "
 
 FILES="
+connect.sh
 docker-compose.yml
 "
-
-# Added check
-if ! [ -e "docker-compose.yml" ]; then
-	echo "Make sure you run this script in the same directory as docker-compose.yml"
-	exit 1
-fi
 
 if ! [[ $EUID -ne 0 ]]; then
     echo "This script should not be run with root/sudo privileges."
     exit 1
 fi
+CUR_USER=$(whoami)
 
-# SPECIFIC CHECKS
-if mountpoint -q /mnt/cryptdata; then
-    if ! [ -d "/mnt/cryptdata/encrypted" ]; then
-	    echo "/mnt/cryptdata/encrypted does not exist."
-        exit 1
-    fi
-else
-    echo "/mnt/cryptdata is not mounted."
+LOC=$(lsblk --noheadings -o MOUNTPOINT | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $CONTAINER_NAME installation location")
+
+if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
+    echo "Nothing was selected. Run this script again with target drive mounted."
     exit 1
 fi
 
-LOC="$HOME"
+if [ "$LOC" == "/" ]; then
+    LOC="$HOME"
+fi
 
 if ! [ -d "$LOC" ]; then
     echo "Your location is not available. Is the disk mounted? Do you have access?"
-        exit 1
+	exit 1
 fi
 
 LOC="$LOC/programs"
@@ -47,16 +38,10 @@ mkdir -p $LOC/$CONTAINER_NAME
 
 for file in $FILES; do
     if [ -d "$file" ]; then
-        cp -r $file $LOC/$CONTAINER_NAME/$file
+        cp -r $file $LOC/$CONTAINER_NAME/
     elif [ -f "$file" ]; then
-        cp $file $LOC/$CONTAINER_NAME
+        cp $file $LOC/$CONTAINER_NAME/$file
     fi
-done
-
-# Modified to use absolute vol
-for vol in $ABS_VOLUMES; do
-    sudo mkdir -p $vol
-    sudo chmod -R 777 $vol
 done
 
 for vol in $VOLUMES; do
