@@ -24,9 +24,9 @@ else
     exit 1
 fi
 
-# modprobe ecryptfs
+echo "Enter your old user ($USER) login password to unwrap/rewrap passphrase."
+# ecryptfs-unwrap-passphrase /home/.ecryptfs/$USER/.ecryptfs/wrapped-passphrase
 
-ecryptfs-migrate-home -u "$USER"
-
-echo "IMPORTANT: Login as $USER. Then, reboot."
-echo "Run ecryptfs-mount-private if it doesn't mount automatically."
+# echo "Copy the passphrase above and paste it as your old passphrase in the next step:"
+echo "Set your new passprhase to your new password."
+ecryptfs-rewrap-passphrase /home/.ecryptfs/$USER/.ecryptfs/wrapped-passphrase
