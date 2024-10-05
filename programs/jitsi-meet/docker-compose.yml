@@ -1,17 +1,17 @@
 services:
     # Frontend
     web:
-        image: jitsi/web:stable
+        image: jitsi/web:${JITSI_IMAGE_VERSION:-unstable}
         container_name: jitsi-web
-        restart: "no"
+        restart: ${RESTART_POLICY:-unless-stopped}
         ports:
-            - '8192:80'
-            - '8193:443'
+            - '${HTTP_PORT}:80'
+            - '${HTTPS_PORT}:443'
         volumes:
-            - ./config/web:/config:Z
-            - ./config/web/crontabs:/var/spool/cron/crontabs:Z
-            - ./config/transcripts:/usr/share/jitsi-meet/transcripts:Z
-            - ./config/web/load-test:/usr/share/jitsi-meet/load-test:Z
+            - ${CONFIG}/web:/config:Z
+            - ${CONFIG}/web/crontabs:/var/spool/cron/crontabs:Z
+            - ${CONFIG}/transcripts:/usr/share/jitsi-meet/transcripts:Z
+            - ${CONFIG}/web/load-test:/usr/share/jitsi-meet/load-test:Z
         labels:
             service: "jitsi-web"
         environment:
@@ -183,19 +183,19 @@ services:
 
     # XMPP server
     prosody:
-        image: jitsi/prosody:stable
+        image: jitsi/prosody:${JITSI_IMAGE_VERSION:-unstable}
         container_name: jitsi-prosody
-        restart: "no"
+        restart: ${RESTART_POLICY:-unless-stopped}
         expose:
-            - '5222'
-            - '5269'
+            - '${XMPP_PORT:-5222}'
+            - '${PROSODY_S2S_PORT:-5269}'
             - '5347'
-            - '5280'
+            - '${PROSODY_HTTP_PORT:-5280}'
         labels:
             service: "jitsi-prosody"
         volumes:
-            - ./config/prosody/config:/config:Z
-            - ./config/prosody/prosody-plugins-custom:/prosody-plugins-custom:Z
+            - ${CONFIG}/prosody/config:/config:Z
+            - ${CONFIG}/prosody/prosody-plugins-custom:/prosody-plugins-custom:Z
         environment:
             - AUTH_TYPE
             - DISABLE_POLLS
@@ -322,17 +322,17 @@ services:
         networks:
             meet.jitsi:
                 aliases:
-                    - xmpp.meet.jitsi
+                    - ${XMPP_SERVER:-xmpp.meet.jitsi}
 
     # Focus component
     jicofo:
-        image: jitsi/jicofo:stable
+        image: jitsi/jicofo:${JITSI_IMAGE_VERSION:-unstable}
         container_name: jitsi-jicofo
-        restart: "no"
+        restart: ${RESTART_POLICY:-unless-stopped}
         ports:
-            - '127.0.0.1:8888:8888'
+            - '127.0.0.1:${JICOFO_REST_PORT:-8888}:8888'
         volumes:
-            - ./config/jicofo:/config:Z
+            - ${CONFIG}/jicofo:/config:Z
         labels:
             service: "jitsi-jicofo"
         environment:
@@ -414,14 +414,14 @@ services:
 
     # Video bridge
     jvb:
-        image: jitsi/jvb:stable
+        image: jitsi/jvb:${JITSI_IMAGE_VERSION:-unstable}
         container_name: jitsi-jvb
-        restart: "no"
+        restart: ${RESTART_POLICY:-unless-stopped}
         ports:
-            - '10000:10000/udp'
-            - '127.0.0.1:8889:8080'
+            - '${JVB_PORT:-10000}:${JVB_PORT:-10000}/udp'
+            - '127.0.0.1:${JVB_COLIBRI_PORT:-8080}:8080'
         volumes:
-            - ./config/jvb:/config:Z
+            - ${CONFIG}/jvb:/config:Z
         labels:
             service: "jitsi-jvb"
         environment:
