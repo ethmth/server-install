@@ -1,7 +1,7 @@
 services:
     # Frontend
     web:
-        image: jitsi/web:latest
+        image: jitsi/web:stable
         container_name: jitsi-web
         restart: "no"
         ports:
@@ -183,7 +183,7 @@ services:
 
     # XMPP server
     prosody:
-        image: jitsi/prosody:latest
+        image: jitsi/prosody:stable
         container_name: jitsi-prosody
         restart: "no"
         expose:
@@ -326,7 +326,7 @@ services:
 
     # Focus component
     jicofo:
-        image: jitsi/jicofo:latest
+        image: jitsi/jicofo:stable
         container_name: jitsi-jicofo
         restart: "no"
         ports:
@@ -414,7 +414,7 @@ services:
 
     # Video bridge
     jvb:
-        image: jitsi/jvb:latest
+        image: jitsi/jvb:stable
         container_name: jitsi-jvb
         restart: "no"
         ports:
