@@ -6,7 +6,7 @@ services:
         restart: "no"
         ports:
             - '8192:80'
-            # - '${HTTPS_PORT}:443'
+            - '8193:443'
         volumes:
             - ./config/web:/config:Z
             - ./config/web/crontabs:/var/spool/cron/crontabs:Z
@@ -419,7 +419,7 @@ services:
         restart: "no"
         ports:
             - '10000:10000/udp'
-            - '127.0.0.1:8080:8080'
+            - '127.0.0.1:8889:8080'
         volumes:
             - ./config/jvb:/config:Z
         labels:

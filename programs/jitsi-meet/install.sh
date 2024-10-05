@@ -15,6 +15,8 @@ VOLUMES="
 "
 
 FILES="
+env.example
+gen-passwords.sh
 docker-compose.yml
 "
 
@@ -59,6 +61,10 @@ done
 # if ! ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC/$CONTAINER_NAME" ) ); then
 #     echo "$LOC/$CONTAINER_NAME" >> /home/$CUR_USER/.myDockerPrograms
 # fi
+
+cd "$LOC/$CONTAINER_NAME"
+cp env.example .env
+bash gen-passwords.sh
 
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker-compose up --build -d' to run"
