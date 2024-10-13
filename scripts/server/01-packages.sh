@@ -7,15 +7,15 @@ fi
 
 sed -i '/^deb/ {/non-free-firmware/! s/$/ non-free-firmware/}' /etc/apt/sources.list
 
-echo "Explanation: Disable packages from non-free tree by default
-Package: *
-Pin: release o=Debian,a=stable,l=Debian,c=non-free
-Pin-Priority: -1" > /etc/apt/preferences.d/non-free_policy
+# echo "Explanation: Disable packages from non-free tree by default
+# Package: *
+# Pin: release o=Debian,a=stable,l=Debian,c=non-free
+# Pin-Priority: -1" > /etc/apt/preferences.d/non-free_policy
 
-echo "Explanation: Enable package firmware-realtek from non-free tree
-Package: firmware-realtek
-Pin: release o=Debian,a=stable,l=Debian,c=non-free
-Pin-Priority: 600" > /etc/apt/preferences.d/firmware-realtek_nonfree
+# echo "Explanation: Enable package firmware-realtek from non-free tree
+# Package: firmware-realtek
+# Pin: release o=Debian,a=stable,l=Debian,c=non-free
+# Pin-Priority: 600" > /etc/apt/preferences.d/firmware-realtek_nonfree
 
 packages="
 ecryptfs-utils
@@ -126,6 +126,7 @@ fi
 
 packages+="
 firmware-realtek
+firmware-amd-graphics
 "
 
 packages=${packages//$'\n'/ }
