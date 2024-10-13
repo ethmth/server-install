@@ -5,6 +5,18 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
+sed -i '/^deb/ {/non-free-firmware/! s/$/ non-free-firmware/}' /etc/apt/sources.list
+
+echo "Explanation: Disable packages from non-free tree by default
+Package: *
+Pin: release o=Debian,a=stable,l=Debian,c=non-free
+Pin-Priority: -1" > /etc/apt/preferences.d/non-free_policy
+
+echo "Explanation: Enable package firmware-realtek from non-free tree
+Package: firmware-realtek
+Pin: release o=Debian,a=stable,l=Debian,c=non-free
+Pin-Priority: 600" > /etc/apt/preferences.d/firmware-realtek_nonfree
+
 packages="
 ecryptfs-utils
 rsync
@@ -111,6 +123,10 @@ network-manager-gnome
 network-manager-openvpn
 "
 fi
+
+packages+="
+firmware-realtek
+"
 
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
