@@ -17,7 +17,11 @@ sed -i '/^deb/ {/non-free-firmware/! s/$/ non-free-firmware/}' /etc/apt/sources.
 # Pin: release o=Debian,a=stable,l=Debian,c=non-free
 # Pin-Priority: 600" > /etc/apt/preferences.d/firmware-realtek_nonfree
 
+# linux-headers-amd64
 packages="
+apt-transport-https
+dirmngr
+software-properties-common
 ecryptfs-utils
 rsync
 lsof
