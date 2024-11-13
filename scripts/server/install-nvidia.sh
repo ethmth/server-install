@@ -29,4 +29,4 @@ echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.d
 
 apt update
 
-apt install nvidia-driver cuda nvidia-smi nvidia-settings
+apt install nvidia-driver nvidia-driver-cuda nvidia-settings
