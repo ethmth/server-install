@@ -15,6 +15,7 @@ if ! [[ $EUID -ne 0 ]]; then
     echo "This script should not be run with root/sudo privileges."
     exit 1
 fi
+CUR_USER=$(whoami)
 
 LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $NAME installation location")
 
@@ -48,6 +49,10 @@ for vol in $VOLUMES; do
     mkdir -p $LOC/$CONTAINER_NAME/$vol
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
+
+if ! ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC/$CONTAINER_NAME" ) ); then
+    echo "$LOC/$CONTAINER_NAME" >> /home/$CUR_USER/.myDockerPrograms
+fi
 
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker-compose up --build -d' to run"

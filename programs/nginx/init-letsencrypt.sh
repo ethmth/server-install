@@ -11,9 +11,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
 fi
 
 # bluebubbles.YOURDOMAIN.COM
-# git.YOURDOMAIN.COM
-# YOURDOMAIN.COM
-domains=(git.YOURDOMAIN.COM penpot.YOURDOMAIN.COM YOURDOMAIN.COM)
+domains=(git.YOURDOMAIN.COM penpot.YOURDOMAIN.COM test.YOURDOMAIN.COM)
 rsa_key_size=4096
 data_path="./certbot"
 email="YOUREMAIL" # Adding a valid address is strongly recommended

@@ -36,7 +36,7 @@ services:
 
   penpot-frontend:
     image: "penpotapp/frontend:latest"
-    restart: unless-stopped
+    restart: "no"
     ports:
       - 9001:80
 
@@ -97,7 +97,7 @@ services:
 
   penpot-backend:
     image: "penpotapp/backend:latest"
-    restart: unless-stopped
+    restart: "no"
 
     volumes:
       - ./penpot_assets:/opt/data/assets
@@ -216,7 +216,7 @@ services:
 
   penpot-exporter:
     image: "penpotapp/exporter:latest"
-    restart: unless-stopped
+    restart: "no"
     networks:
       - penpot
 
@@ -230,7 +230,7 @@ services:
 
   penpot-postgres:
     image: "postgres:15"
-    restart: unless-stopped
+    restart: "no"
     stop_signal: SIGINT
 
     volumes:
@@ -247,7 +247,7 @@ services:
 
   penpot-redis:
     image: redis:7
-    restart: unless-stopped
+    restart: "no"
     networks:
       - penpot
 
