@@ -61,3 +61,7 @@ defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 0
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 0
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 0
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 0
+
+
+echo "Enable Auto Login:"
+echo "System Preferences -> Users & Groups -> Automatically Login as ..."
