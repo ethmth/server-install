@@ -19,3 +19,5 @@ echo "Go to System Preferences -> General -> Sharing -> Remote Management"
 echo "Click Computer Settings, VNC viewers may control screen with password."
 
 echo "Then, reboot."
+
+echo "(Note: You may have to reboot multiple times until autologin, VNC, and ssh work)

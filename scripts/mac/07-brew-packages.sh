@@ -1,3 +1,3 @@
 #!/bin/bash
 
-brew install docker
+brew install tmux wget
