@@ -47,9 +47,9 @@ replace_content() {
     domain_no_sub="$3"
     email="$4"
 
-    sed -i "s/\.YOURDOMAIN\.COM/\.$domain_no_sub/g" "$file"
-    sed -i "s/YOURDOMAIN\.COM/$domain/g" "$file"
-    sed -i "s/YOUREMAIL/$email/g" "$file"
+    sed -i.bak "s|\.YOURDOMAIN\.COM|.$domain_no_sub|g" "$file"
+    sed -i.bak "s|YOURDOMAIN\.COM|$domain|g" "$file"
+    sed -i.bak "s|YOUREMAIL|$email|g" "$file"
 }
 
 for file in $FILES; do
