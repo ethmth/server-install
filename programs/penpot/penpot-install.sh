@@ -17,12 +17,14 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 CUR_USER=$(whoami)
 
-LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $NAME installation location")
+# LOC=$(lsblk --noheadings -o MOUNTPOINTS | grep -v '^$' | grep -v "/boot" | fzf --prompt="Select your desired $NAME installation location")
 
-if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
-    echo "Nothing was selected. Run this script again with target drive mounted."
-    exit 1
-fi
+# if ([ "$LOC" == "" ] || [ "$LOC" == "Cancel" ]); then
+#     echo "Nothing was selected. Run this script again with target drive mounted."
+#     exit 1
+# fi
+
+LOC="/"
 
 if [ "$LOC" == "/" ]; then
     LOC="$HOME"
@@ -50,7 +52,7 @@ for vol in $VOLUMES; do
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
 
-if ! ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC/$CONTAINER_NAME" ) ); then
+if ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ! ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC/$CONTAINER_NAME" ) ); then
     echo "$LOC/$CONTAINER_NAME" >> /home/$CUR_USER/.myDockerPrograms
 fi
 
