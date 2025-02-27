@@ -19,6 +19,7 @@ sed -i '/^deb/ {/non-free-firmware/! s/$/ non-free-firmware/}' /etc/apt/sources.
 
 # linux-headers-amd64
 packages="
+iperf
 apt-transport-https
 dirmngr
 software-properties-common
