@@ -1,6 +1,7 @@
 services:
   macos:
-    image: sickcodes/docker-osx:naked@sha256:c6e360b9ada6abc64c3ca14f4ee9ba92af7b73a49d8856a76cdf37d9cd305cc0
+    # image: sickcodes/docker-osx:naked@sha256:c6e360b9ada6abc64c3ca14f4ee9ba92af7b73a49d8856a76cdf37d9cd305cc0
+    image: sickcodes/docker-osx:naked # if building your own image using ./01-build-docker-image this will work (don't update Dockerfiles, not necessary)
     container_name: docker-osx
     devices:
       - /dev/kvm
