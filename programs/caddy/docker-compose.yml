@@ -9,6 +9,6 @@ services:
       - ./html:/usr/share/html
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./caddy:/etc/caddy/caddy.d
-      - caddy_data:/data
-      - caddy_config:/config
+      - ./caddy_data:/data
+      - ./caddy_config:/config
     restart: unless-stopped

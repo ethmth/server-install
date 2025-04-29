@@ -1,2 +1,2 @@
-import ./caddy/bluebubbles2.caddy
-import ./caddy/root.caddy
+import /etc/caddy/caddy.d/bluebubbles2.caddy
+import /etc/caddy/caddy.d/root.caddy

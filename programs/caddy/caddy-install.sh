@@ -75,3 +75,4 @@ done
 
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "cd $LOC/$CONTAINER_NAME"
+echo "You may need to docker pull caddy:latest manually"
