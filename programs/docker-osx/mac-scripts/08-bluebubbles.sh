@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="1.9.7"
+VERSION="1.9.9"
 
 curl -L0 -o ~/Desktop/BlueBubbles-$VERSION.dmg https://github.com/BlueBubblesApp/bluebubbles-server/releases/download/v$VERSION/BlueBubbles-$VERSION.dmg
 
