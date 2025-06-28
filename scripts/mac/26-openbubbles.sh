@@ -8,5 +8,7 @@
 
 # mv "Mac Hardware Info.app" /Applications/
 
+echo "Install the full XCode from the App Store"
+
 echo "Download from this URL using Safari (for some reason wget/curl then unzip/ditto won't work):"
 echo "https://github.com/OpenBubbles/Mac-Hardware-Info/releases/latest/download/Mac.Hardware.Info.zip"
