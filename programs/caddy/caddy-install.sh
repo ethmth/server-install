@@ -4,7 +4,7 @@ CONTAINER_NAME="caddy"
 
 VOLUMES="
 html
-caddy
+caddy.d
 caddy_data
 caddy_config
 "
@@ -13,7 +13,7 @@ FILES="
 html
 docker-compose.yml
 Caddyfile
-caddy
+caddy.d
 "
 
 if [[ $EUID -ne 0 ]]; then
