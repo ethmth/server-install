@@ -47,6 +47,7 @@ ca-certificates
 caca-utils
 hexyl
 chromium
+openjdk-17-jre
 "
 
 packages=${packages//$'\n'/ }
