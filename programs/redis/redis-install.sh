@@ -47,8 +47,8 @@ cp docker-compose.yml $LOC/$NAME/docker-compose.yml
 
 # cd $LOC/$NAME/
 
-if ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ! ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC/$CONTAINER_NAME" ) ); then
-    echo "$LOC/$CONTAINER_NAME" >> /home/$CUR_USER/.myDockerPrograms
+if ( [ -f "/home/$CUR_USER/.myDockerPrograms" ] && ! ( cat "/home/$CUR_USER/.myDockerPrograms" | grep -q "$LOC/$NAME" ) ); then
+    echo "$LOC/$NAME" >> /home/$CUR_USER/.myDockerPrograms
 fi
 
 
