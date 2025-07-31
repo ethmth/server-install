@@ -2,3 +2,4 @@ import /etc/caddy/caddy.d/root.caddy
 import /etc/caddy/caddy.d/bluebubbles2.caddy
 import /etc/caddy/caddy.d/gitea.caddy
 import /etc/caddy/caddy.d/pitchwizard.caddy
+import /etc/caddy/caddy.d/valvopes.caddy
