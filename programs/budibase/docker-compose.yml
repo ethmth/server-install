@@ -30,6 +30,8 @@ services:
     depends_on:
       - worker-service
       - redis-service
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   #    volumes:
   #      - /some/path/to/plugins:/plugins
 
