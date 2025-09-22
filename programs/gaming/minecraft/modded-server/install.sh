@@ -9,6 +9,7 @@ downloads
 
 FILES="
 docker-compose.yml
+.env.example
 "
 
 if ! [[ $EUID -ne 0 ]]; then
