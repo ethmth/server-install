@@ -11,7 +11,7 @@ services:
       # Performance Settings
       EULA: "true"
       MEMORY: "4G"
-      MAX_MEMORY: "16G"
+      MAX_MEMORY: "12G"
       RCON_PASSWORD: "password"
 
       # CURSEFORGE

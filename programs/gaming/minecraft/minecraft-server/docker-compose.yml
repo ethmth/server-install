@@ -11,7 +11,7 @@ services:
       # Performance Settings
       EULA: "TRUE"
       MEMORY: "4G"
-      MAX_MEMORY: "16G"
+      MAX_MEMORY: "12G"
       RCON_PASSWORD: "password"
   
       VERSION: "1.21.8"
