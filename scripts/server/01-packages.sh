@@ -30,6 +30,7 @@ fi
 
 # linux-headers-amd64
 packages="
+flatpak
 sudo
 iperf
 apt-transport-https
