@@ -17,5 +17,6 @@
 
   imports = [
     ./settings/default.nix
+    ./waybar.nix
   ];
 }
