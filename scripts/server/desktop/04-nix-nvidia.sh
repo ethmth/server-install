@@ -10,6 +10,8 @@ DRIVER_VERSION=$(nvidia-smi --version | grep "DRIVER" | cut -d ':' -f2 | xargs)
 
 if ! [[ "$DRIVER_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   echo "NVIDIA driver version not detected, doing nothing"
+  echo "If using an NVIDIA GPU, ensure the drivers are installed and nvidia-smi works"
+  echo "If not using an NVIDIA GPU, skip this script, but make sure to run home-manager switch once hyprland.nix is imported before moving on"
   exit 1
 fi
 
