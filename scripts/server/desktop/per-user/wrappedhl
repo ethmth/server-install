@@ -14,9 +14,15 @@ export XDG_SESSION_DESKTOP=Hyprland
 
 # Execute Hyprland
 if [ -f "$HOME/.nix-profile/bin/hyprland" ]; then
-   exec /$HOME/.nix-profile/bin/hyprland >/dev/null 2>&1
+   echo "Launching $HOME/.nix-profile/bin/hyprland"
+   exec $HOME/.nix-profile/bin/hyprland >/dev/null 2>&1
 elif [ -f /usr/bin/Hyprland ]; then
+   echo "Launching /usr/bin/Hyprland"
    exec /usr/bin/Hyprland >/dev/null 2>&1
 elif [ -f /usr/local/bin/Hyprland ]; then
+   echo "Launching /usr/local/bin/Hyprland"
    exec /usr/local/bin/Hyprland >/dev/null 2>&1
+else
+   echo "No hyprland executable found"
+   exit 1
 fi
