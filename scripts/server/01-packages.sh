@@ -60,9 +60,7 @@ wget
 proxychains
 tsocks
 gallery-dl
-docker.io
 containerd
-docker-compose
 socat
 openssh-server
 openresolv
