@@ -18,3 +18,5 @@ fi
 echo "Running sudo $EXE"
 
 sudo "$EXE"
+
+echo "Run 'home-manager switch' again. There should be no more warnings/errors"
