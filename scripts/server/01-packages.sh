@@ -60,7 +60,6 @@ wget
 proxychains
 tsocks
 gallery-dl
-containerd
 socat
 openssh-server
 openresolv
@@ -129,6 +128,7 @@ fi
 read -p "Do you want to install Nvidia Drivers (y/N)? " userInput
 
 if ([ "$userInput" == "Y" ] || [ "$userInput" == "y" ]); then
+echo "options nvidia_drm modeset=1" > /etc/modprobe.d/options_nvidia_drm.conf
 packages+="
 nvidia-driver
 nvidia-detect
