@@ -5,7 +5,18 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-sed -i '/^deb/ {/non-free-firmware/! s/$/ non-free-firmware/}' /etc/apt/sources.list
+if ! [ -f "debian.sources" ]; then
+	echo "debian.sources doesn't exist"
+	exit 1
+fi
+
+cp debian.sources /etc/apt/sources.list.d/debian.sources
+chmod 644 /etc/apt/sources.list.d/debian.sources
+if [ -f "/etc/apt/sources.list" ]; then
+	rm /etc/apt/sources.list
+fi
+
+#sed -i '/^deb/ {/non-free-firmware/! s/$/ non-free-firmware/}' /etc/apt/sources.list
 
 # echo "Explanation: Disable packages from non-free tree by default
 # Package: *
@@ -19,10 +30,10 @@ sed -i '/^deb/ {/non-free-firmware/! s/$/ non-free-firmware/}' /etc/apt/sources.
 
 # linux-headers-amd64
 packages="
+sudo
 iperf
 apt-transport-https
 dirmngr
-software-properties-common
 ecryptfs-utils
 rsync
 lsof
@@ -33,7 +44,7 @@ tigervnc-viewer
 eog
 sxiv
 libsixel-bin
-postgresql-client-15
+postgresql-client
 qemu-utils
 expect
 sshpass
@@ -56,14 +67,12 @@ socat
 openssh-server
 openresolv
 nmap
-neofetch 
 python3
 python3-dev
 python3-venv
 python3-pip
 python3-pint
 python3-tk
-python3-nose
 python3-nose2
 python3-coverage
 python3-pandas
@@ -109,16 +118,6 @@ v4l-utils
 easy-rsa
 "
 
-packages+="
-libgmp-dev
-libpcap-dev
-libbz2-dev
-libxi6
-libgconf-2-4
-libglib2.0-dev
-libseccomp2
-"
-
 read -p "Do you want to install Network Manager (y/N)? " userInput
 
 if ([ "$userInput" == "Y" ] || [ "$userInput" == "y" ]); then
@@ -129,9 +128,23 @@ network-manager-openvpn
 "
 fi
 
+read -p "Do you want to install Nvidia Drivers (y/N)? " userInput
+
+if ([ "$userInput" == "Y" ] || [ "$userInput" == "y" ]); then
+packages+="
+nvidia-driver
+nvidia-detect
+nvidia-smi
+nvidia-settings
+"
+fi
+
 packages+="
 firmware-realtek
 firmware-amd-graphics
+firmware-linux-free
+firmware-linux-nonfree
+firmware-misc-nonfree
 "
 
 packages=${packages//$'\n'/ }
