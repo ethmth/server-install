@@ -5,20 +5,24 @@ if ! [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-if ! [ -f "hyprland.nix" ]; then
-	echo "hyprland.nix not found"
+if ! [ -d "hyprland/" ]; then
+	echo "hyprland/ not found"
 	exit 1
 fi
 
-cp "hyprland.nix" "$HOME/.config/home-manager/hyprland.nix"
+if [ -d "$HOME/.config/home-manager/hyprland" ]; then
+	rm -rf "$HOME/.config/home-manager/hyprland"
+fi
 
-echo "Copied hyprland.nix to $HOME/.config/home-manager/hyprland.nix"
+cp -r "hyprland/" "$HOME/.config/home-manager/hyprland"
+
+echo "Copied hyprland/ to $HOME/.config/home-manager/hyprland/"
 
 echo "You must manually add the import to your home.nix config file:"
 echo "vim $HOME/.config/home-manager/home.nix"
 echo "  ...
   imports = [
-    ./hyprland.nix
+    ./hyprland/hyprland.nix
     # ./nvidia.nix
   ];
   ..."
