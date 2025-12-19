@@ -1,0 +1,22 @@
+[Unit]
+Description=Hyprland Wayland Compositor
+After=systemd-user-sessions.service
+Wants=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/wrappedhl
+Restart=on-failure
+RestartSec=1
+Slice=session.slice
+
+# Hardening (safe defaults)
+NoNewPrivileges=yes
+ProtectSystem=full
+ProtectHome=read-only
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target
+
