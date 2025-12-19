@@ -7,6 +7,7 @@
 
   imports = [
     ./env.nix
+    ./exec.nix
     ./binds.nix
   ];
 }
