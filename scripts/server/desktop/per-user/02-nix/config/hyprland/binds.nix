@@ -64,6 +64,14 @@
       # Workspace Switching (split-monitor-workspaces)
       "$mainMod ALT,up,workspace,e+1"
       "$mainMod ALT,down,workspace,e-1"
+
+      # Screenshots
+      "$mainMod SHIFT,S,exec,hyprctl keyword animation \"fadeOut,0,0,default\"; grimblast --notify copysave area; hyprctl keyword animation \"fadeOut,1,4,default\""
+      ",Print,exec,grimblast --notify --cursor copysave output"
+      "ALT,Print,exec,grimblast --notify --cursor copysave screen"
+
+      # Color Picker & Lock
+      "$mainMod SHIFT,X,exec,hyprpicker -a -n -f hex"
     ]
     ++ builtins.concatLists (
       builtins.genList (i:

@@ -17,6 +17,8 @@
     fuzzel
     wlogout
     hyprpaper
+    grimblast
+    hyprpicker
   ];
 
   imports = [
