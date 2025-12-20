@@ -9,8 +9,15 @@ fi
 # Add Cursor's GPG key
 curl -fsSL https://downloads.cursor.com/keys/anysphere.asc | gpg --dearmor | tee /etc/apt/keyrings/cursor.gpg > /dev/null
 
-# Add the Cursor repository
-echo "deb [arch=amd64,arm64 signed-by=/etc/apt/keyrings/cursor.gpg] https://downloads.cursor.com/aptrepo stable main" | tee /etc/apt/sources.list.d/cursor.list > /dev/null
+# Add the repository to Apt sources:
+tee /etc/apt/sources.list.d/cursor.sources <<EOF
+Types: deb
+URIs: https://downloads.cursor.com/aptrepo
+Suites: stable
+Components: main
+Architectures: amd64,arm64
+Signed-By: /etc/apt/keyrings/cursor.gpg
+EOF
 
 # Update and install
 apt update
