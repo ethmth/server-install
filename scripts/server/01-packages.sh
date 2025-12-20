@@ -30,6 +30,7 @@ fi
 
 # linux-headers-amd64
 packages="
+libnotify-bin
 thunar
 flatpak
 sudo

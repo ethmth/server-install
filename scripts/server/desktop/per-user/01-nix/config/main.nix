@@ -19,6 +19,7 @@
     ./fuzzel/default.nix
     ./wlogout/default.nix
     ./foot/default.nix
+    ./dunst.nix
     ./waybar.nix
   ];
 }
