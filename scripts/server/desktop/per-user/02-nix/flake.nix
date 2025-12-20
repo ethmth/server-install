@@ -12,7 +12,7 @@
   outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux"; # or aarch64-linux
-      username = "ethan";
+      username = "default"; # leave this as default
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations.${username} =

@@ -14,9 +14,6 @@ mkdir -p "$HOME/.local/bin"
 cp hm "$HOME/.local/bin/hm"
 chmod 755 "$HOME/.local/bin/hm"
 
-mkdir -p "$HOME/.config/nix"
-touch "$HOME/.config/nix/nix.conf"
-
-if ! ( cat "$HOME/.config/nix/nix.conf" | grep -q 'experimental-features = nix-command flakes' ); then
-    echo 'experimental-features = nix-command flakes' >> "$HOME/.config/nix/nix.conf"
+if ! ( cat "$HOME/.bashrc" | grep -q "PATH=\$PATH:$HOME/.local/bin" ); then
+echo "PATH=\$PATH:$HOME/.local/bin" >> "$HOME/.bashrc"
 fi

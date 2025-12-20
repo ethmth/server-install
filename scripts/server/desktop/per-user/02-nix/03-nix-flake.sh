@@ -13,4 +13,4 @@ fi
 cp "flake.nix" "$HOME/.config/home-manager/flake.nix"
 
 echo "Copied flake.nix to $HOME/.config/home-manager/flake.nix"
-echo "Then, run 'hm switch' to generate the config"
+echo "Then, run 'hm switch' to generate the config (you may need to reset your shell first)"
