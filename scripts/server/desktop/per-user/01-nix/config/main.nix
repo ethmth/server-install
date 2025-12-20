@@ -18,6 +18,7 @@
     ./hyprland/default.nix
     ./fuzzel/default.nix
     ./wlogout/default.nix
+    ./foot/default.nix
     ./waybar.nix
   ];
 }
