@@ -21,5 +21,6 @@
     ./foot/default.nix
     ./dunst.nix
     ./waybar.nix
+    ./hyprlock.nix
   ];
 }
