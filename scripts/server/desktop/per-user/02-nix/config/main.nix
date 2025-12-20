@@ -12,6 +12,7 @@
     foot
     fuzzel
     wlogout
+    hyprpaper
   ];
 
   imports = [
@@ -22,5 +23,6 @@
     ./dunst.nix
     ./waybar.nix
     ./hyprlock.nix
+    ./hyprpaper.nix
   ];
 }

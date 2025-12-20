@@ -148,6 +148,11 @@ firmware-linux-nonfree
 firmware-misc-nonfree
 "
 
+packages+="
+imagemagick
+inkscape
+"
+
 packages=${packages//$'\n'/ }
 packages=$(echo "$packages" | tr -s ' ' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
 
