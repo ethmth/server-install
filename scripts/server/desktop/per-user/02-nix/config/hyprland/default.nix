@@ -11,6 +11,7 @@
     ./exec.nix
     ./binds.nix
     ./input.nix
+    ./general.nix
   ];
 }
 
