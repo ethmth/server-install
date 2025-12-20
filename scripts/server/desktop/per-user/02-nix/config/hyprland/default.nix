@@ -1,9 +1,14 @@
-{ ... }:
+{ config, pkgs, ... }:
 
 {
   wayland.windowManager.hyprland.enable = true; 
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
   imports = [
