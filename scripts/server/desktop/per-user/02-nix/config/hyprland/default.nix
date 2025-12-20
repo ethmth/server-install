@@ -10,6 +10,7 @@
     ./env.nix
     ./exec.nix
     ./binds.nix
+    ./input.nix
   ];
 }
 
