@@ -1,7 +1,7 @@
 
-- Figure out Hyprlock
-- Figure out xdg-portal-hyprland
-- Figure out hyprpaper
 
 - Finish rest of hyprland config
+
+- Thunar config
+- Megasync
 - Openair-vpn?
