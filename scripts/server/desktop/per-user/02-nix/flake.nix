@@ -15,9 +15,13 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
+    };
   };
 
-  outputs = { nixpkgs, home-manager, pam_shim, hyprland, ... }:
+  outputs = { nixpkgs, home-manager, pam_shim, hyprland, split-monitor-workspaces, ... }:
     let
       system = "x86_64-linux"; # or aarch64-linux
       username = "default"; # leave this as default
@@ -28,16 +32,13 @@
           inherit pkgs;
           modules = [
             pam_shim.homeModules.default
-            # {
-            #   wayland.windowManager.hyprland = {
-            #     enable = true;
-            #     # set the flake package
-            #     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-            #     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-            #   };
-            # }
             hyprland.homeManagerModules.default
             ./home.nix
+            {
+              wayland.windowManager.hyprland.plugins = [
+                split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+              ];
+            }
           ];
         };
     };

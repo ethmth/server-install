@@ -56,6 +56,7 @@
     ./general.nix
     ./windowrules.nix
     ./monitors.nix
+    ./plugins.nix
   ];
 }
 

@@ -61,7 +61,7 @@
       "$mainMod,mouse_down,workspace,e+1"
       "$mainMod,mouse_up,workspace,e-1"
 
-      # Workspace Switching
+      # Workspace Switching (split-monitor-workspaces)
       "$mainMod ALT,up,workspace,e+1"
       "$mainMod ALT,down,workspace,e-1"
     ]
@@ -69,8 +69,8 @@
       builtins.genList (i:
         let ws = i + 1;
         in [
-          "$mainMod,${toString ws},workspace,${toString ws}"
-          "$mainMod SHIFT,${toString ws},movetoworkspace,${toString ws}"
+          "$mainMod,${toString ws},split-workspace,${toString ws}"
+          "$mainMod SHIFT,${toString ws},split-movetoworkspace,${toString ws}"
         ]
       ) 9
     );
