@@ -26,4 +26,4 @@ echo "  ...
     # ./nvidia.nix
   ];
   ..."
-echo "Then, run 'home-manager switch' to regenerate the config. (or run the next scripts)"
+echo "Then, run 'hm switch' to regenerate the config. (or run the next scripts)"

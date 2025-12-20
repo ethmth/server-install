@@ -32,4 +32,4 @@ echo "{
   };
 }" > "$HOME/.config/home-manager/nvidia.nix"
 
-echo "Add ./nvidia.nix to home.nix's imports, then run home-manager switch"
+echo "Add ./nvidia.nix to home.nix's imports, then run hm switch"

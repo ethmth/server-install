@@ -10,4 +10,4 @@ if [ -d "config/" ]; then
 fi
 
 cp -r "$HOME/.config/home-manager/config/" "config"
-
+cp "$HOME/.config/home-manager/flake.nix" "flake.nix"

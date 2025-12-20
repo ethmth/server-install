@@ -5,7 +5,7 @@ if ! [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-OUTPUT=$(home-manager switch)
+OUTPUT=$(hm switch)
 
 EXE=$(echo "$OUTPUT" | grep "non-nixos-gpu-setup" | head -1 | xargs | cut -d' ' -f2)
 
@@ -19,4 +19,4 @@ echo "Running sudo $EXE"
 
 sudo "$EXE"
 
-echo "Run 'home-manager switch' again. There should be no more warnings/errors"
+echo "Run 'hm switch' again. There should be no more warnings/errors"
