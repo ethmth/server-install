@@ -30,6 +30,7 @@ fi
 
 # linux-headers-amd64
 packages="
+wl-clipboard
 libnotify-bin
 thunar
 flatpak
