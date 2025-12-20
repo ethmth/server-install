@@ -5,9 +5,9 @@ if ! [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-if [ -d "hyprland/" ]; then
-	rm -rf "hyprland/"
+if [ -d "config/" ]; then
+	rm -rf "config/"
 fi
 
-cp -r "$HOME/.config/home-manager/hyprland/" "hyprland"
+cp -r "$HOME/.config/home-manager/config/" "config"
 

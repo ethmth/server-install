@@ -6,6 +6,7 @@
       "$mainMod,B,exec,flatpak run io.gitlab.librewolf-community"
       "$mainMod,S,exec,flatpak run com.brave.Browser --enable-features=UseOzonePlatform --ozone-platform=wayland"
       "$mainMod,Q,exec,foot"
+      "$mainMod,Escape,exec,wlogout --protocol layer-shell -b 5 -T 400 -B 400"
     ]
     ++ builtins.concatLists (
       builtins.genList (i:

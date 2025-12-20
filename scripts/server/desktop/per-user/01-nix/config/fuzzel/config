@@ -1,0 +1,25 @@
+# Font & layout
+font=JetBrainsMono Nerd Font:weight=regular:size=36
+lines=6
+layer=overlay
+terminal=foot -e
+prompt="❯ "
+matching=fuzzy
+fullscreen=true
+line-height=48
+fields=name
+
+# Colors
+[colors]
+background=00000000
+text=F2F2F2EE
+selection=29B6F6
+selection-text=212121
+selection-active=F2F2F230
+urgent=E91E6366
+urgent-selection=E91E6377
+border=00000066
+
+[border]
+radius=10
+width=0

@@ -10,10 +10,14 @@
     mesa-demos
     glmark2
     foot
+    fuzzel
+    wlogout
   ];
 
   imports = [
     ./hyprland/default.nix
+    ./fuzzel/default.nix
+    ./wlogout/default.nix
     ./waybar.nix
   ];
 }
