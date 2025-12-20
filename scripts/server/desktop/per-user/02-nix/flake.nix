@@ -11,9 +11,13 @@
       url = "github:Cu3PO42/pam_shim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, pam_shim, ... }:
+  outputs = { nixpkgs, home-manager, pam_shim, hyprland, ... }:
     let
       system = "x86_64-linux"; # or aarch64-linux
       username = "default"; # leave this as default
@@ -23,8 +27,16 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./home.nix
             pam_shim.homeModules.default
+            {
+              wayland.windowManager.hyprland = {
+                enable = true;
+                # set the flake package
+                package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+                portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+              };
+            }
+            ./home.nix
           ];
         };
     };
