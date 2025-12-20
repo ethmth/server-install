@@ -13,6 +13,7 @@
     ./input.nix
     ./general.nix
     ./windowrules.nix
+    ./monitors.nix
   ];
 }
 
