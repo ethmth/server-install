@@ -14,3 +14,7 @@ nix-shell '<home-manager>' -A install
 if ! ( cat "$HOME/.profile" | grep -q '. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"' ); then
     echo '. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"' >> "$HOME/.profile"
 fi
+
+if ! ( cat "$HOME/.bash_profile" | grep -q '. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"' ); then
+    echo '. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"' >> "$HOME/.bash_profile"
+fi
