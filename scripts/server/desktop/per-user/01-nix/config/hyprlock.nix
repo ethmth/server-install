@@ -10,7 +10,6 @@
 
       background = [
         {
-          path = "/tmp/shot.png"; # can be static image or generated screenshot
           color = "rgba(0, 0, 0, 0.5)";
           blur_passes = 1;
           blur_size = 10;
