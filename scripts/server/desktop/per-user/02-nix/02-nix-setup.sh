@@ -17,3 +17,5 @@ chmod 755 "$HOME/.local/bin/hm"
 if ! ( cat "$HOME/.bashrc" | grep -q "PATH=\$PATH:$HOME/.local/bin" ); then
 echo "PATH=\$PATH:$HOME/.local/bin" >> "$HOME/.bashrc"
 fi
+
+echo "Restart your shell, and make sure the 'hm' command is visible"

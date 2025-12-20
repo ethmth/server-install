@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
+DIR="$HOME/.config/home-manager"
+
+cd "$DIR"
+
 NIX_CONFIG="experimental-features = nix-command flakes" nix run home-manager/master -- "$@" --flake .#default

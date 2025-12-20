@@ -5,13 +5,13 @@ if ! [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-OUTPUT=$(hm switch)
+OUTPUT=$("$HOME/.local/bin/hm" switch)
 
 EXE=$(echo "$OUTPUT" | grep "non-nixos-gpu-setup" | head -1 | xargs | cut -d' ' -f2)
 
 if ! [ -f "$EXE" ]; then
 	echo "non-nixos-gpu-setup NOTE not auto-detected, doing nothing."
-	echo "Run home-manager switch and ensure there are no warnings/notes"
+	echo "Run hm switch and ensure there are no warnings/notes"
 	exit 1
 fi
 
