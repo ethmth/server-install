@@ -12,11 +12,8 @@
     foot
   ];
 
-  programs.kitty.enable = true;
-  wayland.windowManager.hyprland.enable = true;
-
   imports = [
-    ./settings/default.nix
+    ./hyprland/default.nix
     ./waybar.nix
   ];
 }
