@@ -36,7 +36,7 @@
             ./home.nix
             {
               wayland.windowManager.hyprland.plugins = [
-                split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+                split-monitor-workspaces.packages.${system}.split-monitor-workspaces
               ];
             }
           ];
