@@ -13,9 +13,9 @@ export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=Hyprland
 
 # Execute Hyprland
-if [ -f "$HOME/.nix-profile/bin/hyprland" ]; then
-   echo "Launching $HOME/.nix-profile/bin/hyprland"
-   exec $HOME/.nix-profile/bin/hyprland >/dev/null 2>&1
+if [ -f "$HOME/.nix-profile/bin/start-hyprland" ]; then
+   echo "Launching $HOME/.nix-profile/bin/start-hyprland"
+   exec $HOME/.nix-profile/bin/start-hyprland >/dev/null 2>&1
 elif [ -f /usr/bin/Hyprland ]; then
    echo "Launching /usr/bin/Hyprland"
    exec /usr/bin/Hyprland >/dev/null 2>&1
