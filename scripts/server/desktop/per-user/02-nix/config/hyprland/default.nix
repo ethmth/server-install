@@ -12,6 +12,7 @@
     ./binds.nix
     ./input.nix
     ./general.nix
+    ./windowrules.nix
   ];
 }
 

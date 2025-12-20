@@ -4,6 +4,13 @@
       "$mainMod,mouse:272,movewindow"
       "$mainMod,mouse:273,resizewindow"
     ];
+  wayland.windowManager.hyprland.settings.bindel = [
+    ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+    ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+  ];
+  wayland.windowManager.hyprland.settings.bindl = [
+    ",XF86AudioMute,exec,wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  ];
   wayland.windowManager.hyprland.settings.bind =
     [
       # App Binds
