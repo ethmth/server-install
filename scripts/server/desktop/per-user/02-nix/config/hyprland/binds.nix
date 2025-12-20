@@ -1,4 +1,9 @@
 {
+  wayland.windowManager.hyprland.settings.bindm =
+    [
+      "$mainMod,mouse:272,movewindow"
+      "$mainMod,mouse:273,resizewindow"
+    ];
   wayland.windowManager.hyprland.settings.bind =
     [
       # App Binds
@@ -44,6 +49,14 @@
       "$mainMod CTRL,L,resizeactive,40 0"
       "$mainMod CTRL,K,resizeactive,0 -40"
       "$mainMod CTRL,J,resizeactive,0 40"
+
+      # Mouse Window Actions
+      "$mainMod,mouse_down,workspace,e+1"
+      "$mainMod,mouse_up,workspace,e-1"
+
+      # Workspace Switching
+      "$mainMod ALT,up,workspace,e+1"
+      "$mainMod ALT,down,workspace,e-1"
     ]
     ++ builtins.concatLists (
       builtins.genList (i:
