@@ -16,6 +16,7 @@
   ];
 
   imports = [
+    ./systemd.nix
     ./hyprland/default.nix
     ./fuzzel/default.nix
     ./wlogout/default.nix

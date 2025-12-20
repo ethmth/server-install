@@ -25,10 +25,10 @@
   # Configure systemd user environment for xdg-desktop-portal
   # This ensures systemd can find the portal service files from Nix
   # Using drop-in directory to avoid overwriting entire user.conf
-  xdg.configFile."systemd/user.conf".text = ''
-    [Manager]
-    ManagerEnvironment="XDG_DATA_DIRS=/usr/local/share:/usr/share:${config.home.homeDirectory}/.nix-profile/share"
-  '';
+  # xdg.configFile."systemd/user.conf".text = ''
+  #   [Manager]
+  #   ManagerEnvironment="XDG_DATA_DIRS=/usr/local/share:/usr/share:${config.home.homeDirectory}/.nix-profile/share"
+  # '';
 
   home.pointerCursor = {
     gtk.enable = true;
