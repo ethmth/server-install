@@ -6,7 +6,6 @@
       gaps_in = 5;
       gaps_out = 5;
       border_size = 1;
-      no_border_on_floating = true;
       layout = "dwindle";
     };
 

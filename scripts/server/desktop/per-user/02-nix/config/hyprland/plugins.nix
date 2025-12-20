@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  wayland.windowManager.hyprland.settings.plugins = {
+  wayland.windowManager.hyprland.settings.plugin = {
     "split-monitor-workspaces" = {
       count = 10;
       keep_focused = 0;
