@@ -4,9 +4,9 @@
   #imports = [
   #  pam_shim.homeManagerModules.default
   #];
-  #pamShim.enable = true;
+  pamShim.enable = true;
 
-  #programs.hyprlock.package = config.lib.pamShim.replacePam pkgs.hyprlock;
+  programs.hyprlock.package = config.lib.pamShim.replacePam pkgs.hyprlock;
 
   programs.hyprlock = {
     enable = true;
