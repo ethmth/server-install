@@ -9,6 +9,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 flatpaks="
 com.github.tchx84.Flatseal
+com.obsproject.Studio
 com.brave.Browser
 io.gitlab.librewolf-community
 net.mullvad.MullvadBrowser
