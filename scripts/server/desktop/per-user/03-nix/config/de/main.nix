@@ -12,6 +12,7 @@
 
   imports = [
     ./hyprland/default.nix
+    ./awesome/awesome.nix  # AwesomeWM configuration
     ./fuzzel/default.nix
     ./wlogout/default.nix
     ./foot/default.nix

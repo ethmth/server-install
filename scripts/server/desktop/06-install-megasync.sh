@@ -24,3 +24,6 @@ EOF
 # Update and install
 apt update
 apt install megasync thunar-megasync megacmd
+
+
+echo "To login to Megasync, you will probably have to use the Awesome WM (awesome)"
