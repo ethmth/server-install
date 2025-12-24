@@ -8,6 +8,7 @@ fi
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 flatpaks="
+com.vscodium.codium
 com.github.tchx84.Flatseal
 com.obsproject.Studio
 com.brave.Browser

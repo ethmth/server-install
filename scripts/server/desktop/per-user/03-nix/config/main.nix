@@ -18,5 +18,6 @@
   imports = [
     ./systemd.nix
     ./de/main.nix
+    ./thunar.nix
   ];
 }
