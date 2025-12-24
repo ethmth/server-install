@@ -14,25 +14,19 @@ in
     "XDG_DATA_DIRS" = "${nixProfileDir}:$XDG_DATA_DIRS";
   };
 
-
-  # systemd.user.tmpfiles.rules =
-  #   map (dir: "d ${dir} 0700 - - -")
-  #     (builtins.attrNames ramDirs);
-
-  systemd.user.mounts =
-    builtins.listToAttrs
-      (map (dir: {
-        name = builtins.replaceStrings [ "/" "-" ] [ "-" "\\x2d" ] (builtins.substring 1 (builtins.stringLength dir) dir);
-        value = {
-          Unit.Description = "Ephemeral runtime directory for ${dir}";
-          Mount = {
-            What = "%t${dir}";
-            Where = dir;
-            Type = "bind";
-            Options = "rbind,rw";
-          };
-          Install.WantedBy = [ "default.target" ];
-        };
-      }) (builtins.attrNames ramDirs));
+  # create systemd user services to symlink ephemeral directories
+  systemd.user.services = builtins.listToAttrs
+    (map (dir: {
+      name = "ephemeral-" + builtins.replaceStrings [ "/" "-" ] [ "-" "\\x2d" ] (builtins.substring 1 (builtins.stringLength dir) dir);
+      value = {
+        Service.Description = "Symlink ephemeral runtime directory for ${dir}";
+        Service.Type = "oneshot";
+        Service.ExecStart = ''
+          ${pkgs.bash}/bin/bash -c 'rm -rf "${dir}"; mkdir -p "$XDG_RUNTIME_DIR/ephemeral${dir}"; ln -s "$XDG_RUNTIME_DIR/ephemeral${dir}" "${dir}"'
+        '';
+        Service.RemainAfterExit = true;
+        Install.WantedBy = [ "default.target" ];
+      };
+    }) (builtins.attrNames ramDirs));
 }
 
