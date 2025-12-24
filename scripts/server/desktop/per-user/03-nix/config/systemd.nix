@@ -15,21 +15,21 @@ in
   };
 
 
-  systemd.user.tmpfiles.rules =
-    map (dir: "d ${dir} 0700 - - -")
-      (builtins.attrNames ramDirs);
+  # systemd.user.tmpfiles.rules =
+  #   map (dir: "d ${dir} 0700 - - -")
+  #     (builtins.attrNames ramDirs);
 
   systemd.user.mounts =
     builtins.listToAttrs
       (map (dir: {
         name = builtins.replaceStrings [ "/" "-" ] [ "-" "\\x2d" ] (builtins.substring 1 (builtins.stringLength dir) dir);
         value = {
-          Unit.Description = "Tmpfs mount for ${dir}";
+          Unit.Description = "Ephemeral runtime directory for ${dir}";
           Mount = {
-            What = "tmpfs";
+            What = "%t${dir}";
             Where = dir;
-            Type = "tmpfs";
-            Options = "mode=0700,size=${ramDirs.${dir}}";
+            Type = "bind";
+            Options = "rbind,rw";
           };
           Install.WantedBy = [ "default.target" ];
         };
