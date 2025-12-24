@@ -1,8 +1,8 @@
 { ... }:
 
 {
-  wayland.windowManager.hyprland.settings.windowrule = [
-    # "float, class:file_progress"
+  wayland.windowManager.hyprland.settings.windowrulev2 = [
+    "stayfocused, title:MEGAsync"
   ];
 }
 

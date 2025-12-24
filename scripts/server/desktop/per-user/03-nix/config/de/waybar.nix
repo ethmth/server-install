@@ -81,6 +81,7 @@ in
             "" "" "" "" ""
             "" "" "" "" "" ""
           ];
+          swap-icon-label = false;
         };
 
         pulseaudio = {
@@ -123,6 +124,7 @@ in
           tooltip-format-ethernet = "{ifname} ";
           tooltip-format-disconnected = "Disconnected";
           max-length = 50;
+          swap-icon-label = false;
         };
 
         "custom/nmvpn" = {
@@ -144,48 +146,60 @@ in
         border: none;
         border-radius: 0;
         font-family: Cartograph CF Nerd Font, monospace;
-        font-weight: bold;
-        font-size: 15px;
+        font-weight: 500;
+        font-size: 14px;
         min-height: 0;
       }
 
       window#waybar {
-        background: rgba(21, 18, 27, 0);
-        color: #cdd6f4;
+        background: rgba(0, 0, 0, 0);
+        color: #e4e4e7;
       }
 
       tooltip {
-        background: #1e1e2e;
-        border-radius: 10px;
-        border: 2px solid #11111b;
+        background: rgba(15, 15, 20, 0.95);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      }
+
+      #workspaces {
+        background: rgba(20, 20, 30, 0.85);
+        border-radius: 16px;
+        margin: 8px 0 8px 12px;
+        padding: 4px 8px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       }
 
       #workspaces button {
-        padding: 5px;
-        color: #313244;
-        margin-right: 5px;
+        padding: 6px 12px;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0 2px;
+        border-radius: 10px;
+        transition: all 0.2s ease;
       }
 
       #workspaces button.active {
-        color: #a6adc8;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.15);
       }
 
       #workspaces button.focused {
-        color: #a6adc8;
-        background: #eba0ac;
-        border-radius: 10px;
+        color: #ffffff;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8));
+        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
       }
 
       #workspaces button.urgent {
-        color: #11111b;
-        background: #a6e3a1;
-        border-radius: 10px;
+        color: #ffffff;
+        background: linear-gradient(135deg, rgba(239, 68, 68, 0.8), rgba(220, 38, 38, 0.8));
       }
 
       #workspaces button:hover {
-        background: #11111b;
-        color: #cdd6f4;
-        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
       }
 
       #custom-nmvpn,
@@ -198,69 +212,104 @@ in
       #battery,
       #pulseaudio,
       #network,
-      #workspaces,
       #tray,
       #backlight {
-        background: #1e1e2e;
-        padding: 0 10px;
-        margin-top: 10px;
-        border-radius: 10px 0 0 10px;
-        border: 1px solid #181825;
-        border-right: 0;
+        background: rgba(20, 20, 30, 0.85);
+        padding: 8px 16px;
+        margin: 8px 2px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease;
+      }
+
+      #custom-nmvpn:hover,
+      #custom-language:hover,
+      #custom-updates:hover,
+      #battery:hover,
+      #pulseaudio:hover,
+      #network:hover,
+      #backlight:hover {
+        background: rgba(20, 20, 30, 0.8);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       }
 
       #tray {
-        border-radius: 10px;
-        margin-right: 10px;
-      }
-
-      #workspaces {
-        border-radius: 10px;
-        margin-left: 10px;
-        padding-left: 5px;
-        padding-right: 0;
+        border-radius: 12px;
+        margin-right: 12px;
+        padding: 8px 12px;
       }
 
       #window {
-        border-radius: 10px;
-        margin: 0 60px;
+        border-radius: 12px;
+        margin: 8px 60px;
+        padding: 8px 20px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.9);
       }
 
       #clock {
-        color: #fab387;
-        border-radius: 10px;
-        margin-left: 5px;
+        color: #fbbf24;
+        font-weight: 600;
+        border-radius: 12px;
+        margin-left: 8px;
+        padding: 8px 18px;
       }
 
       #network {
-        color: #f9e2af;
+        color: #34d399;
+        font-weight: 500;
       }
 
       #pulseaudio {
-        color: #89b4fa;
-        border-left: 0;
-        border-right: 0;
+        color: #60a5fa;
+        font-weight: 500;
       }
 
       #pulseaudio.microphone {
-        color: #cba6f7;
-        border-radius: 0 10px 10px 0;
-        margin-right: 5px;
+        color: #a78bfa;
+        border-radius: 12px;
+        margin-right: 8px;
       }
 
       #battery {
-        color: #a6e3a1;
-        border-radius: 0 10px 10px 0;
-        margin-right: 10px;
-        border-left: 0;
+        color: #4ade80;
+        border-radius: 12px;
+        margin-right: 12px;
+        font-weight: 500;
+      }
+
+      #battery.warning {
+        color: #fbbf24;
+      }
+
+      #battery.critical {
+        color: #f87171;
+      }
+
+      #backlight {
+        color: #fbbf24;
+        font-weight: 500;
+      }
+
+      #custom-nmvpn {
+        font-weight: 500;
+      }
+
+      #custom-nmvpn.connected {
+        color: #4ade80;
       }
 
       #custom-nmvpn.disconnected {
-        background-color: rgba(245, 60, 60, 0.8);
+        background: rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+        border-color: rgba(239, 68, 68, 0.4);
       }
 
       #custom-nmvpn.error {
-        background-color: rgba(235, 77, 75, 0.8);
+        background: rgba(220, 38, 38, 0.3);
+        color: #f87171;
+        border-color: rgba(220, 38, 38, 0.4);
       }
     '';
   };
