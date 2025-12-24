@@ -1,8 +1,9 @@
 { ... }:
 
 {
-  wayland.windowManager.hyprland.settings.windowrulev2 = [
-    "stayfocused, title:MEGAsync"
+  wayland.windowManager.hyprland.settings.windowrule = [
+    "match:title MEGAsync, stay_focused on"
+    "match:title MEGAsync, float on"
   ];
 }
 
