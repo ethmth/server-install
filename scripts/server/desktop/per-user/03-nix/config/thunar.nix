@@ -24,5 +24,8 @@
   #         xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
   #   ></xbel>
   # '';
-}
 
+  home.file.".local/share/recently-used.xbel/.keep" = {
+    text = "";
+  };
+}

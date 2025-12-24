@@ -3,8 +3,7 @@
 let
   nixProfileDir = "${config.home.homeDirectory}/.nix-profile/share";
   ramDirs = {
-    "${config.home.homeDirectory}/.cache/thumbnails" = "512M";
-    "${config.home.homeDirectory}/.local/share/recently-used.xbel" = "1M"; # make this a directory to essentially disable it.
+    "${config.home.homeDirectory}/.cache/thumbnails" = true; # unused value
   };
 in
 {
