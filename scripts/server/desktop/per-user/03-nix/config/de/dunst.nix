@@ -13,15 +13,15 @@
       offset = "10x10";
       notification_height = 0;
       separator_height = 2;
-      padding = 8;
-      horizontal_padding = 8;
-      text_icon_padding = 0;
-      frame_width = 2;
-      frame_color = "#89B4FA";
+      padding = 6;
+      horizontal_padding = 14;
+      text_icon_padding = 8;
+      frame_width = 1;
+      frame_color = "#FFFFFF14";
       separator_color = "frame";
       sort = true;
       idle_threshold = 120;
-      font = "monospace 10";
+      font = "Cascadia Code";
       line_height = 0;
       markup = "full";
       alignment = "left";
@@ -35,25 +35,27 @@
       max_icon_size = 64;
       title = "Dunst";
       class = "Dunst";
-      corner_radius = 10;
+      corner_radius = 12;
       timeout = 5;
     };
 
     # Urgency-specific settings
     urgency_low = {
-      background = "#1E1E2E";
-      foreground = "#CDD6F4";
+      background = "#14141E";
+      foreground = "#E4E4E7";
+      frame_color = "#FFFFFF14";
     };
 
     urgency_normal = {
-      background = "#1E1E2E";
-      foreground = "#CDD6F4";
+      background = "#14141E";
+      foreground = "#E4E4E7";
+      frame_color = "#6366F1";
     };
 
     urgency_critical = {
-      background = "#1E1E2E";
-      foreground = "#CDD6F4";
-      frame_color = "#FAB387";
+      background = "#DC2626";
+      foreground = "#F87171";
+      frame_color = "#DC2626";
     };
   };
 }
