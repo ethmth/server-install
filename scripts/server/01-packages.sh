@@ -101,6 +101,7 @@ libavcodec-extra
 gstreamer1.0-libav
 whois
 openvpn
+wireguard
 unzip
 xvfb
 doxygen
