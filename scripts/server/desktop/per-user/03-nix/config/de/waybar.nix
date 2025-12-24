@@ -235,48 +235,35 @@ in
       }
 
       #tray {
-        border-radius: 12px;
-        margin-right: 12px;
-        padding: 6px 10px;
+        margin-right: 24px;
       }
 
       #window {
-        border-radius: 12px;
         margin: 8px 60px;
-        padding: 6px 18px;
-        font-weight: 400;
         color: rgba(255, 255, 255, 0.9);
       }
 
       #clock {
         color: #fbbf24;
-        font-weight: 600;
-        border-radius: 12px;
-        margin-left: 8px;
-        padding: 6px 16px;
+        margin-left: 16px;
       }
 
       #network {
         color: #34d399;
-        font-weight: 500;
       }
 
       #pulseaudio {
         color: #60a5fa;
-        font-weight: 500;
       }
 
       #pulseaudio.microphone {
         color: #a78bfa;
-        border-radius: 12px;
-        margin-right: 8px;
+        margin-right: 16px;
       }
 
       #battery {
         color: #4ade80;
-        border-radius: 12px;
         margin-right: 12px;
-        font-weight: 500;
       }
 
       #battery.warning {
@@ -289,11 +276,6 @@ in
 
       #backlight {
         color: #fbbf24;
-        font-weight: 500;
-      }
-
-      #custom-nmvpn {
-        font-weight: 500;
       }
 
       #custom-nmvpn.connected {
