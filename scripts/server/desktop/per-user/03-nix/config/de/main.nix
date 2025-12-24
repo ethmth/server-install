@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     foot
     fuzzel
@@ -8,6 +10,7 @@
     hyprpaper
     grimblast
     hyprpicker
+    cascadia-code
   ];
 
   imports = [

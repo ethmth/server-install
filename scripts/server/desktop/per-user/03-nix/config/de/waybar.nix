@@ -49,7 +49,7 @@ in
         };
 
         tray = {
-          icon-size = 13;
+          icon-size = 18;
           spacing = 10;
         };
 
@@ -145,9 +145,9 @@ in
       * {
         border: none;
         border-radius: 0;
-        font-family: Cartograph CF Nerd Font, monospace;
-        font-weight: 500;
-        font-size: 14px;
+        font-family: Cascadia Code, monospace;
+        font-weight: 600;
+        font-size: 15px;
         min-height: 0;
       }
 
@@ -168,13 +168,13 @@ in
         background: rgba(20, 20, 30, 0.85);
         border-radius: 16px;
         margin: 8px 0 8px 12px;
-        padding: 4px 8px;
+        padding: 3px 6px;
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       }
 
       #workspaces button {
-        padding: 6px 12px;
+        padding: 5px 10px;
         color: rgba(255, 255, 255, 0.5);
         margin: 0 2px;
         border-radius: 10px;
@@ -215,7 +215,7 @@ in
       #tray,
       #backlight {
         background: rgba(20, 20, 30, 0.85);
-        padding: 8px 16px;
+        padding: 6px 14px;
         margin: 8px 2px;
         border-radius: 12px;
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -237,13 +237,13 @@ in
       #tray {
         border-radius: 12px;
         margin-right: 12px;
-        padding: 8px 12px;
+        padding: 6px 10px;
       }
 
       #window {
         border-radius: 12px;
         margin: 8px 60px;
-        padding: 8px 20px;
+        padding: 6px 18px;
         font-weight: 400;
         color: rgba(255, 255, 255, 0.9);
       }
@@ -253,7 +253,7 @@ in
         font-weight: 600;
         border-radius: 12px;
         margin-left: 8px;
-        padding: 8px 18px;
+        padding: 6px 16px;
       }
 
       #network {
