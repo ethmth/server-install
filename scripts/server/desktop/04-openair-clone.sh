@@ -5,7 +5,14 @@ if ! [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
-git clone https://github.com/ethmth/openair-vpn.git $HOME/openair-vpn
+git clone https://github.com/ethmth/openair-vpn.git "$HOME/openair-vpn"
+
+cp "$HOME/openair-vpn/vars/vars.conf.example" "$HOME/openair-vpn/vars/vars.conf"
+cp "$HOME/openair-vpn/vars/install_location.conf.example" "$HOME/openair-vpn/vars/install_location.conf"
+
+sed -i "s|/home/me|$HOME|g" "$HOME/openair-vpn/vars/vars.conf"
+
+mkdir -p "$HOME/.vpn"
 
 echo "Navigate to https://airvpn.org/generator/ and download AirVPN.zip into ~/.vpn/"
 echo "Select Linux, OpenVPN TCP 443, Single Server (Invert Selection to Select All) "
