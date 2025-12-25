@@ -24,6 +24,7 @@ chmod 755 "$HOME/.local/bin/wrappedhl"
 
 #systemctl --user enable wrappedhl.service
 
+touch "$HOME/.bash_profile"
 if ! ( cat "$HOME/.bash_profile" | grep -q 'wrappedhl' ); then
 echo 'if [ -z "${WAYLAND_DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     exec $HOME/.local/bin/wrappedhl

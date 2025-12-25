@@ -5,10 +5,10 @@ if ! [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-# nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-# nix-channel --update
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
 
-# nix-shell '<home-manager>' -A install
+nix-shell '<home-manager>' -A install
 
 touch "$HOME/.profile"
 if ! ( cat "$HOME/.profile" | grep -q '. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"' ); then

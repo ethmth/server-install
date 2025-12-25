@@ -10,6 +10,8 @@ if ! [ -f "flake.nix" ]; then
 	exit 1
 fi
 
+mkdir -p "$HOME/.config/home-manager"
+
 cp "flake.nix" "$HOME/.config/home-manager/flake.nix"
 
 echo "Copied flake.nix to $HOME/.config/home-manager/flake.nix"
