@@ -29,6 +29,7 @@ fi
 # Pin-Priority: 600" > /etc/apt/preferences.d/firmware-realtek_nonfree
 
 packages="
+psmisc
 linux-headers-amd64
 wl-clipboard
 libnotify-bin
