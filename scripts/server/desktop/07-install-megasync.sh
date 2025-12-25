@@ -7,7 +7,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Add Mega's GPG key
-curl -fsSL https://mega.nz/keys/MEGA_signing.key | gpg --dearmor | tee /etc/apt/keyrings/meganz-archive-keyring.gpg > /dev/null
+curl -fsSL https://mega.nz/keys/MEGA_signing.key | gpg --dearmor | tee /usr/share/keyrings/meganz-archive-keyring.gpg > /dev/null
 
 # # Add the repository to Apt sources:
 # tee /etc/apt/sources.list.d/meganz.sources <<EOF
