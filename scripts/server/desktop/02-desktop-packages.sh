@@ -8,6 +8,7 @@ fi
 packages="
 steam-devices
 devede
+brasero
 vlc
 "
 
