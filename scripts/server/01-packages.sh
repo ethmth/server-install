@@ -28,8 +28,8 @@ fi
 # Pin: release o=Debian,a=stable,l=Debian,c=non-free
 # Pin-Priority: 600" > /etc/apt/preferences.d/firmware-realtek_nonfree
 
-# linux-headers-amd64
 packages="
+linux-headers-amd64
 wl-clipboard
 libnotify-bin
 thunar
@@ -139,6 +139,7 @@ nvidia-driver
 nvidia-detect
 nvidia-smi
 nvidia-settings
+nvidia-kernel-dkms
 "
 fi
 

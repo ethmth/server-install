@@ -7,6 +7,7 @@ fi
 
 packages="
 steam-devices
+devede
 "
 
 packages=${packages//$'\n'/ }
