@@ -29,6 +29,8 @@ fi
 # Pin-Priority: 600" > /etc/apt/preferences.d/firmware-realtek_nonfree
 
 packages="
+xinit
+xserver-xorg
 psmisc
 linux-headers-amd64
 wl-clipboard
