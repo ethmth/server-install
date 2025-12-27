@@ -11,6 +11,7 @@ devede
 brasero
 vlc
 wireplumber
+polkit-kde-agent-1
 "
 
 packages=${packages//$'\n'/ }
