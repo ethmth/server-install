@@ -20,5 +20,6 @@
     ./de/main.nix
     ./thunar.nix
     ./sshclient.nix
+    ./bin/bin.nix
   ];
 }
