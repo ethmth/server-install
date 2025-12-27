@@ -11,6 +11,7 @@ devede
 brasero
 vlc
 wlsunset
+wireplumber
 "
 
 packages=${packages//$'\n'/ }
