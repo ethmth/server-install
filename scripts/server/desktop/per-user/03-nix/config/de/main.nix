@@ -3,6 +3,8 @@
 {
   fonts.fontconfig.enable = true;
 
+  services.hyprpolkitagent.enable = true;
+
   home.packages = with pkgs; [
     foot
     fuzzel
@@ -12,7 +14,6 @@
     hyprpicker
     cascadia-code
     hyprcursor
-    hyprpolkitagent
     hyprsunset
   ];
 
