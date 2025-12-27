@@ -11,6 +11,9 @@
     grimblast
     hyprpicker
     cascadia-code
+    hyprcursor
+    hyprpolkitagent
+    hyprsunset
   ];
 
   imports = [

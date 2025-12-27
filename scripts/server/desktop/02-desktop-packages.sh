@@ -10,7 +10,6 @@ steam-devices
 devede
 brasero
 vlc
-wlsunset
 wireplumber
 "
 

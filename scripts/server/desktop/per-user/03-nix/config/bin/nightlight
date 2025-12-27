@@ -3,11 +3,10 @@
 ON_TEMP="3000"
 TEMP=$ON_TEMP
 
-killall wlsunset
+killall hyprsunset
 
 if [[ "$1" == "off" ]]; then
 	exit 0
 fi
 
-wlsunset -S 04:59 -s 05:00 -t $((TEMP - 1)) -T $((TEMP)) > /dev/null 2>&1 &
-echo "wlsunset -S 04:59 -s 05:00 -t $((TEMP - 1)) -T $((TEMP))"
+hyprsunset -t $((TEMP)) > /dev/null 2>&1 &
