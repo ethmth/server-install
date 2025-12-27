@@ -10,7 +10,7 @@ steam-devices
 devede
 brasero
 vlc
-gammastep
+wlsunset
 "
 
 packages=${packages//$'\n'/ }
