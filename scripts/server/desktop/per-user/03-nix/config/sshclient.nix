@@ -19,6 +19,10 @@
         hostname = "192.168.0.85";
         proxyJump = "e-lenovo";
       };
+      "e-mini-local" = {
+        user = "e";
+        hostname = "192.168.0.95";
+      };
     };
   };
 }
