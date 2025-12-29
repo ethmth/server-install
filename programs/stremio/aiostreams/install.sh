@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CONTAINER_NAME="stremio"
+CONTAINER_NAME="aiostreams"
 
 VOLUMES="
 aio-data
