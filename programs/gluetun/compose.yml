@@ -26,5 +26,7 @@ services:
     container_name: gluetun-socks5
     depends_on:
       - gluetun
+    environment:
+      - REQUIRE_AUTH=false
     network_mode: "service:gluetun"
     restart: unless-stopped
