@@ -22,7 +22,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 CUR_USER=$(whoami)
-LOC="/opt"
+LOC="/opt/docker"
 
 read -p "Please enter your domain (or subdomain): " input_domain
 if [ "$input_domain" == "" ]; then
