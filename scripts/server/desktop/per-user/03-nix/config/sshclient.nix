@@ -21,7 +21,7 @@
       };
       "e-mini-local" = {
         user = "e";
-        hostname = "192.168.0.95";
+        hostname = "192.168.0.90";
       };
     };
   };
