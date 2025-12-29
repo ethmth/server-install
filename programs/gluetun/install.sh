@@ -7,7 +7,7 @@ VOLUMES="
 
 FILES="
 wg0.conf
-docker-compose.yml
+compose.yml
 "
 
 if ! [[ $EUID -ne 0 ]]; then
