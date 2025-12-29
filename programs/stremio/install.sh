@@ -31,6 +31,10 @@ for vol in $VOLUMES; do
     chmod -R 777 $LOC/$CONTAINER_NAME/$vol
 done
 
+
 echo "Installed $CONTAINER_NAME to $LOC"
 echo "Run 'docker compose up --build -d' to run"
 echo "cd $LOC/$CONTAINER_NAME"
+
+echo "Set aiostreams BASE_URL, ADDON_PASSWORD, SECRET_KEY (openssl rand -hex 32) in compose.yml"
+echo "Set mediaflow-proxy API_PASSWORD in compose.yml"
