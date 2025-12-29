@@ -1,51 +1,38 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 CONTAINER_NAME="gluetun"
 
+VOLUMES="
+"
+
+FILES="
+wg0.conf
+docker-compose.yml
+"
+
 if ! [[ $EUID -ne 0 ]]; then
-	echo "This script should not be run with root/sudo privileges."
-	exit 1
+    echo "This script should not be run with root/sudo privileges."
+    exit 1
 fi
 
-CUR_USER=$(whoami)
+LOC="$HOME/docker"
+mkdir -p "$LOC/$CONTAINER_NAME"
 
-mkdir -p /home/$CUR_USER/programs/$CONTAINER_NAME
+for file in $FILES; do
+    if [ -d "$file" ]; then
+        cp -r $file $LOC/$CONTAINER_NAME/
+    elif [ -f "$file" ]; then
+        cp $file $LOC/$CONTAINER_NAME/$file
+    fi
+done
 
-if ! [ -e "../$CONTAINER_NAME/docker-compose.yml" ]; then
-	echo "Make sure you run this script in the same directory as ../$CONTAINER_NAME/docker-compose.yaml"
-	exit 1
-fi
+for vol in $VOLUMES; do
+    mkdir -p $LOC/$CONTAINER_NAME/$vol
+    chmod -R 777 $LOC/$CONTAINER_NAME/$vol
+done
 
-PROVIDER=$(cat providers.txt | fzf --prompt="Select your vpn provider")
+echo "Update/copy wg0.conf in/to installed directory. Replace domain name with IP address"
 
-if [ "$PROVIDER" == "" ]; then
-	echo "No provider selected"
-	exit 1
-fi
-
-if [ "$PROVIDER" == "protonvpn" ]; then
-echo "For protonvpn, find your username/password here:"
-echo "https://account.proton.me/u/0/vpn/OpenVpnIKEv2"
-fi
-
-if [ "$PROVIDER" != "custom" ]; then
-read -p "Please enter your username (will be echoed): " username
-echo -n "Please enter your password (will be stored): "
-read -s password
-echo
-fi
-
-cp docker-compose.yml /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
-
-if [ -f "wg0.conf" ]; then
-cp wg0.conf /home/$CUR_USER/programs/$CONTAINER_NAME/wg0.conf
-fi
-
-sed -i "s/SERVICE_PROVIDER_HERE/$PROVIDER/g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
-# sed -i "s|PATH_HERE|/home/$CUR_USER/programs/$CONTAINER_NAME|g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
-sed -i "s/OVPN_USER_HERE/$username/g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
-sed -i "s/OVPN_PASSWORD_HERE/$password/g" /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yaml
-
-echo "Installed $CONTAINER_NAME to /home/$CUR_USER/programs"
-
-echo "NOTE: If your password has Special characters, it may not be set correctly. Edit /home/$CUR_USER/programs/$CONTAINER_NAME/docker-compose.yml to fix it"
+echo "Installed $CONTAINER_NAME to $LOC"
+echo "Run 'docker compose up --build -d' to run"
+echo "cd $LOC/$CONTAINER_NAME"
