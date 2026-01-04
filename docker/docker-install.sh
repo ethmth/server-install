@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Configuration constant: set to 1 to enable location confirmation, 0 to disable
+location_confirm=0
+
 # Check if argument is provided
 if [ $# -eq 0 ]; then
     echo "Error: No install.yml file provided"
@@ -88,17 +91,22 @@ while true; do
         exit 1
     fi
     
-    # Confirm location with user
-    echo "Installation location: $LOC"
-    read -p "Is this correct? (Y/n): " confirm
-    
-    # If user confirms (Y, y, or Enter), break the loop
-    if [[ "$confirm" =~ ^[Yy]$ ]] || [ -z "$confirm" ]; then
+    # Confirm location with user if location_confirm is enabled
+    if [ "$location_confirm" -eq 1 ]; then
+        echo "Installation location: $LOC"
+        read -p "Is this correct? (Y/n): " confirm
+        
+        # If user confirms (Y, y, or Enter), break the loop
+        if [[ "$confirm" =~ ^[Yy]$ ]] || [ -z "$confirm" ]; then
+            break
+        fi
+        
+        # If user says no, clear location to force reselection
+        location=""
+    else
+        # Skip confirmation, break the loop
         break
     fi
-    
-    # If user says no, clear location to force reselection
-    location=""
 done
 
 
