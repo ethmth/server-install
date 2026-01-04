@@ -1,6 +1,6 @@
 services:
   cobblemon:
-    image: itzg/minecraft-server:java17
+    image: itzg/minecraft-server:java21
     container_name: cobblemon
     tty: true
     stdin_open: true
