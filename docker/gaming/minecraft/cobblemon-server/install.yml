@@ -1,10 +1,14 @@
 install:
   name: cobblemon
+  location: $HOME
+  root: false
+  my-docker-program: true
   volumes:
   - data
   - downloads
   files:
   - compose.yml
+  - test.txt
   messages:
   - "Cobblemon installation was successful"
   - "Now do whatever this normal script says"
