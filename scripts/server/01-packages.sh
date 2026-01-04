@@ -111,6 +111,7 @@ doxygen
 p7zip-full
 aria2
 jq
+yq
 ca-certificates
 feh
 caca-utils

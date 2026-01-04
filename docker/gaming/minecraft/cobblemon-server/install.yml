@@ -1,0 +1,14 @@
+install:
+  name: cobblemon
+  volumes:
+  - data
+  - downloads
+  files:
+  - compose.yml
+  messages:
+  - "Cobblemon installation was successful"
+  - "Now do whatever this normal script says"
+  # TODO:
+  # environment_overrides: # List the environment variables users can set when running install shell script
+  # - MEMORY
+  # - MAX_MEMORY
