@@ -23,7 +23,7 @@ echo "osc7_cwd() {
 PROMPT_COMMAND=\${PROMPT_COMMAND:+\$PROMPT_COMMAND; }osc7_cwd" >> "$HOME/.bashrc"
 fi
 
-## This should already be included in .profile/.bash_profile
-#if ! ( cat "$HOME/.bashrc" | grep -q "PATH=\$PATH:$HOME/.local/bin" ); then
-#echo "PATH=\$PATH:$HOME/.local/bin" >> "$HOME/.bashrc"
-#fi
+# # This should already be included in .profile/.bash_profile
+# if ! ( cat "$HOME/.bashrc" | grep -q "PATH=\$PATH:$HOME/.local/bin" ); then
+# echo "PATH=\$PATH:$HOME/.local/bin" >> "$HOME/.bashrc"
+# fi
