@@ -3,6 +3,9 @@
 # Configuration constant: set to 1 to enable location confirmation, 0 to disable
 location_confirm=0
 
+# The name of the autostart flag file
+AUTOSTART_FLAG_FILE_NAME=".autostart"
+
 # Check if argument is provided
 if [ $# -eq 0 ]; then
     echo "Error: No install.yml file provided"
@@ -35,6 +38,16 @@ if [ "$my_docker_program_str" = "true" ]; then
     my_docker_program=1
 else
     my_docker_program=0
+fi
+
+# Parse the install.autostart field (defaults to false if not specified)
+autostart_str=$(yq -r '.install.autostart // false' "$install_yml" 2>/dev/null)
+
+# Convert autostart string to bash boolean (0 = false, 1 = true)
+if [ "$autostart_str" = "true" ]; then
+    autostart=1
+else
+    autostart=0
 fi
 
 # Check if root is required based on install.yml
@@ -149,6 +162,11 @@ if [ "$root" -eq 0 ] && [ "$my_docker_program" -eq 1 ]; then
     if ! ( [ -f "$HOME/.myDockerPrograms" ] && ( cat "$HOME/.myDockerPrograms" | grep -q "$LOC" ) ); then
         echo "$LOC" >> "$HOME/.myDockerPrograms"
     fi
+fi
+
+# Create autostart flag file if autostart is true
+if [ "$autostart" -eq 1 ]; then
+    touch "$LOC/$AUTOSTART_FLAG_FILE_NAME"
 fi
 
 echo "Installed $name to $LOC"
