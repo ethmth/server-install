@@ -6,6 +6,8 @@ location_confirm=0
 # The name of the autostart flag file
 AUTOSTART_FLAG_FILE_NAME=".autostart"
 
+INSTALL_SCRIPT_NAME="install.sh"
+
 # Check if argument is provided
 if [ $# -eq 0 ]; then
     echo "Error: No install.yml file provided"
@@ -130,12 +132,34 @@ mkdir -p "$LOC"
 # Get the directory where install.yml is located
 install_dir=$(dirname "$(realpath "$install_yml")")
 
+# Build VOLUMES string
+VOLUMES=""
+volumes=$(yq -r '.install.volumes[]?' "$install_yml" 2>/dev/null)
+if [ -n "$volumes" ]; then
+    while IFS= read -r vol; do
+        if [ -n "$vol" ] && [ "$vol" != "null" ]; then
+            if [ -z "$VOLUMES" ]; then
+                VOLUMES="$vol"
+            else
+                VOLUMES="$VOLUMES"$'\n'"$vol"
+            fi
+            mkdir -p "$LOC/$vol"
+            chmod -R 777 "$LOC/$vol"
+        fi
+    done <<< "$volumes"
+fi
 
-# Parse and copy files
+# Build FILES string
+FILES=""
 files=$(yq -r '.install.files[]?' "$install_yml" 2>/dev/null)
 if [ -n "$files" ]; then
     while IFS= read -r file; do
         if [ -n "$file" ] && [ "$file" != "null" ]; then
+            if [ -z "$FILES" ]; then
+                FILES="$file"
+            else
+                FILES="$FILES"$'\n'"$file"
+            fi
             source_file="$install_dir/$file"
             if [ -d "$source_file" ]; then
                 cp -r "$source_file" "$LOC/"
@@ -146,17 +170,7 @@ if [ -n "$files" ]; then
     done <<< "$files"
 fi
 
-# Parse and create volumes
-volumes=$(yq -r '.install.volumes[]?' "$install_yml" 2>/dev/null)
-if [ -n "$volumes" ]; then
-    while IFS= read -r vol; do
-        if [ -n "$vol" ] && [ "$vol" != "null" ]; then
-            mkdir -p "$LOC/$vol"
-            chmod -R 777 "$LOC/$vol"
-        fi
-    done <<< "$volumes"
-fi
-
+# DEPRECATED - use autostart instead
 # Add to .myDockerPrograms if root is false and my-docker-program is true
 if [ "$root" -eq 0 ] && [ "$my_docker_program" -eq 1 ]; then
     if ! ( [ -f "$HOME/.myDockerPrograms" ] && ( cat "$HOME/.myDockerPrograms" | grep -q "$LOC" ) ); then
@@ -167,6 +181,21 @@ fi
 # Create autostart flag file if autostart is true
 if [ "$autostart" -eq 1 ]; then
     touch "$LOC/$AUTOSTART_FLAG_FILE_NAME"
+fi
+
+# Check for and call custom install function if present
+install_script="$install_dir/$INSTALL_SCRIPT_NAME"
+if [ -f "$install_script" ]; then
+    # Source the install script
+    if source "$install_script" 2>/dev/null; then
+        # Check if install function exists
+        if declare -f install > /dev/null; then
+            # Call the install function with NAME, LOC, VOLUMES, and FILES as arguments
+            install "$name" "$LOC" "$VOLUMES" "$FILES"
+        fi
+    else
+        echo "Warning: Failed to source $INSTALL_SCRIPT_NAME from $install_dir"
+    fi
 fi
 
 echo "Installed $name to $LOC"
