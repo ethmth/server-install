@@ -134,16 +134,21 @@ network-manager-openvpn
 "
 fi
 
-read -p "Do you want to install Nvidia Drivers (y/N)? " userInput
+read -p "Do you want to install Nvidia Drivers v535 (y/N)? " userInput
 
 if ([ "$userInput" == "Y" ] || [ "$userInput" == "y" ]); then
 echo "options nvidia_drm modeset=1" > /etc/modprobe.d/options_nvidia_drm.conf
+# packages+="
+# nvidia-driver
+# nvidia-detect
+# nvidia-smi
+# nvidia-settings
+# nvidia-kernel-dkms
+# "
 packages+="
-nvidia-driver
-nvidia-detect
-nvidia-smi
-nvidia-settings
-nvidia-kernel-dkms
+nvidia-tesla-535-driver
+nvidia-tesla-535-smi
+nvidia-tesla-535-kernel-dkms
 "
 fi
 

@@ -6,7 +6,8 @@ if ! [[ $EUID -ne 0 ]]; then
 fi
 
 ARCH="x86_64"
-DRIVER_VERSION=$(nvidia-smi --version | grep "DRIVER" | cut -d ':' -f2 | xargs)
+#DRIVER_VERSION=$(nvidia-smi --version | grep "DRIVER" | cut -d ':' -f2 | xargs)
+DRIVER_VERSION=$(nvidia-smi | grep -oP "Driver Version: \K.*" | xargs | cut -d' ' -f1 | xargs)
 
 if ! [[ "$DRIVER_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   echo "NVIDIA driver version not detected, doing nothing"
