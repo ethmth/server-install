@@ -1,0 +1,24 @@
+minio.YOURDOMAIN.COM {
+    # ACME challenge for SSL certificate (Let's Encrypt)
+    handle_path /.well-known/acme-challenge/* {
+        root * /var/www/certbot
+        file_server
+    }
+
+    # Handle requests on port 9000 (S3 API)
+    reverse_proxy / http://host.docker.internal:9000 {
+        header_up Connection "Upgrade"
+        header_up Upgrade {http.request.header.Upgrade}
+        header_up Host {http.request.host}
+        header_up X-Real-IP {http.request.remote}
+        header_up X-Forwarded-For {http.request.remote}
+        header_up X-Forwarded-Proto {http.request.scheme}
+    }
+
+    # Redirect any incoming requests to /minio to port 9001 (Web UI)
+    handle_path /minio/* {
+        reverse_proxy http://host.docker.internal:9001
+    }
+
+    encode gzip
+}
