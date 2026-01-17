@@ -1,41 +1,18 @@
 services:
-  hytale-server:
-    image: eclipse-temurin:25-jdk-alpine
-    container_name: hytale-server
-    restart: no
-
-    environment:
-      - MEMORY_MIN=4G
-      - MEMORY_MAX=8G
-      - SERVER_PORT=5520
-      - TZ=America/New_York
-
-    # IMPORTANT: UDP only (QUIC protocol)
-    ports:
-      - "5520:5520/udp"
-
-    volumes:
-      - ./data/worlds:/server/worlds
-      - ./data/config:/server/config
-      - ./data/mods:/server/mods
-      - ./data/plugins:/server/plugins
-      - ./data/logs:/server/logs
-      - ./server-files:/server:ro
-
-    working_dir: /server
-
-    command: >
-      java -Xms4G -Xmx8G
-      -XX:+UseG1GC
-      -XX:+ParallelRefProcEnabled
-      -XX:MaxGCPauseMillis=200
-      -jar HytaleServer.jar
-      --assets Assets.zip
-      -b 0.0.0.0:5520
-
-    deploy:
-      resources:
-        limits:
-          memory: 10G
-        reservations:
-          memory: 6G
+    hytale:
+        image: deinfreu/hytale-server:experimental
+        container_name: hytale
+        environment:
+            SERVER_IP: "0.0.0.0"
+            SERVER_PORT: "5520"
+            PROD: "TRUE"
+            DEBUG: "FALSE"
+            TZ: "America/New_York"
+        restart: no
+        ports:
+        - "5520:5520/udp"
+        volumes:
+        - ./data:/home/container
+        # - /etc/machine-id:/etc/machine-id:ro
+        tty: true
+        stdin_open: true
