@@ -6,9 +6,9 @@ minio.YOURDOMAIN.COM {
     }
 
     # Redirect /minio/ui to /minio/ui/ (with trailing slash)
-    handle_path /minio/ui {
-        redir /minio/ui/ permanent
-    }
+    #handle_path /minio/ui {
+    #    redir /minio/ui/ permanent
+    #}
     
     # Handle requests to /minio/ui/* and proxy to port 9001 (Web UI)
     handle /minio/ui/* {
@@ -30,11 +30,11 @@ minio.YOURDOMAIN.COM {
             header_up X-NginX-Proxy "true"
         }
         
-        ## Replace base href only for this path
-        replace {
-            search "<base href="/"/>"
-            replace "<base href="/minio/ui/"/>"
-        }
+        # Replace base href only for this path
+        #replace {
+        #    search "<base href=\"/\"/>"
+        #    replace "<base href=\"/minio/ui/\"/>"
+        #}
     }
 
     # Handle requests on port 9000 (S3 API) - catch-all for everything else
