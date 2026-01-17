@@ -1,0 +1,16 @@
+install:
+  name: hytale-server
+  location: $HOME
+  root: false
+  autostart: true
+  volumes:
+  - ./data/worlds
+  - ./data/config
+  - ./data/mods
+  - ./data/plugins
+  - ./data/logs
+  - ./server-files
+  files:
+  - compose.yml
+  messages:
+  - "Add HytaleServer.jar to ./server-files"
