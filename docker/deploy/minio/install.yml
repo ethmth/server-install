@@ -1,0 +1,9 @@
+install:
+  name: minio
+  location: $HOME
+  volumes:
+  - minio_data
+  files:
+  - compose.yml
+  messages:
+  - "Set minio MINIO_ACCESS_KEY and MINIO_SECRET_KEY in compose.yml"
