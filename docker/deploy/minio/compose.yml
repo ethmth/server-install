@@ -5,7 +5,6 @@ services:
     environment:
       - MINIO_ACCESS_KEY=minio
       - MINIO_SECRET_KEY=minio123
-      - MINIO_SERVER_URL=https://minio.YOURDOMAIN.com
       - MINIO_BROWSER_REDIRECT_URL=https://minio.YOURDOMAIN.com/minio/ui/
     volumes:
       - ./minio_data:/data
