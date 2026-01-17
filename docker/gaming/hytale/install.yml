@@ -13,4 +13,4 @@ install:
   files:
   - compose.yml
   messages:
-  - "Add HytaleServer.jar to ./server-files"
+  - "Add HytaleServer.jar and Assets.zip to ./server-files"

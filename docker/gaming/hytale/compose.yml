@@ -20,7 +20,7 @@ services:
       - ./data/mods:/server/mods
       - ./data/plugins:/server/plugins
       - ./data/logs:/server/logs
-      - ./server-files/HytaleServer.jar:/server/HytaleServer.jar:ro
+      - ./server-files:/server:ro
 
     working_dir: /server
 
@@ -30,8 +30,8 @@ services:
       -XX:+ParallelRefProcEnabled
       -XX:MaxGCPauseMillis=200
       -jar HytaleServer.jar
-      --port 5520
-      nogui
+      --assets Assets.zip
+      -b 0.0.0.0:5520
 
     deploy:
       resources:
