@@ -13,6 +13,6 @@ services:
         - "5520:5520/udp"
         volumes:
         - ./data:/home/container
-        # - /etc/machine-id:/etc/machine-id:ro
+        - ./machine-id:/etc/machine-id:ro
         tty: true
         stdin_open: true
