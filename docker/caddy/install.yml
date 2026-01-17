@@ -12,5 +12,6 @@ install:
   - Caddyfile
   - caddy.d
   - html
+  - Dockerfile
   messages:
   - "You may need to docker pull caddy:latest manually"

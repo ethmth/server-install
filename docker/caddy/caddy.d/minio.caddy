@@ -5,7 +5,39 @@ minio.YOURDOMAIN.COM {
         file_server
     }
 
-    # Handle requests on port 9000 (S3 API)
+    # Redirect /minio/ui to /minio/ui/ (with trailing slash)
+    handle_path /minio/ui {
+        redir /minio/ui/ permanent
+    }
+    
+    # Handle requests to /minio/ui/* and proxy to port 9001 (Web UI)
+    handle /minio/ui/* {
+        # Strip the /minio/ui prefix and proxy to backend
+        uri strip_prefix /minio/ui
+        
+        reverse_proxy http://host.docker.internal:9001 {
+            # Forward client information
+            header_up X-Forwarded-For {http.request.remote}
+            header_up X-Real-IP {http.request.remote}
+            header_up X-Forwarded-Proto {http.request.scheme}
+            header_up Host {http.request.host}
+            
+            # WebSocket support
+            header_up Connection {http.request.header.Connection}
+            header_up Upgrade {http.request.header.Upgrade}
+            
+            # Additional proxy headers
+            header_up X-NginX-Proxy "true"
+        }
+        
+        ## Replace base href only for this path
+        replace {
+            search "<base href="/"/>"
+            replace "<base href="/minio/ui/"/>"
+        }
+    }
+
+    # Handle requests on port 9000 (S3 API) - catch-all for everything else
     reverse_proxy / http://host.docker.internal:9000 {
         header_up Connection "Upgrade"
         header_up Upgrade {http.request.header.Upgrade}
@@ -15,10 +47,5 @@ minio.YOURDOMAIN.COM {
         header_up X-Forwarded-Proto {http.request.scheme}
     }
 
-    # Redirect any incoming requests to /minio to port 9001 (Web UI)
-    handle_path /minio/* {
-        reverse_proxy http://host.docker.internal:9001
-    }
-
-    encode gzip
+    # encode gzip
 }

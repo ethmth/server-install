@@ -1,6 +1,7 @@
 install:
   name: minio
   location: $HOME
+  autostart: true
   volumes:
   - minio_data
   files:
