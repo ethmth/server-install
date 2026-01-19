@@ -3,8 +3,8 @@ services:
     image: minio/minio:latest
     container_name: minio
     environment:
-      - MINIO_ACCESS_KEY=minio
-      - MINIO_SECRET_KEY=minio123
+      - MINIO_ROOT_USER=minio
+      - MINIO_ROOT_PASSWORD=minio123
       - MINIO_BROWSER_REDIRECT_URL=https://minio.YOURDOMAIN.com/minio/ui/
     volumes:
       - ./minio_data:/data
