@@ -7,6 +7,6 @@ install:
     - ./volumes/cozy-stack/config
     - ./volumes/cozy-stack/data
   files:
-    - cozy.yml
+    # - cozy.yml
     - compose.yml
-    - .env
+    # - .env
