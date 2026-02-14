@@ -9,3 +9,4 @@ install:
   files:
     - cozy.yml
     - compose.yml
+    - .env
