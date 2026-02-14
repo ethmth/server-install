@@ -10,7 +10,7 @@ admin:
 subdomains: flat
 
 couchdb:
-  url: http://cozy:password@host.docker.internal:5984
+  url: http://admin:password@host.docker.internal
 
 fs:
   url: file:///var/lib/cozy/data

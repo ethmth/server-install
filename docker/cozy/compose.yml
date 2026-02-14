@@ -6,10 +6,8 @@ services:
     restart: no
     # env_file: .env
     environment:
-      - COUCHDB_PROTOCOL=http
-      - COUCHDB_USER=cozy
+      - COUCHDB_USER=admin
       - COUCHDB_PASSWORD=password
-      - COUCHDB_PORT=5984
     volumes:
       - ./volumes/couchdb/data:/opt/couchdb/data
     healthcheck:
@@ -18,13 +16,15 @@ services:
           "CMD",
           "curl",
           "-f",
-          "http://cozy:password@host.docker.internal:5984/_up",
+          "http://admin:password@host.docker.internal:5984/_up",
         ]
       interval: 10s
       timeout: 5s
       retries: 3
       start_period: 30s
     pids_limit: 100
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "5984:5984"
     ulimits:
@@ -37,6 +37,10 @@ services:
     pull_policy: always
     restart: no
     # env_file: .env
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
+      - COUCHDB_HOST=host.docker.internal
     depends_on:
       - couchdb
     healthcheck:
