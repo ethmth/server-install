@@ -29,6 +29,7 @@ services:
       COZY_COUCHDB_URL: http://admin:password@host.docker.internal:5984
       COZY_FS_URL: file:///var/lib/cozy
       COZY_ADMIN_PASSPHRASE: password
+      COZY_HOST_VALIDATE: false
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
