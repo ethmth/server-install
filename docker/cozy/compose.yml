@@ -1,0 +1,56 @@
+services:
+  # Database
+  couchdb:
+    image: couchdb:latest
+    container_name: cozy-couchdb
+    restart: no
+    # env_file: .env
+    environment:
+      - COUCHDB_PROTOCOL=http
+      - COUCHDB_USER=cozy
+      - COUCHDB_PASSWORD=password
+      - COUCHDB_PORT=5984
+    volumes:
+      - ./volumes/couchdb/data:/opt/couchdb/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "-f",
+          "http://cozy:password@host.docker.internal:5984/_up",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    pids_limit: 100
+    ports:
+      - "5984:5984"
+    ulimits:
+      nofile: 65536
+
+  # Cozy Stack
+  stack:
+    image: cozy/cozy-stack
+    container_name: cozy-stack
+    pull_policy: always
+    restart: no
+    # env_file: .env
+    depends_on:
+      - couchdb
+    healthcheck:
+      test: '[ "$(curl -fsSL http://localhost:8080/status | jq -r .status)" = "OK" ]'
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "0.0.0.0:8081:8080"
+      - "0.0.0.0:6060:6060"
+    volumes:
+      - ./volumes/cozy-stack/data:/var/lib/cozy/data
+      - ./volumes/cozy-stack/config:/etc/cozy/
+      - ./cozy.yml:/etc/cozy/cozy.yml

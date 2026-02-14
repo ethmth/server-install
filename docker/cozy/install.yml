@@ -1,0 +1,11 @@
+install:
+  name: cozy
+  location: $HOME
+  autostart: true
+  volumes:
+    - ./volumes/couchdb/data
+    - ./volumes/cozy-stack/config
+    - ./volumes/cozy-stack/data
+  files:
+    - cozy.yml
+    - compose.yml
