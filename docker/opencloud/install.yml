@@ -1,0 +1,11 @@
+install:
+  name: opencloud
+  location: $HOME
+  volumes:
+    - ./opencloud/opencloud-config
+    - ./opencloud/opencloud-data
+  files:
+    - compose.yml
+  messages:
+    - "Initialize opencloud (first time setup):"
+    - "docker compose --profile init run --rm opencloud-init"

@@ -75,3 +75,11 @@ docker run \
     -e OC_URL=https://192.168.50.45:9200 \
     --user root \
     opencloudeu/opencloud-rolling:latest
+
+# OC_ADMIN_USER_ID
+
+# OC_DISABLE_VERSIONING true
+
+
+# OC_HTTP_TLS_CERTIFICATE
+# OC_HTTP_TLS_ENABLED
