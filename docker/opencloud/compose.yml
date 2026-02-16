@@ -18,7 +18,7 @@ services:
     volumes:
       - ./opencloud/opencloud-config:/etc/opencloud
       - ./opencloud/opencloud-data:/var/lib/opencloud
-      - ${HOME}/Pictures:/var/lib/opencloud/storage/users/projects/space/Pictures:rw
+      - ${HOME}/Pictures:/var/lib/opencloud/storage/users/projects/space/content:rw
     environment:
       IDM_ADMIN_PASSWORD: "admin"
       OC_INSECURE: "true"

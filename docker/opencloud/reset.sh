@@ -5,8 +5,9 @@ if ! [ -f "compose.yml" ]; then
     exit 1
 fi
 
-
 docker compose down
+
+bash remove_oc_attributes_rec.sh $HOME/Pictures
 
 sudo rm -rf opencloud
 
