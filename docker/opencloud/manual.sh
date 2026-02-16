@@ -64,15 +64,15 @@ docker run \
 
 # try
 docker run \
-    --name opencloud \
+    --name opencloud-manual \
     --rm \
-    -p 0.0.0.0:9200:9200 \
+    -p 0.0.0.0:9201:9200 \
     -v $HOME/opencloud/opencloud-config:/etc/opencloud \
     -v $HOME/opencloud/opencloud-data:/var/lib/opencloud \
     -v $HOME/Pictures:/var/lib/opencloud/storage/users/projects/b9af3c0a-e04c-45c7-8f70-0e43eee96ee4/Pictures \
     -e OC_INSECURE=true \
     -e PROXY_HTTP_ADDR=0.0.0.0:9200 \
-    -e OC_URL=https://192.168.50.45:9200 \
+    -e OC_URL=https://192.168.50.45:9201 \
     --user root \
     opencloudeu/opencloud-rolling:latest
 
