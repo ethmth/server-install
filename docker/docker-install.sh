@@ -154,6 +154,7 @@ FILES=""
 files=$(yq -r '.install.files[]?' "$install_yml" 2>/dev/null)
 if [ -n "$files" ]; then
     while IFS= read -r file; do
+        eval "file=\"$file\""
         if [ -n "$file" ] && [ "$file" != "null" ]; then
             if [ -z "$FILES" ]; then
                 FILES="$file"
@@ -161,10 +162,14 @@ if [ -n "$files" ]; then
                 FILES="$FILES"$'\n'"$file"
             fi
             source_file="$install_dir/$file"
+            if [[ "$file" == /* ]]; then
+                source_file="$file"
+            fi
             if [ -d "$source_file" ]; then
                 cp -r "$source_file" "$LOC/"
             elif [ -f "$source_file" ]; then
-                cp "$source_file" "$LOC/$file"
+                base_file=$(basename "$source_file")
+                cp "$source_file" "$LOC/$base_file"
             fi
         fi
     done <<< "$files"
