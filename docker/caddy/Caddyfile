@@ -5,3 +5,4 @@
 # import /etc/caddy/caddy.d/valvopes.caddy
 # import /etc/caddy/caddy.d/aiostreams.caddy
 # import /etc/caddy/caddy.d/minio.caddy
+# import /etc/caddy/caddy.d/jellyfin.caddy
