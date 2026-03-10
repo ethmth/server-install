@@ -18,12 +18,6 @@ services:
       - /tmp/jellyfin-cache:/cache
       # Mount your media directories(s) as read-only
       - /opt/media:/media:ro
-    environment:
-      # Run as your user to avoid permission issues
-      - PUID=USER_ID_HERE
-      - PGID=GROUP_ID_HERE
-      # Set your timezone
-      - TZ=America/New_York
 
     ## FOR GPU ACCELERATION:
     user: USER_ID_HERE:GROUP_ID_HERE
@@ -31,5 +25,13 @@ services:
       - "RENDER_ID_HERE" # Change this to match your "render" host group id and remove this comment
       - "VIDEO_ID_HERE" # Change this to match your "video" host group id and remove this comment
     # devices:
-    #   # Pass through the Intel GPU render device
+    #   # Pass through the Intel GPU render device (handled by install.sh)
     #   - /dev/dri/renderD128:/dev/dri/renderD128
+
+    ## ENVIRONMENT VARIABLES:
+    environment: # Must be at the end of the file for install.sh
+      # Run as your user to avoid permission issues
+      - PUID=USER_ID_HERE
+      - PGID=GROUP_ID_HERE
+      # Set your timezone
+      - TZ=America/New_York

@@ -73,10 +73,9 @@ string_to_echo=$(echo "    deploy:
           devices:
             - capabilities: [gpu]")
         else
-string_to_echo=$(echo "    environment:
-      - ROC_ENABLE_PRE_VEGA=1  
+string_to_echo=$(echo "      - ROC_ENABLE_PRE_VEGA=1  
     devices:
-      - $DEVICE:/dev/dri/renderD128")
+      - $(realpath "$DEVICE"):/dev/dri/renderD128")
         fi
         echo "$string_to_echo" >> $LOC/compose.yml
     fi
