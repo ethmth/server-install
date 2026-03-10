@@ -14,8 +14,8 @@ services:
     volumes:
       # Jellyfin configuration and metadata
       - ./config:/config
-      # Transcoding temporary directory - use fast storage
-      - /tmp/jellyfin-cache:/cache
+      # # Transcoding temporary directory - use fast storage
+      # - /tmp/jellyfin-cache:/cache
       # Mount your media directories(s) as read-only
       - /opt/media:/media:ro
 
