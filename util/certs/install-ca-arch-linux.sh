@@ -5,10 +5,12 @@ if ! [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-if ! [ -f "$HOME/certs/internalCA.crt" ]; then
-    echo "$HOME/certs/internalCA.crt not found."
+CA_FILE="$HOME/certs/internalCA.crt"
+
+if ! [ -f "$CA_FILE" ]; then
+    echo "$CA_FILE not found."
     exit 1
 fi
 
 
-sudo trust anchor --store "$HOME/certs/internalCA.crt"
+sudo trust anchor --store "$CA_FILE"
