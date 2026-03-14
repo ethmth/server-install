@@ -165,11 +165,15 @@ if [ -n "$files" ]; then
             if [[ "$file" == /* ]]; then
                 source_file="$file"
             fi
+            base_file=$(basename "$source_file")
+            dest_file="$LOC/$base_file"
+            if [ -e "$dest_file" ]; then
+                rm -rf "$dest_file"
+            fi
             if [ -d "$source_file" ]; then
-                cp -r "$source_file" "$LOC/"
+                cp -r "$source_file" "$dest_file"
             elif [ -f "$source_file" ]; then
-                base_file=$(basename "$source_file")
-                cp "$source_file" "$LOC/$base_file"
+                cp "$source_file" "$dest_file"
             fi
         fi
     done <<< "$files"
