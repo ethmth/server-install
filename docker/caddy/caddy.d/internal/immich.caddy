@@ -1,0 +1,7 @@
+https://immich.pc.internal {
+    tls /certs/immich.pc.internal.crt /certs/immich.pc.internal.key {
+		on_demand
+	}
+
+    reverse_proxy http://host.docker.internal:2283
+}

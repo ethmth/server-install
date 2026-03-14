@@ -6,3 +6,9 @@
 # import /etc/caddy/caddy.d/aiostreams.caddy
 # import /etc/caddy/caddy.d/minio.caddy
 # import /etc/caddy/caddy.d/jellyfin.caddy
+
+
+## Local Configs
+## If you're enabling local configs, be sure to add the certs to the certs volume.
+# import /etc/caddy/caddy.d/internal/immich.caddy
+# import /etc/caddy/caddy.d/internal/dev.caddy
