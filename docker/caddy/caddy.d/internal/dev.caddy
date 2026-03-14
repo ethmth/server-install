@@ -1,3 +1,6 @@
+# TODO: May be able to do this as a catch-all *.dev.pc.internal, with certificates covering all subdomains
+
+
 https://3000.dev.pc.internal {
     tls /certs/3000.dev.pc.internal.crt /certs/3000.dev.pc.internal.key {
 		on_demand
