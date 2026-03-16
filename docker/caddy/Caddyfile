@@ -11,4 +11,6 @@
 ## Local Configs
 ## If you're enabling local configs, be sure to add the certs to the certs volume.
 # import /etc/caddy/caddy.d/internal/immich.caddy
+# import /etc/caddy/caddy.d/internal/magic-mich.caddy
+# import /etc/caddy/caddy.d/internal/magic-mich-dev.caddy
 # import /etc/caddy/caddy.d/internal/dev.caddy
